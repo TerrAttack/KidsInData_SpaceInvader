@@ -2,6 +2,8 @@
     <string name="app_name">KidsInData_SpaceInvader</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_trophies">Trophies</string>
     <string name="test">"Test"</string>
+    <string name="title_data_journey">Data Journey</string>
+    <string name="modules_completed">Modules completed: %d/%d</string>
 </resources>
