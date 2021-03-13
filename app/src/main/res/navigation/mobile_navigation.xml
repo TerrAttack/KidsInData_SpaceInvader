@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_space_invader">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_space_invader"
         android:name="com.example.kidsindata_spaceinvader.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
@@ -18,8 +18,15 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.kidsindata_spaceinvader.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_trophies"
+        android:name="com.example.kidsindata_spaceinvader.ui.notifications.TrophiesFragment"
+        android:label="@string/title_trophies"
+        tools:layout="@layout/fragment_trophies" />
+
+    <fragment
+        android:id="@+id/navigation_data_journey"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment"
+        android:label="@string/title_data_journey"
+        tools:layout="@layout/fragment_trophies" />
+
 </navigation>
