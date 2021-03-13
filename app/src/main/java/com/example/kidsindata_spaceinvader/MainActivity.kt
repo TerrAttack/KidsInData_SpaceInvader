@@ -22,7 +22,5 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_space_invader, R.id.navigation_dashboard, R.id.navigation_data_journey, R.id.navigation_trophies))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
     }
 }
