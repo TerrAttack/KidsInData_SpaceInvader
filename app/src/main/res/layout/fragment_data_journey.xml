@@ -18,12 +18,13 @@
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/circle_progress"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,19 +51,51 @@
     <TextView
         android:id="@+id/tvCompletedModules"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/modules_completed"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintBottom_toTopOf="@+id/hallo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="464dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/rvModules"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCompletedModules" />
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
+    <View
+        android:id="@+id/hallo"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#3C3C3C"
+        app:layout_constraintBottom_toTopOf="@id/rvModules"
+        app:layout_constraintTop_toTopOf="@+id/rvModules" />
 
+    <TextView
+        android:id="@+id/interactiveStar"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_baseline_star_24"
+        app:layout_constraintBottom_toTopOf="@+id/rvModules"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/tvInteractive"
+        app:layout_constraintBottom_toTopOf="@+id/hallo"
+        app:layout_constraintStart_toEndOf="@+id/interactiveStar"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
