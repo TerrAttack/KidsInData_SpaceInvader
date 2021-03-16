@@ -3,7 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_space_invader">
+    app:startDestination="@+id/start_screen">
+
+    <fragment
+        android:id="@+id/start_screen"
+        android:name="com.example.kidsindata_spaceinvader.ui.start_screen.StartScreenFragment"
+        android:label="@string/title_start_screen"
+        tools:layout="@layout/fragment_start_screen" />
 
     <fragment
         android:id="@+id/navigation_space_invader"

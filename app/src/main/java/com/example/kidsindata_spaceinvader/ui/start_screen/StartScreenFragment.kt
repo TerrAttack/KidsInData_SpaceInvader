@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.dashboard
+package com.example.kidsindata_spaceinvader.ui.start_screen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.kidsindata_spaceinvader.R
+import com.example.kidsindata_spaceinvader.ui.dashboard.StartScreenViewModel
 
 class StartScreenFragment : Fragment() {
 
@@ -21,11 +22,7 @@ class StartScreenFragment : Fragment() {
     ): View? {
         startScreenViewModel =
                 ViewModelProvider(this).get(StartScreenViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        startScreenViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val root = inflater.inflate(R.layout.fragment_start_screen, container, false)
         return root
     }
 }

@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_trophies">Trophies</string>
+    <string name="title_start_screen">Start</string>
     <string name="test">"Test"</string>
     <string name="title_data_journey">Data Journey</string>
     <string name="modules_completed">Modules completed: %d/%d</string>
