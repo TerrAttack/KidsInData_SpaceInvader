@@ -12,20 +12,14 @@ import com.example.kidsindata_spaceinvader.R
 
 class TrophiesFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: TrophiesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProvider(this).get(TrophiesViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_trophies, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }

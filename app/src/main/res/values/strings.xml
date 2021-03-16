@@ -9,4 +9,27 @@
     <string name="completed">Completed</string>
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
+
+    <string name="score_title">Score:</string>
+    <string name="achievement_score">100/100</string>
+
+
+
+    <string-array
+        name="string_array_name">
+        <item>Completed 20% of your own data journey</item>
+        <item>Completed 40% of your own data journey</item>
+        <item>Completed 60% of your own data journey</item>
+        <item>Completed 80% of your own data journey</item>
+        <item>Completed 100% of your own data journey</item>
+        <item>Reached top 10 in the leaderboard</item>
+        <item>Reached top 100 in the leaderboard</item>
+        <item>Reached top 200 in the leaderboard</item>
+        <item>Reached top 500 in the leaderboard</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+    </string-array>
 </resources>
