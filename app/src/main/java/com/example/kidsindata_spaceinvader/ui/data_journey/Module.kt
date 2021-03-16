@@ -18,7 +18,7 @@ data class Module(
                 "How to work with data?",
                 "Table",
                 "Bar chart",
-                "Line chart",
+                "Line chartttt",
         )
 
         val MODULE_DESCRIPTION = arrayOf(
