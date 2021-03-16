@@ -1,16 +1,15 @@
 package com.example.kidsindata_spaceinvader.ui.data_journey
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.R
 import com.example.kidsindata_spaceinvader.databinding.FragmentDataJourneyBinding
+import com.example.kidsindata_spaceinvader.model.Module
 
 
 class DataJourneyFragment : Fragment() {

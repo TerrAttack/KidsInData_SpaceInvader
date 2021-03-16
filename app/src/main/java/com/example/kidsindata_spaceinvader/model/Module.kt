@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.data_journey
+package com.example.kidsindata_spaceinvader.model
 
 data class Module(
 

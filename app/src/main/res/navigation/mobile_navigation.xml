@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_trophies"
-        android:name="com.example.kidsindata_spaceinvader.ui.notifications.TrophiesFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.trophies.TrophiesFragment"
         android:label="@string/title_trophies"
         tools:layout="@layout/fragment_trophies" />
 
@@ -33,6 +33,6 @@
         android:id="@+id/navigation_data_journey"
         android:name="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment"
         android:label="@string/title_data_journey"
-        tools:layout="@layout/fragment_trophies" />
+        tools:layout="@layout/fragment_trophies"/>
 
 </navigation>

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.R
 import com.example.kidsindata_spaceinvader.databinding.ItemModuleBinding
+import com.example.kidsindata_spaceinvader.model.Module
 
 class DataJourneyAdapter(private val modules: List<Module>) : RecyclerView.Adapter<DataJourneyAdapter.ViewHolder>() {
 
@@ -28,7 +29,7 @@ class DataJourneyAdapter(private val modules: List<Module>) : RecyclerView.Adapt
                 binding.completedFlag.setBackgroundResource(R.color.green)
             } else {
                 binding.completedFlag.setText(R.string.notCompleted)
-                binding.completedFlag.setBackgroundResource(R.color.red)
+                binding.completedFlag.setBackgroundResource(R.color.redKidsInData)
             }
         }
     }
