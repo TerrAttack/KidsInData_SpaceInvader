@@ -38,10 +38,10 @@ class DataJourneyFragment : Fragment() {
         initViews()
         updateProgress()
 
-        binding.tenPlus.setOnClickListener {
-            moduleCompleted()
-            updateProgress()
-        }
+//        binding.tenPlus.setOnClickListener {
+//            moduleCompleted()
+//            updateProgress()
+//        }
     }
 
     private fun initViews() {

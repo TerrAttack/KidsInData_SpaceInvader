@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.customToolbar))
+        supportActionBar?.hide()
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 

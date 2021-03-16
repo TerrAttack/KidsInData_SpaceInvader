@@ -7,19 +7,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.data_journey.DataJourneyFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/slackey_regular"
-        android:text="@string/title_data_journey"
-        android:textColor="#01a6a8"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </TextView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/slackey_regular"
+                android:text="@string/title_data_journey"
+                android:textColor="#D7ECED"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -28,8 +45,9 @@
         android:indeterminateOnly="false"
         android:progressDrawable="@drawable/circle_progress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
     <TextView
         android:id="@+id/tv_progress"
@@ -40,13 +58,6 @@
         app:layout_constraintStart_toStartOf="@+id/progress_bar"
         app:layout_constraintTop_toTopOf="@+id/progress_bar" />
 
-    <Button
-        android:id="@+id/tenPlus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvCompletedModules"
