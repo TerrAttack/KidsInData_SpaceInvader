@@ -30,7 +30,7 @@ class DataJourneyRepository {
                 dataJourneyApiService.getModule()
             }
 
-            _dataJourney.value = listOf(result)
+            _dataJourney.value = result
         } catch (error: Throwable) {
             throw DataJourneyRefreshError("Unable to refresh module", error)
         }

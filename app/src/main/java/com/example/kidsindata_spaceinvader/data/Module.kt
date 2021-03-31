@@ -5,25 +5,25 @@ import java.util.*
 
 data class Module(
 
-@SerializedName("moduleId")var moduleId: Int,
+    @SerializedName("moduleId") var moduleId: Int,
 
-@SerializedName("moduleName")var moduleName: String,
+    @SerializedName("moduleName") var moduleName: String,
 
-@SerializedName("moduleDescription")var moduleDescription: String,
+    @SerializedName("moduleDescription") var moduleDescription: String,
 
-@SerializedName("interactive")var interactive: Int,
+    @SerializedName("interactive") var interactive: Int,
 
-@SerializedName("active")var active: Int,
+    @SerializedName("active") var active: Int,
 
-@SerializedName("time")var time: String,
+    @SerializedName("time") var time: String,
 
-@SerializedName("moduleLastCompletedDatetime")var moduleLastCompletedDatetime: Date,
+    @SerializedName("moduleLastCompletedDatetime") var moduleLastCompletedDatetime: String,
 
-@SerializedName("moduleLastOpenDatetime")var moduleLastOpenDatetime: Date,
+    @SerializedName("moduleLastOpenDatetime") var moduleLastOpenDatetime: String,
 
-@SerializedName("moduleCompletedFlag")var moduleCompletedFlag: Boolean,
+    @SerializedName("moduleCompletedFlag") var moduleCompletedFlag: Boolean,
 
-@SerializedName("ModuleOpnedFlag")var moduleOpnedFlag: Boolean
+    @SerializedName("ModuleOpnedFlag") var moduleOpnedFlag: Boolean
 )
 
 

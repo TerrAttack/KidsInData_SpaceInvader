@@ -33,6 +33,7 @@ class DataJourneyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel.getModule()
         _binding = FragmentDataJourneyBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -40,7 +41,6 @@ class DataJourneyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getModule()
         initViews()
         updateProgress()
 
@@ -57,18 +57,20 @@ class DataJourneyFragment : Fragment() {
 
         viewModel.dataJourney.observe(viewLifecycleOwner, {
             for (i in it.indices) {
-                modules.add( Module(
-                    it[i].moduleId,
-                    it[i].moduleName,
-                    it[i].moduleDescription,
-                    it[i].interactive,
-                    it[i].active,
-                    it[i].time,
-                    it[i].moduleLastCompletedDatetime,
-                    it[i].moduleLastOpenDatetime,
-                    it[i].moduleCompletedFlag,
-                    it[i].moduleOpnedFlag
-                ))
+                modules.add(
+                    Module(
+                        it[i].moduleId,
+                        it[i].moduleName,
+                        it[i].moduleDescription,
+                        it[i].interactive,
+                        it[i].active,
+                        it[i].time,
+                        it[i].moduleLastCompletedDatetime,
+                        it[i].moduleLastOpenDatetime,
+                        it[i].moduleCompletedFlag,
+                        it[i].moduleOpnedFlag
+                    )
+                )
             }
         })
         dataJourneyAdapter.notifyDataSetChanged()
