@@ -48,7 +48,7 @@
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/greenKidsInData"
         android:text="@string/home_game"
@@ -63,7 +63,7 @@
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#FAC710"
         android:text="@string/home_datajourney"
@@ -92,7 +92,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/customborder"
         android:orientation="vertical"
@@ -140,6 +140,5 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
