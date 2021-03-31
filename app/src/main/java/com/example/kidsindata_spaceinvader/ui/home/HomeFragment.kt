@@ -13,8 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.kidsindata_spaceinvader.R
-import com.example.kidsindata_spaceinvader.databinding.FragmentDataJourneyBinding
+import com.example.numberskotlin.R
 
 class HomeFragment : Fragment() {
 
