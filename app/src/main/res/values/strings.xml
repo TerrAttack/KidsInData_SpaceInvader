@@ -3,10 +3,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_trophies">Trophies</string>
+    <string name="title_start_screen">Start</string>
     <string name="test">"Test"</string>
     <string name="title_data_journey">Data Journey</string>
     <string name="modules_completed">Modules completed: %d/%d</string>
     <string name="completed">Completed</string>
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
+    <string name="space_invaders_title">Space Invaders</string>
+    <string name="kids_in_data_title">Kids in data</string>
+    <string name="played_before">Have you played before?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>
