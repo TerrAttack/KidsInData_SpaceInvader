@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kidsindata_spaceinvader.R
-import com.example.kidsindata_spaceinvader.databinding.ItemModuleBinding
 import com.example.kidsindata_spaceinvader.model.Module
+import com.example.numberskotlin.R
+import com.example.numberskotlin.databinding.ItemModuleBinding
 
-class DataJourneyAdapter(private val modules: List<Module>) : RecyclerView.Adapter<DataJourneyAdapter.ViewHolder>() {
+class DataJourneyAdapter(private val modules: List<Module>) :
+    RecyclerView.Adapter<DataJourneyAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -35,11 +36,11 @@ class DataJourneyAdapter(private val modules: List<Module>) : RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
+        parent: ViewGroup,
+        viewType: Int
     ): ViewHolder {
         return ViewHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item_module, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_module, parent, false)
         )
     }
 

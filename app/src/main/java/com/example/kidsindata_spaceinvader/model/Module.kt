@@ -1,50 +1,29 @@
 package com.example.kidsindata_spaceinvader.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Module(
 
-        var moduleId: Int,
+    @SerializedName("moduleId") var moduleId: Int,
 
-        var moduleName: String,
+    @SerializedName("moduleName") var moduleName: String,
 
-        var moduleDescription: String,
+    @SerializedName("moduleDescription") var moduleDescription: String,
 
-        var interactive: Int,
+    @SerializedName("interactive") var interactive: Int,
 
-        var moduleCompletedFlag: Boolean,
-) {
-    companion object {
-        val MODULE_NAME = arrayOf(
-                "What is data?",
-                "How to work with data?",
-                "Table",
-                "Bar chart",
-                "Line chartttt",
-        )
+    @SerializedName("active") var active: Int,
 
-        val MODULE_DESCRIPTION = arrayOf(
-                "Learn about what data means and the different types of data.",
-                "Learn how to collect and explore data.",
-                "Learn all about tables and how to use a table to explore data.",
-                "Explore and learn all about the bar charts.",
-                "Explore and learn all about the line charts.",
-        )
+    @SerializedName("time") var time: String,
 
-        val INTERACTIVE = arrayOf(
-                0,
-                0,
-                1,
-                1,
-                1,
-        )
+    @SerializedName("moduleLastCompletedDatetime") var moduleLastCompletedDatetime: String,
 
-        val MODULE_COMPLETED_FLAG = arrayOf(
-                false,
-                true,
-                false,
-                false,
-                true,
-        )
-    }
-}
+    @SerializedName("moduleLastOpenDatetime") var moduleLastOpenDatetime: String,
+
+    @SerializedName("moduleCompletedFlag") var moduleCompletedFlag: Boolean,
+
+    @SerializedName("ModuleOpnedFlag") var moduleOpnedFlag: Boolean,
+)
+
 
 

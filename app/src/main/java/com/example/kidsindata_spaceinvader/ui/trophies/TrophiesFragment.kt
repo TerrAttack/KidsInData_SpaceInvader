@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.kidsindata_spaceinvader.R
+import com.example.numberskotlin.R
 
 class TrophiesFragment : Fragment() {
 
