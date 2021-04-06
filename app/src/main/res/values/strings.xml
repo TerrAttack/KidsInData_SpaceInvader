@@ -15,4 +15,11 @@
     <string name="played_before">Have you played before?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+
+    <string name="explanation_first">The goal of this app is to show the user what data is and how it is collected.\n
+But first of all, what is data? According to Oxford Dictionaries, it consists of facts and statistics collected together for reference or analysis.
+</string>
+    <string name="explanation_second">So, while playing the game, data is generated. This data is for example the amount of shots fired, or the time at which the game was played. This data can then be used by others to be analyzed. This game is made to show you what data is generated. \n\nAfter playing the game, we can then use your data to showcase what we did with it, for example, compare it with other players. We also can show a graph of how you performed over time. In your everyday life, there is always data generated. For example, you are reading this at a certain time. This generated data. Remember earlier, when we discussed the definition? Data is just facts and statistics collected for reference or analysis. So we can say that you have read this at a certain time, which is data we can analyse if we want to. Do you know any more examples?</string>
+
+    <string name="next">Next</string>
 </resources>

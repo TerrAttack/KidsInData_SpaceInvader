@@ -8,21 +8,29 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.kidsindata_spaceinvader.R
+import com.example.kidsindata_spaceinvader.databinding.FragmentStartScreenBinding
 import com.example.kidsindata_spaceinvader.ui.dashboard.StartScreenViewModel
 
 class StartScreenFragment : Fragment() {
 
-    private lateinit var startScreenViewModel: StartScreenViewModel
+    private var _binding: FragmentStartScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        startScreenViewModel =
-                ViewModelProvider(this).get(StartScreenViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_start_screen, container, false)
-        return root
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentStartScreenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonNo.setOnClickListener {
+            view.findNavController().navigate(R.id.action_start_screen_to_explanationFirstFragment)
+        }
     }
 }

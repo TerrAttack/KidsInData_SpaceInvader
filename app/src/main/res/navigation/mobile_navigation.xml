@@ -9,7 +9,11 @@
         android:id="@+id/start_screen"
         android:name="com.example.kidsindata_spaceinvader.ui.start_screen.StartScreenFragment"
         android:label="@string/title_start_screen"
-        tools:layout="@layout/fragment_start_screen" />
+        tools:layout="@layout/fragment_start_screen" >
+        <action
+            android:id="@+id/action_start_screen_to_explanationFirstFragment"
+            app:destination="@id/explanationFirstFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_space_invader"
@@ -34,5 +38,17 @@
         android:name="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment"
         android:label="@string/title_data_journey"
         tools:layout="@layout/fragment_trophies" />
+    <fragment
+        android:id="@+id/explanationFirstFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.explanation.ExplanationFirstFragment"
+        android:label="ExplanationFirstFragment" >
+        <action
+            android:id="@+id/action_explanationFirstFragment_to_explanationSecondFragment"
+            app:destination="@id/explanationSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/explanationSecondFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.explanation.ExplanationSecondFragment"
+        android:label="ExplanationSecondFragment" />
 
 </navigation>
