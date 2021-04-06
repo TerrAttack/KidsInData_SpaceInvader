@@ -1,22 +1,22 @@
 package com.example.kidsindata_spaceinvader.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-
-import com.example.kidsindata_spaceinvader.R
-import com.example.kidsindata_spaceinvader.databinding.FragmentHomeBinding
-
-import com.example.numberskotlin.R
-
+import com.example.kidsindata_spaceinvader.DataJourneyActivity
+import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.numberskotlin.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
+
+    private val viewModel: DataJourneyViewModel by viewModels()
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -34,13 +34,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonGame.setOnClickListener {
-            navController.navigate(
-                R.id.action_fragment_home_screen_to_navigation_data_journey
-            )
+            goToGame()
         }
 
         binding.buttonDatajourney.setOnClickListener {
-            goToDatajourney()
+            goToDataJourney()
         }
     }
 
@@ -48,6 +46,10 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun goToDatajourney() {
+    private fun goToDataJourney() {
+        val intent = Intent(activity, DataJourneyActivity::class.java)
+        startActivity(intent)
+
     }
 }
+

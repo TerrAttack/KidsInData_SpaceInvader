@@ -24,9 +24,7 @@
     <string name="home_player_ranking">Player Ranking: </string>
 
 
-
-    <string-array
-        name="string_array_name">
+    <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>
         <item>Completed 40% of your own data journey</item>
         <item>Completed 60% of your own data journey</item>
@@ -52,5 +50,8 @@
     <string name="what_to_learn_next">What to learn next?</string>
     <string name="learning_modules_title">Learning modules</string>
     <string name="completed_">COMPLETED</string>
+    <string name="kids">Kids</string>
+    <string name="in">In</string>
+    <string name="data">Data</string>
 
 </resources>

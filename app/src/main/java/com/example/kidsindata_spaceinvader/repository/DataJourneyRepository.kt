@@ -6,6 +6,7 @@ import com.example.kidsindata_spaceinvader.api.KidsInDataApi
 import com.example.kidsindata_spaceinvader.api.KidsInDataApiService
 import com.example.kidsindata_spaceinvader.model.DataJourneyProgress
 import com.example.kidsindata_spaceinvader.model.Module
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeout
 
 class DataJourneyRepository {

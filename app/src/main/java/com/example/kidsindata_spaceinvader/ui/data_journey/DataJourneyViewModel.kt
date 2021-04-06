@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kidsindata_spaceinvader.repository.DataJourneyRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -37,7 +38,7 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
      * The viewModelScope is bound to Dispatchers.Main and will automatically be cancelled when the ViewModel is cleared.
      * Extension method of lifecycle-viewmodel-ktx library
      */
-    fun getModule() {
+    fun getModules() {
         viewModelScope.launch {
             try {
                 //the dataJourneyRepository sets it's own livedata property
