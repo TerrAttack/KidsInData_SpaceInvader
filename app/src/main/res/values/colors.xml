@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4CAF50</color>
     <color name="redKidsInData">#EF4228</color>
+    <color name="greenKidsInData">#8FD14F</color>
     <color name="titleKidsInData">#01a6a8</color>
     <color name="backgroundKidsInData">#CCEDEB</color>
-
 </resources>

@@ -4,34 +4,50 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+
+import com.example.kidsindata_spaceinvader.R
+import com.example.kidsindata_spaceinvader.databinding.FragmentHomeBinding
+
 import com.example.numberskotlin.R
 
 
+
 class HomeFragment : Fragment() {
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var navController: NavController
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonGame.setOnClickListener {
+            navController.navigate(
+                R.id.action_fragment_home_screen_to_navigation_data_journey
+            )
+        }
+
+        binding.buttonDatajourney.setOnClickListener {
+            goToDatajourney()
+        }
+    }
+
+    private fun goToGame() {
+
+    }
+
+    private fun goToDatajourney() {
     }
 }
