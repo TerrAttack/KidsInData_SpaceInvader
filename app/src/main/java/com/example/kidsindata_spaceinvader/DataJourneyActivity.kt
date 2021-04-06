@@ -27,4 +27,9 @@ class DataJourneyActivity : AppCompatActivity() {
         viewModel.getDataJourneyProgress()
         viewModel.getNextModule()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_from_top, R.anim.slide_to_bottom)
+    }
 }
