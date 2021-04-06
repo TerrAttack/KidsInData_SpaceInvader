@@ -8,8 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+
 import com.example.kidsindata_spaceinvader.R
 import com.example.kidsindata_spaceinvader.databinding.FragmentHomeBinding
+
+import com.example.numberskotlin.R
+
 
 
 class HomeFragment : Fragment() {

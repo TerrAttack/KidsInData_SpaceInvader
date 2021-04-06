@@ -11,7 +11,6 @@
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
 
-
     <string name="score_title">Score:</string>
     <string name="achievement_score">100/100</string>
 
@@ -49,5 +48,9 @@
     <string name="played_before">Have you played before?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="progress_so_far">What is my progress so far?</string>
+    <string name="what_to_learn_next">What to learn next?</string>
+    <string name="learning_modules_title">Learning modules</string>
+    <string name="completed_">COMPLETED</string>
 
 </resources>
