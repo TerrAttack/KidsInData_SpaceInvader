@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-
-import com.example.kidsindata_spaceinvader.R
-import com.example.kidsindata_spaceinvader.databinding.FragmentHomeBinding
+import androidx.navigation.fragment.findNavController
 
 import com.example.numberskotlin.R
-
+import com.example.numberskotlin.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
@@ -33,15 +29,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonGame.setOnClickListener {
-            navController.navigate(
-                R.id.action_fragment_home_screen_to_navigation_data_journey
-            )
-        }
+        initViews()
+    }
 
-        binding.buttonDatajourney.setOnClickListener {
+    private fun initViews() {
+        val buttonDataJourney = binding.buttonDatajourney
+        buttonDataJourney.setOnClickListener {
             goToDatajourney()
         }
+
     }
 
     private fun goToGame() {
@@ -49,5 +45,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToDatajourney() {
+           findNavController().navigate(R.id.action_fragment_home_screen_to_navigation_data_journey)
     }
 }
