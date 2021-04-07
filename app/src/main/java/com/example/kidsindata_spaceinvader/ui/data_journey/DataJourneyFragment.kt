@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import com.example.kidsindata_spaceinvader.MainActivity
 import com.example.kidsindata_spaceinvader.model.Module
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentDataJourneyBinding
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -29,7 +31,7 @@ class DataJourneyFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val modules = arrayListOf<Module>()
-    private val dataJourneyAdapter = DataJourneyAdapter(modules)
+    private val dataJourneyAdapter = DataJourneyAdapter(modules) { module: Module -> moduleItemClicked(module) }
 
 
     override fun onCreateView(
@@ -85,6 +87,7 @@ class DataJourneyFragment : Fragment() {
 
     private fun updateNextModule() {
         viewModel.dataJourneyNextModule.observe(viewLifecycleOwner, {
+            var moduleId = it.moduleId
             binding.moduleNumber.text = it.moduleId.toString()
             binding.moduleTitle.text = it.moduleName
             binding.moduleDescription.text = it.moduleDescription
@@ -101,8 +104,31 @@ class DataJourneyFragment : Fragment() {
                 binding.completedFlag.setText(R.string.notCompleted)
                 binding.completedFlag.setBackgroundResource(R.color.redKidsInData)
             }
+
+            binding.nextModuleCard.setOnClickListener {
+                when (moduleId) {
+                    1 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    2 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    3 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    4 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    5 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    else -> Snackbar.make(
+                        binding.nextModuleCard,
+                        "Coming soon...",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
             dataJourneyAdapter.notifyDataSetChanged()
         })
+
+
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -126,5 +152,22 @@ class DataJourneyFragment : Fragment() {
 
             dataJourneyAdapter.notifyDataSetChanged()
         })
+    }
+
+    private fun moduleItemClicked(module: Module) {
+        when (module.moduleId) {
+            1 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            2 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            4 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            5 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            else -> Snackbar.make(binding.nextModuleCard, "Coming soon...", Snackbar.LENGTH_SHORT)
+                .show()
+        }
     }
 }
