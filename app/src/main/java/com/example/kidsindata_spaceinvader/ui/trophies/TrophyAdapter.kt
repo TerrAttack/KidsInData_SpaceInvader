@@ -18,6 +18,8 @@ class TrophyAdapter(private val trophies: List<Trophy>) :
         fun dataBind(trophy: Trophy) {
             binding.TrophyTitle.text = trophy.trophyTitle
             binding.TrophyDescription.text = trophy.trophyDesc
+
+
             if(trophy.trophyCompletion ) binding.TrophyCompletionBG.setBackgroundResource(R.drawable.circle_trophy_rv)
 
         }

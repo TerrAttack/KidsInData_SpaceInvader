@@ -17,8 +17,8 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
      * This property points direct to the LiveData in the repository, that value
      */
     val trophiesPlayerRank = trophiesRepository.trophiesPlayerRanking
-    val dataJourneyNextModule = trophiesRepository.trophiesTopScore
-    val dataJourneyProgress = trophiesRepository.trophiesGameSummary
+    val trophiesTopScore = trophiesRepository.trophiesTopScore
+    val trophiesGameSummary = trophiesRepository.trophiesGameSummary
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 

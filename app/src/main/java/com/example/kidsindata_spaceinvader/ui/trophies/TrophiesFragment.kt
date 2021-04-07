@@ -37,6 +37,7 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
+
         initViews()
     }
 
@@ -45,10 +46,40 @@ class TrophiesFragment : Fragment() {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvTrophies.adapter = trophyAdapter
 
+        checkAchievements()
+        checkTotalGames()
+        checkTopScore()
+
         setTrophyList()
         trophyAdapter.notifyDataSetChanged()
 
     }
+
+    private fun checkAchievements(){
+        viewModel.trophiesPlayerRank.observe(viewLifecycleOwner, {
+            if (it in 1..9){
+                Trophy.TROPHIES[0].trophyCompletion = true
+            }
+        })
+    }
+
+    private fun checkTotalGames(){
+        viewModel.trophiesGameSummary.observe(viewLifecycleOwner, {
+            if (it.noOfGames > 5){
+                Trophy.TROPHIES[1].trophyCompletion = true
+            }
+        })
+    }
+
+    private fun checkTopScore(){
+        viewModel.trophiesTopScore.observe(viewLifecycleOwner, {
+            if (it > 20000){
+                Trophy.TROPHIES[2].trophyCompletion = true
+            }
+        })
+    }
+
+
 
     private fun setTrophyList(){
         for(e in Trophy.TROPHIES.indices){
