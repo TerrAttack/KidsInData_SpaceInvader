@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/module_navigation"
+    app:startDestination="@id/dataJourneyFragment">
+
+    <fragment
+        android:id="@+id/dataJourneyFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment"
+        android:label="fragment_data_journey"
+        tools:layout="@layout/fragment_data_journey" />
+</navigation>
