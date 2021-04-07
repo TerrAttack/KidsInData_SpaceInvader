@@ -25,12 +25,14 @@ class ExplanationDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvHeader.setText(R.string.start_header)
         setClickListeners()
     }
 
     private fun setClickListeners() {
-        binding.btnCancel.setOnClickListener {
-            dismiss()
+        binding.btnGoBack.setOnClickListener {
+            page -= 1
+            setPage(page)
         }
 
         binding.btnNext.setOnClickListener {
@@ -38,9 +40,8 @@ class ExplanationDialogFragment : DialogFragment() {
             setPage(page)
         }
 
-        binding.ivGoBack.setOnClickListener {
-            page -= 1
-            setPage(page)
+        binding.ivClose.setOnClickListener {
+            dismiss()
         }
     }
 
@@ -48,9 +49,10 @@ class ExplanationDialogFragment : DialogFragment() {
         when (page) {
             0 -> {
                 binding.tvContent.setText(R.string.explanation_start)
-                binding.ivIcon.setImageResource(R.drawable.baseline_family_restroom_black_48dp)
+                binding.ivIcon.setImageResource(R.drawable.childreading)
             }
             1 -> {
+                binding.tvHeader.setText(R.string.explanation_header)
                 binding.tvContent.setText(R.string.explanation_first)
                 binding.ivIcon.setImageResource(R.drawable.data_img)
             }

@@ -27,7 +27,11 @@ class ControlsDialogFragment : DialogFragment() {
     }
 
     private fun setClickListeners() {
-        binding.btnCancelControls.setOnClickListener { dismiss() }
+        binding.ivCloseControls.setOnClickListener { dismiss() }
         binding.btnNextControls.setOnClickListener { dismiss() }
+        binding.btnGoBackControls.setOnClickListener {
+            dismiss()
+            ExplanationDialogFragment().show(parentFragmentManager, "custom dialog")
+        }
     }
 }

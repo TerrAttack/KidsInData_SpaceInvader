@@ -1,79 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minWidth="350dp">
+    android:minWidth="350dp"
+    android:minHeight="600dp">
 
     <ImageView
-        android:id="@+id/ivPlayer"
+        android:id="@+id/ivEnemy3"
         android:layout_width="76dp"
         android:layout_height="59dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="208dp"
         app:layout_constraintEnd_toStartOf="@+id/tvEnemy"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivEnemy"
-        app:tint="@color/black"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/tvControlsHeader"
+        app:srcCompat="@drawable/player_bullet" />
 
     <TextView
-        android:id="@+id/tvPlayer"
+        android:id="@+id/tvEnemy3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="87dp"
+        android:layout_marginTop="268dp"
         android:layout_marginEnd="50dp"
-        android:text="@string/enemy"
+        android:text="@string/controls_bullet"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toEndOf="@+id/ivEnemy"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnemy" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivEnemy2"
+        android:layout_width="76dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvEnemy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvControlsHeader"
+        app:srcCompat="@drawable/spaceship" />
+
+    <TextView
+        android:id="@+id/tvEnemy2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/player"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toEndOf="@+id/ivEnemy"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCloseControls"
+        android:layout_width="45dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:foregroundGravity="top"
+        android:translationZ="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_close_36"
+        app:tint="@color/black" />
 
     <Button
-        android:id="@+id/btnCancelControls"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:id="@+id/btnGoBackControls"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="78dp"
-        android:text="@string/cancel"
+        android:layout_marginTop="30dp"
+        android:text="@string/back"
         app:layout_constraintEnd_toStartOf="@+id/btnNextControls"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvControlsText" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/btnNextControls"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:text="@string/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnCancelControls"
-        app:layout_constraintTop_toBottomOf="@+id/tvControlsText" />
+        app:layout_constraintStart_toEndOf="@+id/btnGoBackControls"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/ivEnemy"
         android:layout_width="76dp"
         android:layout_height="59dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toStartOf="@+id/tvEnemy"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvControlsHeader"
         app:srcCompat="@drawable/ic_space_invader_icon" />
 
     <TextView
         android:id="@+id/tvEnemy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="50dp"
         android:text="@string/enemy"
         android:textColor="@color/black"
@@ -87,7 +125,7 @@
         android:id="@+id/tvControlsHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="@string/controls_header"
         android:textColor="@color/black"
@@ -100,19 +138,22 @@
         android:id="@+id/tvControlsText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
         android:text="@string/controls_text"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/ivEnemy3" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
-        android:layout_height="89dp"
+        android:layout_height="105dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvControlsText"
