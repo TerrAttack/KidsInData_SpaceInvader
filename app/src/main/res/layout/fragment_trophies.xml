@@ -7,7 +7,7 @@
     tools:context="com.example.kidsindata_spaceinvader.ui.trophies.TrophiesFragment">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/score_title"
@@ -24,7 +24,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
     <ListView
         android:layout_width="409dp"

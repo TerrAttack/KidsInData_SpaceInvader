@@ -10,25 +10,67 @@
     <string name="completed">Completed</string>
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
+
+    <string name="score_title">Score:</string>
+    <string name="achievement_score">100/100</string>
+
+    <!--Home strings-->
+    <string name="home_title"><font fgcolor='#FF01a6a8'>Kids </font><font fgcolor='#FFef4129'>in </font><font fgcolor='#FFb0c54c'>Data</font></string>
+    <string name="home_game">Play Space Invaders</string>
+    <string name="home_datajourney">Datajourney</string>
+    <string name="home_space_invaders">Space Invaders!</string>
+    <string name="home_last_played">Last Played: </string>
+    <string name="home_high_score">High Score: </string>
+    <string name="home_player_ranking">Player Ranking: </string>
+
+
+    <string-array name="string_array_name">
+        <item>Completed 20% of your own data journey</item>
+        <item>Completed 40% of your own data journey</item>
+        <item>Completed 60% of your own data journey</item>
+        <item>Completed 80% of your own data journey</item>
+        <item>Completed 100% of your own data journey</item>
+        <item>Reached top 10 in the leaderboard</item>
+        <item>Reached top 100 in the leaderboard</item>
+        <item>Reached top 200 in the leaderboard</item>
+        <item>Reached top 500 in the leaderboard</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+        <item>Filler</item>
+    </string-array>
+
     <string name="space_invaders_title">Space Invaders</string>
     <string name="kids_in_data_title">Kids in data</string>
     <string name="played_before">Have you played before?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="progress_so_far">What is my progress so far?</string>
+    <string name="what_to_learn_next">What to learn next?</string>
+    <string name="learning_modules_title">Learning modules</string>
+    <string name="completed_">COMPLETED</string>
+    <string name="kids">Kids</string>
+    <string name="in">In</string>
+    <string name="data">Data</string>
 
-<!--    Explanation resources-->
+<!-- Start   -->
+    <string name="start_header">Explanation</string>
+
+    <!--    Explanation resources-->
     <string name="explanation_start">The next few screens will quickly take you through some of the key features of the workshop before you start. Please press "Next" to start your tour.</string>
     <string name="explanation_first">The goal of this app is to show you what data is and what can be done with it.\n\nBut first of all, what is data? According to Oxford Dictionaries, it consists of facts and statistics collected together for reference or analysis. In your everyday life, almost everything you do generates data, such as the time at which you are reading this.</string>
     <string name="explanation_second">So, while playing the game, data is generated. This data is for example the amount of shots fired, or the time at which the game was played. This data can then be used by others to be analyzed.We also can show a graph of how you performed over time. In your everyday life, there is always data generated.</string>
     <string name="explanation_third">For example, you are reading this at a certain time. This generated data. Remember earlier, when we discussed the definition? Data is just facts and statistics collected for reference or analysis. So we can say that you have read this at a certain time, which is data we can collect and analyse if we want to. Do you know any more examples?</string>
     <string name="explanation_header">Data-usage</string>
 
-<!--    Controls resources-->
+    <!--    Controls resources-->
     <string name="next">Next</string>
-    <string name="cancel">Cancel</string>
+    <string name="back">Back</string>
     <string name="controls">Controls</string>
     <string name="enemy">Enemy</string>
     <string name="player">The player (you)</string>
     <string name="controls_header">Controls</string>
-    <string name="controls_text">Swipe left and right to move the spaceship. The spaceship fires automatically.</string>
+    <string name="controls_text">Swipe left and right to move the spaceship. The spaceship can be fired by tapping anywhere on the screen.</string>
+    <string name="controls_bullet">The bullet to hit\nthe enemy with</string>
 </resources>
