@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.model.Trophy
 import com.example.kidsindata_spaceinvader.ui.data_journey.TrophyAdapter
+import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentTrophiesBinding
 
 class TrophiesFragment : Fragment() {
@@ -37,6 +39,10 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
+
+        binding.homeImage.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+        }
 
         initViews()
     }
