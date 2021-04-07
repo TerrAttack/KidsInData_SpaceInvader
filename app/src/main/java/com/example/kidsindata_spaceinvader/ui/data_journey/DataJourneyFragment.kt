@@ -1,17 +1,25 @@
 package com.example.kidsindata_spaceinvader.ui.data_journey
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kidsindata_spaceinvader.MainActivity
 import com.example.kidsindata_spaceinvader.model.Module
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentDataJourneyBinding
+import com.google.android.material.snackbar.Snackbar
+import java.util.*
 import kotlin.math.roundToInt
 
 
@@ -23,7 +31,7 @@ class DataJourneyFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val modules = arrayListOf<Module>()
-    private val dataJourneyAdapter = DataJourneyAdapter(modules)
+    private val dataJourneyAdapter = DataJourneyAdapter(modules) { module: Module -> moduleItemClicked(module) }
 
 
     override fun onCreateView(
@@ -36,10 +44,6 @@ class DataJourneyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.getModule()
-        viewModel.getNextModule()
-        viewModel.getDataJourneyProgress()
         initViews()
     }
 
@@ -48,12 +52,15 @@ class DataJourneyFragment : Fragment() {
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvModules.adapter = dataJourneyAdapter
 
-
         updateProgress()
         updateNextModule()
         setModulesList()
 
-        dataJourneyAdapter.notifyDataSetChanged()
+        binding.homeImage.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_from_top, R.anim.slide_to_bottom)
+        }
     }
 
     private fun setModulesList() {
@@ -74,12 +81,13 @@ class DataJourneyFragment : Fragment() {
                     )
                 )
             }
-            modules.sortWith(compareBy { it.moduleId })
+            dataJourneyAdapter.notifyDataSetChanged()
         })
     }
 
     private fun updateNextModule() {
         viewModel.dataJourneyNextModule.observe(viewLifecycleOwner, {
+            var moduleId = it.moduleId
             binding.moduleNumber.text = it.moduleId.toString()
             binding.moduleTitle.text = it.moduleName
             binding.moduleDescription.text = it.moduleDescription
@@ -96,16 +104,70 @@ class DataJourneyFragment : Fragment() {
                 binding.completedFlag.setText(R.string.notCompleted)
                 binding.completedFlag.setBackgroundResource(R.color.redKidsInData)
             }
+
+            binding.nextModuleCard.setOnClickListener {
+                when (moduleId) {
+                    1 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    2 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    3 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    4 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    5 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
+                        .show()
+                    else -> Snackbar.make(
+                        binding.nextModuleCard,
+                        "Coming soon...",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            dataJourneyAdapter.notifyDataSetChanged()
         })
+
+
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun updateProgress() {
         viewModel.dataJourneyProgress.observe(viewLifecycleOwner, {
-            binding.progressBar.progress = it.completedPercentage.roundToInt()
+            val mProgressBar = binding.progressBar
+            val progressAnimator = ObjectAnimator.ofInt(
+                mProgressBar,
+                "progress",
+                0,
+                it.completedPercentage.roundToInt()
+            )
+            progressAnimator.duration = 600
+            progressAnimator.setAutoCancel(true)
+            progressAnimator.interpolator = LinearInterpolator()
+            progressAnimator.start()
+
             binding.tvProgress.text = it.completedPercentage.roundToInt().toString() + "%"
             binding.tvCompletedModules.text =
                 getString(R.string.modules_completed, it.modulesCompleted, it.totalActiveModules)
+
+            dataJourneyAdapter.notifyDataSetChanged()
         })
+    }
+
+    private fun moduleItemClicked(module: Module) {
+        when (module.moduleId) {
+            1 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            2 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            4 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            5 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
+                .show()
+            else -> Snackbar.make(binding.nextModuleCard, "Coming soon...", Snackbar.LENGTH_SHORT)
+                .show()
+        }
     }
 }

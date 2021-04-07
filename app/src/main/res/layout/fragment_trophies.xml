@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.kidsindata_spaceinvader.ui.trophies.TrophiesFragment">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
@@ -67,4 +68,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
