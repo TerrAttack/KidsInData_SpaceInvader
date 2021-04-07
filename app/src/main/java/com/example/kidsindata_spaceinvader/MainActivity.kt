@@ -12,12 +12,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.kidsindata_spaceinvader.ui.trophies.TrophiesViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: DataJourneyViewModel by viewModels()
+    private val dataJourneyViewModel: DataJourneyViewModel by viewModels()
+    private val trophiesViewModel: TrophiesViewModel by viewModels()
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
@@ -43,5 +45,14 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        dataJourneyViewModel.getModule()
+        dataJourneyViewModel.getNextModule()
+        dataJourneyViewModel.getDataJourneyProgress()
+
+        trophiesViewModel.getRank()
+        trophiesViewModel.getTopScore()
+        trophiesViewModel.getGameSummary()
     }
 }
