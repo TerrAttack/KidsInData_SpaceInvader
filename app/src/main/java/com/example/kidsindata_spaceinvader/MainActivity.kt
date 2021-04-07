@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-        dataJourneyViewModel.getModule()
+        dataJourneyViewModel.getModules()
         dataJourneyViewModel.getNextModule()
         dataJourneyViewModel.getDataJourneyProgress()
 
