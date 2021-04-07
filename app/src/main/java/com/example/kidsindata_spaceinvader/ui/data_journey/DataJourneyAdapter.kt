@@ -8,7 +8,7 @@ import com.example.kidsindata_spaceinvader.model.Module
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ItemModuleBinding
 
-class DataJourneyAdapter(private val modules: List<Module>) :
+class DataJourneyAdapter(private val modules: List<Module>, private val clickListener: (Module) -> Unit) :
     RecyclerView.Adapter<DataJourneyAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +32,13 @@ class DataJourneyAdapter(private val modules: List<Module>) :
                 binding.completedFlag.setText(R.string.notCompleted)
                 binding.completedFlag.setBackgroundResource(R.color.redKidsInData)
             }
+
+            if (module.active == 0) binding.comingSoon.setText(R.string.coming_soon)
+            else binding.comingSoon.text = ""
+        }
+
+        fun bind(module: Module, clickListener: (Module) -> Unit) {
+            itemView.setOnClickListener { clickListener(module) }
         }
     }
 
@@ -46,6 +53,7 @@ class DataJourneyAdapter(private val modules: List<Module>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.dataBind(modules[position])
+        holder.bind(modules[position], clickListener)
     }
 
     override fun getItemCount(): Int {
