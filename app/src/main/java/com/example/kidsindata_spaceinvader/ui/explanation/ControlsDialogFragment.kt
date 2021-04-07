@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.kidsindata_spaceinvader.databinding.FragmentControlsBinding
+import com.example.numberskotlin.databinding.FragmentControlsBinding
 
 class ControlsDialogFragment : DialogFragment() {
 

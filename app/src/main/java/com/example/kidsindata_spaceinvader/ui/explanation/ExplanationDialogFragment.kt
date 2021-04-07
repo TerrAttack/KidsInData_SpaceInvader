@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.kidsindata_spaceinvader.R
-import com.example.kidsindata_spaceinvader.databinding.FragmentExplanationBinding
+import com.example.numberskotlin.R
+import com.example.numberskotlin.databinding.FragmentExplanationBinding
 
 class ExplanationDialogFragment : DialogFragment() {
 
