@@ -1,5 +1,7 @@
 package com.example.kidsindata_spaceinvader.ui.home
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentHomeBinding
 
 
@@ -49,6 +52,7 @@ class HomeFragment : Fragment() {
     private fun goToDataJourney() {
         val intent = Intent(activity, DataJourneyActivity::class.java)
         startActivity(intent)
+        activity?.overridePendingTransition(R.anim.slide_from_bottom, R.anim.slide_to_top)
 
     }
 }
