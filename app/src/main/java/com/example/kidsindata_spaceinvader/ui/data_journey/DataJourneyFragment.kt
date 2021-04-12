@@ -14,6 +14,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
@@ -48,6 +49,10 @@ class DataJourneyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getModules()
+        viewModel.getDataJourneyProgress()
+        viewModel.getNextModule()
         initViews()
     }
 
@@ -68,6 +73,7 @@ class DataJourneyFragment : Fragment() {
 
     private fun setModulesList() {
         viewModel.dataJourneyModules.observe(viewLifecycleOwner, {
+         modules.clear()
             for (i in it.indices) {
                 modules.add(
                     Module(
@@ -91,9 +97,8 @@ class DataJourneyFragment : Fragment() {
     private fun connectionLoader() {
         viewModel.spinner.observe(viewLifecycleOwner, {
             if (it) binding.loaderBar.visibility = View.VISIBLE
-            else binding.loaderBar.visibility = View.GONE
+             else binding.loaderBar.visibility = View.GONE
         })
-
         viewModel.connection.observe(viewLifecycleOwner, {
             if (it == false) {
                 val dialogBuilder = AlertDialog.Builder(context)
@@ -123,9 +128,9 @@ class DataJourneyFragment : Fragment() {
             binding.moduleDescription.text = it.moduleDescription
 
             if (it.interactive == 1)
-                binding.interactiveStar.visibility = View.VISIBLE
+                binding.interactiveStarNext.visibility = View.VISIBLE
             else
-                binding.interactiveStar.visibility = View.GONE
+                binding.interactiveStarNext.visibility = View.GONE
 
             if (it.moduleCompletedFlag) {
                 binding.completedFlag.setText(R.string.completed)
@@ -183,8 +188,7 @@ class DataJourneyFragment : Fragment() {
 
     private fun moduleItemClicked(module: Module) {
         when (module.moduleId) {
-            1 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
-                .show()
+            1 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
             2 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
                 .show()
             3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)

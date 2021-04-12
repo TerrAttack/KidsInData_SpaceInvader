@@ -2,14 +2,11 @@ package com.example.kidsindata_spaceinvader.ui.data_journey
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kidsindata_spaceinvader.repository.DataJourneyRepository
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -25,6 +22,8 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
     val dataJourneyNextModule = dataJourneyRepository.dataJourneyNextModule
 
     val dataJourneyProgress = dataJourneyRepository.dataJourneyProgress
+
+    val dataJourneyModuleCompleted = dataJourneyRepository.dataJourneyCompletedModule
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
@@ -56,7 +55,7 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
                 //the dataJourneyRepository sets it's own livedata property
                 //our own module property points to this one
                 _spinner.value = true
-                dataJourneyRepository.getModule()
+                dataJourneyRepository.getModules()
             } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
                 _connection.value = false
                 _errorText.value = error.message
@@ -95,6 +94,23 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
                 _connection.value = false
                 _errorText.value = error.message
                 Log.e("Next module error", error.cause.toString())
+            } finally {
+                _spinner.value = false
+            }
+        }
+    }
+
+    fun postModuleCompleted(playerUsername: String, moduleId: Int) {
+        viewModelScope.launch {
+            try {
+                //the dataJourneyRepository sets it's own livedata property
+                //our own module property points to this one
+                _spinner.value = true
+                dataJourneyRepository.postModuleCompleted(playerUsername, moduleId)
+            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+                _connection.value = false
+                _errorText.value = error.message
+                Log.e("Module completed error", error.cause.toString())
             } finally {
                 _spinner.value = false
             }
