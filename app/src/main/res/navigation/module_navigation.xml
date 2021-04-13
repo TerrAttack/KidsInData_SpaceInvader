@@ -9,5 +9,26 @@
         android:id="@+id/dataJourneyFragment"
         android:name="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment"
         android:label="fragment_data_journey"
-        tools:layout="@layout/fragment_data_journey" />
+        tools:layout="@layout/fragment_data_journey" >
+        <action
+            android:id="@+id/action_dataJourneyFragment_to_moduleFragment"
+            app:destination="@id/moduleFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/moduleFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WhatIsDataModuleFragment"
+        android:label="fragment_module"
+        tools:layout="@layout/fragment_what_is_data_module" >
+        <action
+            android:id="@+id/action_moduleFragment_to_dataJourneyFragment"
+            app:destination="@id/dataJourneyFragment"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+    </fragment>
 </navigation>
