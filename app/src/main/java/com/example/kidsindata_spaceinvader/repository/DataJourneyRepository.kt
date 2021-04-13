@@ -19,6 +19,8 @@ class DataJourneyRepository {
 
     private val _dataJourneyProgress:  MutableLiveData<DataJourneyProgress> = MutableLiveData()
 
+    private val _dataJourneyCompletedModule:  MutableLiveData<Int> = MutableLiveData()
+
     /**
      * Expose non MutableLiveData via getter
      * Encapsulation :)
@@ -32,15 +34,18 @@ class DataJourneyRepository {
     val dataJourneyProgress: LiveData<DataJourneyProgress>
         get() = _dataJourneyProgress
 
+    val dataJourneyCompletedModule: LiveData<Int>
+        get() = _dataJourneyCompletedModule
+
 
     /**
      * suspend function that calls a suspend function from the moduleApi call
      */
-    suspend fun getModule() {
+    suspend fun getModules() {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                kidsInDataApiService.getModule()
+                kidsInDataApiService.getModule().sortedBy { it.moduleId }
             }
 
             _dataJourneyModules.value = result
@@ -72,6 +77,19 @@ class DataJourneyRepository {
             _dataJourneyProgress.value = result
         } catch (error: Throwable) {
             throw DataJourneyRefreshError("Unable to refresh data journey progress", error)
+        }
+    }
+
+    suspend fun postModuleCompleted(playerUsername: String, moduleId: Int) {
+        try {
+            //timeout the request after 5 seconds
+            val result = withTimeout(5_000) {
+                kidsInDataApiService.postModuleCompleted(playerUsername, moduleId)
+            }
+
+            _dataJourneyCompletedModule.value = result
+        } catch (error: Throwable) {
+            throw DataJourneyRefreshError("Unable to post module completed", error)
         }
     }
 

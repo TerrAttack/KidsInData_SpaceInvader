@@ -20,7 +20,7 @@ class SplashScreenActivity : AppCompatActivity() {
         checkConnectivity()
     }
 
-    private fun checkConnectivity() {
+     private fun checkConnectivity() {
         val manager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = manager.activeNetworkInfo
 
@@ -44,7 +44,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val alert = dialogBuilder.create()
             // set title for alert dialog box
             alert.setTitle("No Internet Connection")
-            alert.setIcon(R.mipmap.ic_launcher)
+            alert.setIcon(R.drawable.kid_logo_inverted)
             // show alert dialog
             alert.show()
         }
