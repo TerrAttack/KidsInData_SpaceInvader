@@ -2,6 +2,9 @@ package com.example.kidsindata_spaceinvader.ui.data_journey
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +15,10 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.MainActivity
 import com.example.kidsindata_spaceinvader.model.Module
 import com.example.numberskotlin.R
@@ -31,7 +36,8 @@ class DataJourneyFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val modules = arrayListOf<Module>()
-    private val dataJourneyAdapter = DataJourneyAdapter(modules) { module: Module -> moduleItemClicked(module) }
+    private val dataJourneyAdapter =
+        DataJourneyAdapter(modules) { module: Module -> moduleItemClicked(module) }
 
 
     override fun onCreateView(
@@ -44,6 +50,10 @@ class DataJourneyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getModules()
+        viewModel.getDataJourneyProgress()
+        viewModel.getNextModule()
         initViews()
     }
 
@@ -55,16 +65,18 @@ class DataJourneyFragment : Fragment() {
         updateProgress()
         updateNextModule()
         setModulesList()
+        connectionLoader()
 
         binding.homeImage.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
-            activity?.overridePendingTransition(R.anim.slide_from_top, R.anim.slide_to_bottom)
+            navigateToHome()
         }
     }
 
+
+
     private fun setModulesList() {
         viewModel.dataJourneyModules.observe(viewLifecycleOwner, {
+         modules.clear()
             for (i in it.indices) {
                 modules.add(
                     Module(
@@ -85,6 +97,32 @@ class DataJourneyFragment : Fragment() {
         })
     }
 
+    private fun connectionLoader() {
+        viewModel.spinner.observe(viewLifecycleOwner, {
+            if (it) binding.loaderBar.visibility = View.VISIBLE
+             else binding.loaderBar.visibility = View.GONE
+        })
+        viewModel.connection.observe(viewLifecycleOwner, {
+            if (it == false) {
+                val dialogBuilder = AlertDialog.Builder(context)
+                dialogBuilder.setMessage("Make sure that WI-FI or mobile data is turned on, then try again")
+                    .setCancelable(false)
+                    .setPositiveButton("Retry", DialogInterface.OnClickListener { dialog, id ->
+                        val intent = Intent(activity, DataJourneyActivity::class.java)
+                        startActivity(intent)
+                    })
+                    .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                        navigateToHome()
+                    })
+                val alert = dialogBuilder.create()
+                alert.setTitle("No Internet Connection")
+                alert.setIcon(R.drawable.kid_logo_inverted)
+                alert.show()
+            }
+        })
+
+    }
+
     private fun updateNextModule() {
         viewModel.dataJourneyNextModule.observe(viewLifecycleOwner, {
             var moduleId = it.moduleId
@@ -93,9 +131,9 @@ class DataJourneyFragment : Fragment() {
             binding.moduleDescription.text = it.moduleDescription
 
             if (it.interactive == 1)
-                binding.interactiveStar.visibility = View.VISIBLE
+                binding.interactiveStarNext.visibility = View.VISIBLE
             else
-                binding.interactiveStar.visibility = View.GONE
+                binding.interactiveStarNext.visibility = View.GONE
 
             if (it.moduleCompletedFlag) {
                 binding.completedFlag.setText(R.string.completed)
@@ -126,9 +164,6 @@ class DataJourneyFragment : Fragment() {
             }
             dataJourneyAdapter.notifyDataSetChanged()
         })
-
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -156,8 +191,7 @@ class DataJourneyFragment : Fragment() {
 
     private fun moduleItemClicked(module: Module) {
         when (module.moduleId) {
-            1 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
-                .show()
+            1 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
             2 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
                 .show()
             3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
@@ -169,5 +203,11 @@ class DataJourneyFragment : Fragment() {
             else -> Snackbar.make(binding.nextModuleCard, "Coming soon...", Snackbar.LENGTH_SHORT)
                 .show()
         }
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(activity, MainActivity::class.java)
+        startActivity(intent)
+        activity?.overridePendingTransition(R.anim.slide_from_top, R.anim.slide_to_bottom)
     }
 }

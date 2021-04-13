@@ -1,5 +1,6 @@
 package com.example.kidsindata_spaceinvader
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -18,7 +19,7 @@ import com.example.numberskotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val dataJourneyViewModel: DataJourneyViewModel by viewModels()
+
     private val trophiesViewModel: TrophiesViewModel by viewModels()
 
     private lateinit var navController: NavController
@@ -33,8 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-
-
         navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -45,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
 
         dataJourneyViewModel.getModules()
         dataJourneyViewModel.getNextModule()
