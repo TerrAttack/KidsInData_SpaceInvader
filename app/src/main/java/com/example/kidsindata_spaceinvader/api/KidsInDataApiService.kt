@@ -42,6 +42,12 @@ interface KidsInDataApiService {
 
 
     /**
+     * Addition for homescreen
+     */
+    @GET("/api/spaceinvaders/playerlatestscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
+    suspend fun getPlayerLatestScore(): PlayerLatestScore
+
+    /**
      * Dashboard
      */
 //    @GET("/api/spaceinvaders/playertrend?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
