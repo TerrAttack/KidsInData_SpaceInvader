@@ -3,6 +3,7 @@ package com.example.kidsindata_spaceinvader.ui.data_journey
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -70,6 +71,8 @@ class DataJourneyFragment : Fragment() {
             navigateToHome()
         }
     }
+
+
 
     private fun setModulesList() {
         viewModel.dataJourneyModules.observe(viewLifecycleOwner, {

@@ -1,5 +1,6 @@
 package com.example.kidsindata_spaceinvader
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -18,7 +19,7 @@ import com.example.numberskotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val dataJourneyViewModel: DataJourneyViewModel by viewModels()
+
     private val trophiesViewModel: TrophiesViewModel by viewModels()
 
     private lateinit var navController: NavController

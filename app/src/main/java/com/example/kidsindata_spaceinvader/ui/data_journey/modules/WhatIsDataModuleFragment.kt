@@ -51,7 +51,7 @@ class WhatIsDataModuleFragment : Fragment() {
         }
 
         binding.moduleDoneBtn.setOnClickListener {
-            viewModel.postModuleCompleted("cool-137", 1)
+            viewModel.postModuleCompleted("floris-141", 1)
             viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
                 findNavController().navigate(R.id.action_moduleFragment_to_dataJourneyFragment)
             })
