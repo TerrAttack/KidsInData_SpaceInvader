@@ -39,6 +39,7 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
+        viewModel.getDataJourneyProgress()
 
         binding.homeImage.setOnClickListener {
             findNavController().navigate(R.id.navigation_home)
@@ -55,6 +56,7 @@ class TrophiesFragment : Fragment() {
         checkAchievements()
         checkTotalGames()
         checkTopScore()
+        checkDatajourneyCompletion()
 
         setTrophyList()
         trophyAdapter.notifyDataSetChanged()
@@ -63,25 +65,38 @@ class TrophiesFragment : Fragment() {
 
     private fun checkAchievements(){
         viewModel.trophiesPlayerRank.observe(viewLifecycleOwner, {
-            if (it in 1..9){
+            if (it in 1..100){
                 Trophy.TROPHIES[0].trophyCompletion = true
+            }
+            if (it in 1..10){
+                Trophy.TROPHIES[1].trophyCompletion = true
             }
         })
     }
 
     private fun checkTotalGames(){
         viewModel.trophiesGameSummary.observe(viewLifecycleOwner, {
-            if (it.noOfGames > 5){
-                Trophy.TROPHIES[1].trophyCompletion = true
-            }
+            if (it.noOfGames > 5) Trophy.TROPHIES[2].trophyCompletion = true
+
+            if (it.noOfGames > 5) Trophy.TROPHIES[3].trophyCompletion = true
+
         })
     }
 
     private fun checkTopScore(){
         viewModel.trophiesTopScore.observe(viewLifecycleOwner, {
-            if (it > 20000){
-                Trophy.TROPHIES[2].trophyCompletion = true
-            }
+            if (it > 10000)Trophy.TROPHIES[4].trophyCompletion = true
+            if (it > 20000)Trophy.TROPHIES[5].trophyCompletion = true
+        })
+    }
+
+    private fun checkDatajourneyCompletion(){
+        viewModel.trophiesLearningCompletion.observe(viewLifecycleOwner,{
+            if (it.completedPercentage >= 20.0) Trophy.TROPHIES[6].trophyCompletion = true
+            if (it.completedPercentage >= 40.0) Trophy.TROPHIES[7].trophyCompletion = true
+            if (it.completedPercentage >= 60.0) Trophy.TROPHIES[8].trophyCompletion = true
+            if (it.completedPercentage >= 80.0) Trophy.TROPHIES[9].trophyCompletion = true
+            if (it.completedPercentage == 100.0) Trophy.TROPHIES[10].trophyCompletion = true
         })
     }
 
