@@ -31,20 +31,20 @@ interface KidsInDataApiService {
     /**
      * Trophies
      */
-    @GET("/api/spaceinvaders/playerrank?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
+    @GET("/api/spaceinvaders/playerrank?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
     suspend fun getPlayerRank(): Int
 
-    @GET("/api/spaceinvaders/playertopscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
+    @GET("/api/spaceinvaders/playertopscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
     suspend fun getTopScore(): Int
 
-    @GET("/api/spaceinvaders/gamesummary?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
+    @GET("/api/spaceinvaders/gamesummary?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
     suspend fun getGameSummary(): GameSummary
 
 
     /**
      * Addition for homescreen
      */
-    @GET("/api/spaceinvaders/playerlatestscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
+    @GET("/api/spaceinvaders/playerlatestscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
     suspend fun getPlayerLatestScore(): PlayerLatestScore
 
     /**
