@@ -20,8 +20,8 @@ import com.example.numberskotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModelThrophy: TrophiesViewModel by viewModels()
-    private val viewModelHome: HomeViewModel by viewModels()
+    private val trophiesViewModel: TrophiesViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
@@ -46,9 +46,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        dataJourneyViewModel.getModules()
-        dataJourneyViewModel.getNextModule()
-        dataJourneyViewModel.getDataJourneyProgress()
+        homeViewModel.getGameSummary()
 
         trophiesViewModel.getRank()
         trophiesViewModel.getTopScore()
