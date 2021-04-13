@@ -44,5 +44,14 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        dataJourneyViewModel.getModules()
+        dataJourneyViewModel.getNextModule()
+        dataJourneyViewModel.getDataJourneyProgress()
+
+        trophiesViewModel.getRank()
+        trophiesViewModel.getTopScore()
+        trophiesViewModel.getGameSummary()
+        trophiesViewModel.getDataJourneyProgress()
     }
 }

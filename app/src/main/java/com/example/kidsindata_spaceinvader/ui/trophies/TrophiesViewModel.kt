@@ -6,7 +6,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.kidsindata_spaceinvader.repository.DataJourneyRepository
 import com.example.kidsindata_spaceinvader.repository.TrophiesRepository
 import kotlinx.coroutines.launch
 
@@ -19,16 +18,9 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
     val trophiesPlayerRank = trophiesRepository.trophiesPlayerRanking
     val trophiesTopScore = trophiesRepository.trophiesTopScore
     val trophiesGameSummary = trophiesRepository.trophiesGameSummary
+    val trophiesLearningCompletion = trophiesRepository.dataJourneyProgress
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
-
-    /**
-     * Expose non MutableLiveData via getter
-     * errorText can be observed from Activity for error showing
-     * Encapsulation :)
-     */
-    val errorText: LiveData<String>
-        get() = _errorText
 
     /**
      * The viewModelScope is bound to Dispatchers.Main and will automatically be cancelled when the ViewModel is cleared.
@@ -38,7 +30,7 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             try {
                 trophiesRepository.getPlayerRank()
-            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+            } catch (error: TrophiesRepository.TrophiesRefreshError) {
                 _errorText.value = error.message
                 Log.e("Rank error", error.cause.toString())
             }
@@ -49,7 +41,7 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             try {
                 trophiesRepository.getTopScore()
-            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+            } catch (error: TrophiesRepository.TrophiesRefreshError) {
                 _errorText.value = error.message
                 Log.e("Top score error", error.cause.toString())
             }
@@ -60,9 +52,22 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
         viewModelScope.launch {
             try {
                 trophiesRepository.getGameSummary()
-            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+            } catch (error: TrophiesRepository.TrophiesRefreshError) {
                 _errorText.value = error.message
                 Log.e("Game summary error", error.cause.toString())
+            }
+        }
+    }
+
+    fun getDataJourneyProgress() {
+        viewModelScope.launch {
+            try {
+                //the dataJourneyRepository sets it's own livedata property
+                //our own module property points to this one
+                trophiesRepository.getDataJourneyProgress()
+            } catch (error: TrophiesRepository.TrophiesRefreshError) {
+                _errorText.value = error.message
+                Log.e("Next completion error", error.cause.toString())
             }
         }
     }
