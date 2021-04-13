@@ -17,6 +17,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
 
     val homePlayerLatestScore = homeRepository.homePlayerLastScore
 
+    val homeGameSummary = homeRepository.homeGameSummary
+
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
     val errorText: LiveData<String>
@@ -26,6 +28,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
         viewModelScope.launch {
             try {
                 homeRepository.getLatestScore()
+            } catch (error: HomeRepository.HomeRefreshError) {
+                _errorText.value = error.message
+                Log.e("Latest score error", error.cause.toString())
+            }
+        }
+    }
+
+    fun getGameSummary() {
+        viewModelScope.launch {
+            try {
+                homeRepository.getGameSummary()
             } catch (error: HomeRepository.HomeRefreshError) {
                 _errorText.value = error.message
                 Log.e("Latest score error", error.cause.toString())

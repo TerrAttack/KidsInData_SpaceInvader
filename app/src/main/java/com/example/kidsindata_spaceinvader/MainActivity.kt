@@ -13,14 +13,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.kidsindata_spaceinvader.ui.home.HomeViewModel
 import com.example.kidsindata_spaceinvader.ui.trophies.TrophiesViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-
-    private val trophiesViewModel: TrophiesViewModel by viewModels()
+    private val viewModelThrophy: TrophiesViewModel by viewModels()
+    private val viewModelHome: HomeViewModel by viewModels()
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding

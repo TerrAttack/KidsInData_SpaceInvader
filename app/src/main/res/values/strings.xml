@@ -12,6 +12,10 @@
     <string name="completed">Completed</string>
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
+    <string name="progress_so_far">What is my progress so far?</string>
+    <string name="what_to_learn_next">What to learn next?</string>
+    <string name="learning_modules_title">Learning modules</string>
+    <string name="completed_">COMPLETED</string>
 
 
     <string-array name="string_array_name">
@@ -47,6 +51,10 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
 
+    <!--Splash screen-->
+    <string name="kids">Kids</string>
+    <string name="in">In</string>
+    <string name="data">Data</string>
     <!-- Start   -->
     <string name="start_header">Explanation</string>
     <string name="coming_soon">Coming soon…</string>

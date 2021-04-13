@@ -56,8 +56,9 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/space_invaders_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintTop_toBottomOf="@+id/homeName"
         app:srcCompat="@drawable/space_invaders_alien" />
 
     <Button
@@ -117,6 +118,7 @@
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
@@ -124,6 +126,7 @@
             android:id="@+id/home_space_invaders"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/slackey_regular"
             android:text="@string/home_space_invaders"
             android:textColor="@color/titleKidsInData"
@@ -134,8 +137,7 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -155,7 +157,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </TableRow>
@@ -166,7 +167,7 @@
 
                 <TextView
                     android:id="@+id/home_high_score"
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:text="@string/home_high_score"
                     android:textStyle="bold"
@@ -176,8 +177,9 @@
                 <TextView
                     android:id="@+id/tv_home_high_score"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text=""
+                    android:textColor="@color/titleKidsInData"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -202,16 +204,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
+                    android:textColor="@color/titleKidsInData"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </TableRow>
-
-
         </TableLayout>
-
-
-
 
     </LinearLayout>
 
@@ -224,5 +222,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space_invaders_icon" />
+
+    <TextView
+        android:id="@+id/homeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
