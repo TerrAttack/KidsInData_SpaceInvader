@@ -54,5 +54,6 @@ class MainActivity : AppCompatActivity() {
         trophiesViewModel.getRank()
         trophiesViewModel.getTopScore()
         trophiesViewModel.getGameSummary()
+        trophiesViewModel.getDataJourneyProgress()
     }
 }

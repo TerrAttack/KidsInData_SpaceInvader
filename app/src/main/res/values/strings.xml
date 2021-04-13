@@ -11,19 +11,6 @@
     <string name="notCompleted">Not completed</string>
     <string name="tvInteractive">Interactive modules.</string>
 
-    <string name="score_title">Score:</string>
-    <string name="achievement_score">100/100</string>
-
-    <!--Home strings-->
-    <string name="home_title"><font fgcolor='#FF01a6a8'>Kids </font><font fgcolor='#FFef4129'>in </font><font fgcolor='#FFb0c54c'>Data</font></string>
-    <string name="home_game">Play Space Invaders</string>
-    <string name="home_datajourney">Datajourney</string>
-    <string name="home_space_invaders">Space Invaders!</string>
-    <string name="home_last_played">Last Played: </string>
-    <string name="home_high_score">High Score: </string>
-    <string name="home_player_ranking">Player Ranking: </string>
-
-
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>
         <item>Completed 40% of your own data journey</item>
@@ -46,13 +33,6 @@
     <string name="played_before">Have you played before?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="progress_so_far">What is my progress so far?</string>
-    <string name="what_to_learn_next">What to learn next?</string>
-    <string name="learning_modules_title">Learning modules</string>
-    <string name="completed_">COMPLETED</string>
-    <string name="kids">Kids</string>
-    <string name="in">In</string>
-    <string name="data">Data</string>
 
 <!-- Start   -->
     <string name="start_header">Explanation</string>

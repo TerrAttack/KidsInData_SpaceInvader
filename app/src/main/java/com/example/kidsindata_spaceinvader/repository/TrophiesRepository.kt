@@ -13,6 +13,8 @@ class TrophiesRepository {
     private val _trophiesPlayerRanking: MutableLiveData<Int> = MutableLiveData()
     private val _trophiesTopScore: MutableLiveData<Int> = MutableLiveData()
     private val _trophiesGameSummary: MutableLiveData<GameSummary> = MutableLiveData()
+    private val _dataJourneyProgress:  MutableLiveData<DataJourneyProgress> = MutableLiveData()
+
 
     /**
      * Expose non MutableLiveData via getter
@@ -27,6 +29,9 @@ class TrophiesRepository {
     val trophiesGameSummary: LiveData<GameSummary>
         get() = _trophiesGameSummary
 
+    val dataJourneyProgress: LiveData<DataJourneyProgress>
+        get() = _dataJourneyProgress
+
     /**
      * suspend function that calls a suspend function from the moduleApi call
      */
@@ -39,7 +44,7 @@ class TrophiesRepository {
 
             _trophiesPlayerRanking.value = result
         } catch (error: Throwable) {
-            throw TrophiesRefreshError("Unable to refresh modules", error)
+            throw TrophiesRefreshError("Unable to refresh trophies", error)
         }
     }
 
@@ -52,7 +57,7 @@ class TrophiesRepository {
 
             _trophiesTopScore.value = result
         } catch (error: Throwable) {
-            throw TrophiesRefreshError("Unable to refresh modules", error)
+            throw TrophiesRefreshError("Unable to refresh trophies", error)
         }
     }
 
@@ -65,10 +70,20 @@ class TrophiesRepository {
 
             _trophiesGameSummary.value = result
         } catch (error: Throwable) {
-            throw DataJourneyRepository.DataJourneyRefreshError(
-                "Unable to refresh next module",
-                error
-            )
+            throw TrophiesRefreshError("Unable to refresh trophies", error)
+        }
+    }
+
+    suspend fun getDataJourneyProgress() {
+        try {
+            //timeout the request after 5 seconds
+            val result = withTimeout(5_000) {
+                kidsInDataApiService.getDataJourneyProgress()
+            }
+
+            _dataJourneyProgress.value = result
+        } catch (error: Throwable) {
+            throw TrophiesRefreshError("Unable to refresh trophies", error)
         }
     }
 
