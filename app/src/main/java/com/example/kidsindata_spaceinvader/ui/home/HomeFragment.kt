@@ -12,7 +12,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
-import com.example.kidsindata_spaceinvader.ui.trophies.TrophiesViewModel
+import com.example.kidsindata_spaceinvader.Global
+import com.example.kidsindata_spaceinvader.ui.login.UsernameFragment
+import com.example.kidsindata_spaceinvader.vm.HomeViewModel
+import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
+import com.example.kidsindata_spaceinvader.vm.UserViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentHomeBinding
 import java.time.LocalDate
@@ -25,8 +29,12 @@ class HomeFragment : Fragment() {
     private val viewModelThrophy: TrophiesViewModel by activityViewModels()
     private val viewModelHome: HomeViewModel by activityViewModels()
 
+    private val viewModelUser: UserViewModel by activityViewModels()
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var user: UsernameFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +48,9 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
 
         viewModelThrophy.getRank()
         viewModelThrophy.getTopScore()
@@ -63,6 +74,7 @@ class HomeFragment : Fragment() {
         setPlayerRanking()
         setLastScoreAndName()
     }
+
 
     private fun goToGame() {
     }
@@ -89,12 +101,19 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLastScoreAndName() {
         viewModelHome.homeGameSummary.observe(viewLifecycleOwner, {
-            binding.homeName.text = "Welcome ${it.playerUserName.substringBeforeLast("-")}"
-
+            binding.homeName.text = "Welcome ${Global.username.substringBefore("-")}"
             var date = it.lastPlayed.take(10)
-            var dateTime = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            var days = ChronoUnit.DAYS.between(dateTime, LocalDate.now())
-            binding.tvLastPlayed.text = "$days days ago"
+            if (date.take(2) == "19") {
+                binding.tvLastPlayed.text = "-"
+            } else {
+                var dateTime = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                var days = ChronoUnit.DAYS.between(dateTime, LocalDate.now())
+                if (days.toInt() == 0) {
+                    binding.tvLastPlayed.text = "Today"
+                } else {
+                    binding.tvLastPlayed.text = "$days days ago"
+                }
+            }
         })
     }
 }

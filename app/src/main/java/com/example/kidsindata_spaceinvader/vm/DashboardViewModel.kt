@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.dashboard
+package com.example.kidsindata_spaceinvader.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

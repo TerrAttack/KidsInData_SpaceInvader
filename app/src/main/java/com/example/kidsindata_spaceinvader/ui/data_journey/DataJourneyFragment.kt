@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.MainActivity
 import com.example.kidsindata_spaceinvader.model.Module
+import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentDataJourneyBinding
 import com.google.android.material.snackbar.Snackbar

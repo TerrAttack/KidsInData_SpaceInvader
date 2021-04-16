@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/avatarFragment">
+
+    <fragment
+        android:id="@+id/createUserFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.UsernameFragment"
+        android:label="fragment_create_user"
+        tools:layout="@layout/fragment_create_user">
+        <action
+            android:id="@+id/action_createUserFragment_to_playFragment"
+            app:destination="@id/playFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/avatarFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.AvatarFragment"
+        android:label="fragment_avatar"
+        tools:layout="@layout/fragment_avatar">
+        <action
+            android:id="@+id/action_avatarFragment_to_createUserFragment"
+            app:destination="@id/createUserFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.PlayFragment"
+        android:label="fragment_play"
+        tools:layout="@layout/fragment_play"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out"/>
+</navigation>

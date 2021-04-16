@@ -15,6 +15,7 @@
         android:theme="@style/Theme.KidsInData_SpaceInvader"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+        <activity android:name="com.example.kidsindata_spaceinvader.LoginActivity"></activity>
         <activity android:name="com.example.kidsindata_spaceinvader.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

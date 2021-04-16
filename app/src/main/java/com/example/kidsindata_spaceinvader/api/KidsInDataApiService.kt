@@ -1,57 +1,89 @@
 package com.example.kidsindata_spaceinvader.api
 
 import com.example.kidsindata_spaceinvader.model.*
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.net.URL
 
 interface KidsInDataApiService {
-
     /**
      * Data Journey
      */
-    // The GET method needed to retrieve a module from a user STILL HARDCODED!!!
-    @GET("/api/spaceinvaders/modules?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=floris-141")
-    suspend fun getModule(): List<Module>
+    // The GET method needed to retrieve a module from a user
+    @GET("/api/spaceinvaders/modules")
+    suspend fun getModule(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): List<Module>
 
-    // The GET method needed to retrieve the next module from a user STILL HARDCODED!!!
-    @GET("/api/spaceinvaders/nextlearningmodule?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=floris-141")
-    suspend fun getNextModule(): Module
+    // The GET method needed to retrieve the next module from a user
+    @GET("/api/spaceinvaders/nextlearningmodule")
+    suspend fun getNextModule(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): Module
 
-    // The GET method needed to retrieve the data journey progress from a user STILL HARDCODED!!!
-    @GET("/api/spaceinvaders/learningsummary?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=floris-141")
-    suspend fun getDataJourneyProgress(): DataJourneyProgress
+    // The GET method needed to retrieve the data journey progress from a user
+    @GET("/api/spaceinvaders/learningsummary")
+    suspend fun getDataJourneyProgress(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): DataJourneyProgress
 
-    // The GET method needed to retrieve the data journey progress from a user STILL HARDCODED!!!
-    @POST("/workshop/modulecompleted?apikey=40440e4c-9148-11eb-8e8a-281878c7351f")
-    suspend fun postModuleCompleted(@Query("playerusername") playerUsername: String, @Query("moduleid") moduleId: Int): Int
+    // The POST method needed to set the moduleCompleted to "true" in the data journey
+    @POST("/workshop/modulecompleted")
+    suspend fun postModuleCompleted(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") playerUsername: String,
+        @Query("moduleid") moduleId: Int
+    ): Int
 
     /**
      * Trophies
      */
-    @GET("/api/spaceinvaders/playerrank?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
-    suspend fun getPlayerRank(): Int
+    @GET("/api/spaceinvaders/playerrank")
+    suspend fun getPlayerRank(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): Int
 
-    @GET("/api/spaceinvaders/playertopscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
-    suspend fun getTopScore(): Int
+    @GET("/api/spaceinvaders/playertopscore")
+    suspend fun getTopScore(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): Int
 
-    @GET("/api/spaceinvaders/gamesummary?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
-    suspend fun getGameSummary(): GameSummary
+    @GET("/api/spaceinvaders/gamesummary")
+    suspend fun getGameSummary(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): GameSummary
 
 
     /**
      * Addition for homescreen
      */
-    @GET("/api/spaceinvaders/playerlatestscore?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=id-126")
-    suspend fun getPlayerLatestScore(): PlayerLatestScore
+    @GET("/api/spaceinvaders/playerlatestscore")
+    suspend fun getPlayerLatestScore(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") username: String
+    ): PlayerLatestScore
 
     /**
      * Dashboard
      */
 //    @GET("/api/spaceinvaders/playertrend?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
 //    suspend fun getScoringTrend(): List<ScoringTrend>
+
+    /**
+     * Create new user
+     */
+
+    @POST("/api/spaceinvaders/newplayer")
+    suspend fun postCreateUser(
+        @Query("apikey") apiKey: String,
+        @Query("playerusername") playerUsername: String,
+        @Query("avatarid") avatarId: Int
+    ): User
 
 
 }
