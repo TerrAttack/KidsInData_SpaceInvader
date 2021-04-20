@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
-import com.example.kidsindata_spaceinvader.Global
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.ui.login.UsernameFragment
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel

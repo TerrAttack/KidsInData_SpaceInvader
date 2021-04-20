@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 
@@ -56,6 +56,7 @@ class SplashScreenActivity : AppCompatActivity() {
             // show alert dialog
             alert.show()
         } else {
+            //Checks if the user already registers if not then he will go through register progress, else he wil go to homescreen.
             var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isfirstrun", true)
 

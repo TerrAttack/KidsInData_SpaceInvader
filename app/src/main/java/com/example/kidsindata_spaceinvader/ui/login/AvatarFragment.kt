@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.kidsindata_spaceinvader.Global
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.vm.UserViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentAvatarBinding
-import com.example.numberskotlin.databinding.FragmentCreateUserBinding
 
 class AvatarFragment : Fragment() {
 

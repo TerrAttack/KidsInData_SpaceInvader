@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader
+package com.example.kidsindata_spaceinvader.global_var
 
 import android.app.Application
 

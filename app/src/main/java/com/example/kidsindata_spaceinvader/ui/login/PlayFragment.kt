@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.kidsindata_spaceinvader.Global
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.MainActivity
 import com.example.kidsindata_spaceinvader.vm.UserViewModel
 import com.example.numberskotlin.R
-import com.example.numberskotlin.databinding.FragmentCreateUserBinding
 import com.example.numberskotlin.databinding.FragmentPlayBinding
 
 class PlayFragment : Fragment() {

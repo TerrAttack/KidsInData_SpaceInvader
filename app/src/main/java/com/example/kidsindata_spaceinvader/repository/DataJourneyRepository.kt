@@ -2,7 +2,7 @@ package com.example.kidsindata_spaceinvader.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kidsindata_spaceinvader.Global
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.api.KidsInDataApi
 import com.example.kidsindata_spaceinvader.api.KidsInDataApiService
 import com.example.kidsindata_spaceinvader.model.DataJourneyProgress
