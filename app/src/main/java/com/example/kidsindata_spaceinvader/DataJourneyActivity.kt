@@ -8,7 +8,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ActivityDataJourneyBinding
 

@@ -10,13 +10,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.model.Trophy
+import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.kidsindata_spaceinvader.ui.data_journey.TrophyAdapter
+import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentTrophiesBinding
 
 class TrophiesFragment : Fragment() {
 
     private val viewModel: TrophiesViewModel by activityViewModels()
+    private val dataJourneyViewModel: DataJourneyViewModel by activityViewModels()
 
     private var _binding: FragmentTrophiesBinding? = null
     private val binding get() = _binding!!
@@ -39,7 +42,7 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
-        viewModel.getDataJourneyProgress()
+
 
         binding.homeImage.setOnClickListener {
             findNavController().navigate(R.id.navigation_home)
@@ -91,7 +94,7 @@ class TrophiesFragment : Fragment() {
     }
 
     private fun checkDatajourneyCompletion(){
-        viewModel.trophiesLearningCompletion.observe(viewLifecycleOwner,{
+        dataJourneyViewModel.dataJourneyProgress.observe(viewLifecycleOwner,{
             if (it.completedPercentage >= 20.0) Trophy.TROPHIES[6].trophyCompletion = true
             if (it.completedPercentage >= 40.0) Trophy.TROPHIES[7].trophyCompletion = true
             if (it.completedPercentage >= 60.0) Trophy.TROPHIES[8].trophyCompletion = true

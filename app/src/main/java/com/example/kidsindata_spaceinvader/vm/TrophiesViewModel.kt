@@ -1,9 +1,8 @@
-package com.example.kidsindata_spaceinvader.ui.trophies
+package com.example.kidsindata_spaceinvader.vm
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kidsindata_spaceinvader.repository.TrophiesRepository
@@ -18,7 +17,6 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
     val trophiesPlayerRank = trophiesRepository.trophiesPlayerRanking
     val trophiesTopScore = trophiesRepository.trophiesTopScore
     val trophiesGameSummary = trophiesRepository.trophiesGameSummary
-    val trophiesLearningCompletion = trophiesRepository.dataJourneyProgress
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
@@ -55,19 +53,6 @@ class TrophiesViewModel(application: Application) : AndroidViewModel(application
             } catch (error: TrophiesRepository.TrophiesRefreshError) {
                 _errorText.value = error.message
                 Log.e("Game summary error", error.cause.toString())
-            }
-        }
-    }
-
-    fun getDataJourneyProgress() {
-        viewModelScope.launch {
-            try {
-                //the dataJourneyRepository sets it's own livedata property
-                //our own module property points to this one
-                trophiesRepository.getDataJourneyProgress()
-            } catch (error: TrophiesRepository.TrophiesRefreshError) {
-                _errorText.value = error.message
-                Log.e("Next completion error", error.cause.toString())
             }
         }
     }

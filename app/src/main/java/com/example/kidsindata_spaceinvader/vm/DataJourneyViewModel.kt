@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.data_journey
+package com.example.kidsindata_spaceinvader.vm
 
 import android.app.Application
 import android.util.Log
@@ -100,13 +100,13 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
         }
     }
 
-    fun postModuleCompleted(playerUsername: String, moduleId: Int) {
+    fun postModuleCompleted(moduleId: Int) {
         viewModelScope.launch {
             try {
                 //the dataJourneyRepository sets it's own livedata property
                 //our own module property points to this one
                 _spinner.value = true
-                dataJourneyRepository.postModuleCompleted(playerUsername, moduleId)
+                dataJourneyRepository.postModuleCompleted(moduleId)
             } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
                 _connection.value = false
                 _errorText.value = error.message

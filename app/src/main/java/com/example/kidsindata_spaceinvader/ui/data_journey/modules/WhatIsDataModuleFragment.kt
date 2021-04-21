@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
+import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentWhatIsDataModuleBinding
 
@@ -51,7 +51,7 @@ class WhatIsDataModuleFragment : Fragment() {
         }
 
         binding.moduleDoneBtn.setOnClickListener {
-            viewModel.postModuleCompleted("floris-141", 1)
+            viewModel.postModuleCompleted( 1)
             viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
                 findNavController().navigate(R.id.action_moduleFragment_to_dataJourneyFragment)
             })

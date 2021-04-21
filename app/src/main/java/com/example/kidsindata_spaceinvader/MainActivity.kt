@@ -1,22 +1,20 @@
 package com.example.kidsindata_spaceinvader
 
-import android.content.Context
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
-import com.example.kidsindata_spaceinvader.ui.home.HomeViewModel
-import com.example.kidsindata_spaceinvader.ui.trophies.TrophiesViewModel
+import com.example.kidsindata_spaceinvader.ui.explanation.ExplanationDialogFragment
+import com.example.kidsindata_spaceinvader.vm.HomeViewModel
+import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,11 +44,23 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        homeViewModel.getGameSummary()
+        checkFirstRun()
 
+        homeViewModel.getGameSummary()
         trophiesViewModel.getRank()
         trophiesViewModel.getTopScore()
         trophiesViewModel.getGameSummary()
-        trophiesViewModel.getDataJourneyProgress()
+    }
+
+    private fun checkFirstRun() {
+        var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+            .getBoolean("isfirstexplanation", true)
+
+        if (isFirstRun) {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isfirstexplanation", false).apply()
+
+            ExplanationDialogFragment().show(supportFragmentManager, "custom dialog")
+        }
     }
 }

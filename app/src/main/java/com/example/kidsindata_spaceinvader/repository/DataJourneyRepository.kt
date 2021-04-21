@@ -2,24 +2,27 @@ package com.example.kidsindata_spaceinvader.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.api.KidsInDataApi
 import com.example.kidsindata_spaceinvader.api.KidsInDataApiService
 import com.example.kidsindata_spaceinvader.model.DataJourneyProgress
 import com.example.kidsindata_spaceinvader.model.Module
-import kotlinx.coroutines.delay
+
+import com.example.numberskotlin.BuildConfig
 import kotlinx.coroutines.withTimeout
 
-class DataJourneyRepository {
 
+class DataJourneyRepository {
     private val kidsInDataApiService: KidsInDataApiService = KidsInDataApi.createApi()
 
     private val _dataJourneyModules: MutableLiveData<List<Module>> = MutableLiveData()
 
     private val _dataJourneyNextModule: MutableLiveData<Module> = MutableLiveData()
 
-    private val _dataJourneyProgress:  MutableLiveData<DataJourneyProgress> = MutableLiveData()
+    private val _dataJourneyProgress: MutableLiveData<DataJourneyProgress> = MutableLiveData()
 
-    private val _dataJourneyCompletedModule:  MutableLiveData<Int> = MutableLiveData()
+    private val _dataJourneyCompletedModule: MutableLiveData<Int> = MutableLiveData()
+
 
     /**
      * Expose non MutableLiveData via getter
@@ -45,7 +48,7 @@ class DataJourneyRepository {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                kidsInDataApiService.getModule().sortedBy { it.moduleId }
+                kidsInDataApiService.getModule(BuildConfig.ApiKey, Global.username).sortedBy { it.moduleId }
             }
 
             _dataJourneyModules.value = result
@@ -58,7 +61,7 @@ class DataJourneyRepository {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                kidsInDataApiService.getNextModule()
+                kidsInDataApiService.getNextModule(BuildConfig.ApiKey, Global.username)
             }
 
             _dataJourneyNextModule.value = result
@@ -71,7 +74,7 @@ class DataJourneyRepository {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                kidsInDataApiService.getDataJourneyProgress()
+                kidsInDataApiService.getDataJourneyProgress(BuildConfig.ApiKey, Global.username)
             }
 
             _dataJourneyProgress.value = result
@@ -80,11 +83,15 @@ class DataJourneyRepository {
         }
     }
 
-    suspend fun postModuleCompleted(playerUsername: String, moduleId: Int) {
+    suspend fun postModuleCompleted(moduleId: Int) {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                kidsInDataApiService.postModuleCompleted(playerUsername, moduleId)
+                kidsInDataApiService.postModuleCompleted(
+                    BuildConfig.ApiKey,
+                    Global.username,
+                    moduleId
+                )
             }
 
             _dataJourneyCompletedModule.value = result
