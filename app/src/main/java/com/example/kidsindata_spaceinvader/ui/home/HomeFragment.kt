@@ -69,6 +69,36 @@ class HomeFragment : Fragment() {
         binding.buttonDatajourney.setOnClickListener {
             goToDataJourney()
         }
+        when (Global.avatarId) {
+            1 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_1)
+            }
+            2 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_2)
+            }
+            3 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_3)
+            }
+            4 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_4)
+            }
+            5 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_5)
+            }
+            6 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_6)
+            }
+            7 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_7)
+            }
+            8 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_8)
+            }
+            9 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_9)
+
+            }
+        }
 
         setHighScore()
         setPlayerRanking()
@@ -84,6 +114,7 @@ class HomeFragment : Fragment() {
         startActivity(intent)
         activity?.overridePendingTransition(R.anim.slide_from_bottom, R.anim.slide_to_top)
     }
+
 
     private fun setHighScore() {
         viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner, {

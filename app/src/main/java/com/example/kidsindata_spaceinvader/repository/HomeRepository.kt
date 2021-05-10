@@ -17,6 +17,7 @@ class HomeRepository {
 
     private val _gameSummary: MutableLiveData<GameSummary> = MutableLiveData()
 
+
     val homePlayerLastScore: LiveData<PlayerLatestScore>
         get() = _homePlayerLatestScore
 
@@ -37,6 +38,18 @@ class HomeRepository {
     }
 
     suspend fun getGameSummary() {
+        try {
+            val result = withTimeout(5_000) {
+                kidsInDataApiService.getGameSummary(BuildConfig.ApiKey, Global.username)
+            }
+
+            _gameSummary.value = result
+        } catch (error: Throwable) {
+            throw HomeRefreshError("Unable to refresh data", error)
+        }
+    }
+
+    suspend fun getPlayerIcon() {
         try {
             val result = withTimeout(5_000) {
                 kidsInDataApiService.getGameSummary(BuildConfig.ApiKey, Global.username)
