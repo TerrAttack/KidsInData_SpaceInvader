@@ -15,16 +15,16 @@
         android:theme="@style/Theme.KidsInData_SpaceInvader"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name="com.example.kidsindata_spaceinvader.LoginActivity"></activity>
-        <activity android:name="com.example.kidsindata_spaceinvader.SplashScreenActivity">
+        <activity android:name="com.example.kidsindata.LoginActivity"></activity>
+        <activity android:name="com.example.kidsindata.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.kidsindata_spaceinvader.DataJourneyActivity" />
-        <activity android:name="com.example.kidsindata_spaceinvader.MainActivity" />
+        <activity android:name="com.example.kidsindata.DataJourneyActivity" />
+        <activity android:name="com.example.kidsindata.MainActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:id="@+id/datajourneyScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyFragment">
+    tools:context="com.example.kidsindata.ui.data_journey.DataJourneyFragment">
 
     <ProgressBar
         android:id="@+id/loaderBar"
