@@ -1,7 +1,6 @@
 package com.example.kidsindata_spaceinvader
 
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels

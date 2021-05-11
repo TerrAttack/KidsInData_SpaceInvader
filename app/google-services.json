@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "255169340544",
+    "project_id": "kidsindata-99289",
+    "storage_bucket": "kidsindata-99289.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255169340544:android:36249193837b160ff3b265",
+        "android_client_info": {
+          "package_name": "com.example.kidsindata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255169340544-410vmdm7li3t0m3c14vk91pv23ecagr3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kidsindata",
+            "certificate_hash": "4a5b2db216f9d8d49de9170acd5b07b8de2cd8a0"
+          }
+        },
+        {
+          "client_id": "255169340544-nu9al4jse1eso953jljd5qpn18do6n6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7C2ZMBhL0IVRRwJnFTXO40AUxKsHUomE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255169340544-nu9al4jse1eso953jljd5qpn18do6n6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

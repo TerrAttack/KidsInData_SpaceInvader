@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentWhatIsDataModuleBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class WhatIsDataModuleFragment : Fragment() {
 
@@ -61,100 +62,109 @@ class WhatIsDataModuleFragment : Fragment() {
     private fun setPage(page: Int) {
         var fadeIn = AnimationUtils.loadAnimation(activity?.baseContext,R.anim.fade_in)
         binding.moduleDoneBtn.visibility = View.GONE
-        when (page) {
-            0 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p1_title)
-                binding.moduleTvBox1.setText(R.string.p1_b1)
-                binding.moduleWhiteBox1.setText(R.string.p1_b2)
-                binding.moduleWhiteBox2.visibility = View.GONE
-                binding.moduleTvBox2.setText(R.string.p1_b3)
-                binding.moduleTvBox3.visibility = View.GONE
-                binding.backBtn.visibility = View.GONE
-            }
-            1 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p2_title)
-                binding.moduleTvBox1.setText(R.string.p2_b1)
-                binding.moduleWhiteBox1.visibility = View.GONE
-                binding.moduleWhiteBox2.visibility = View.GONE
-                binding.moduleTvBox2.visibility = View.GONE
-                binding.moduleTvBox3.visibility = View.GONE
-                binding.backBtn.visibility = View.VISIBLE
-            }
-            2 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p3_title)
-                binding.moduleTvBox1.setText(R.string.p3_b1)
-                binding.moduleWhiteBox1.visibility = View.VISIBLE
-                binding.moduleWhiteBox2.visibility = View.VISIBLE
-                binding.moduleTvBox2.visibility = View.VISIBLE
-                binding.moduleTvBox3.visibility = View.VISIBLE
-                binding.moduleWhiteBox1.setText(R.string.p3_b2)
-                binding.moduleTvBox2.setText(R.string.p3_b3)
-                binding.moduleWhiteBox2.setText(R.string.p3_b4)
-                binding.moduleTvBox3.setText(R.string.p3_b5)
-            }
-            3 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p4_title)
-                binding.moduleTvBox1.setText(R.string.p4_b1)
-                binding.moduleWhiteBox1.setText(R.string.p4_b2)
-                binding.moduleTvBox2.setText(R.string.p4_b3)
-                binding.moduleWhiteBox2.setText(R.string.p4_b4)
-                binding.moduleTvBox3.setText(R.string.p4_b5)
-                binding.moduleWhiteBox2.visibility = View.VISIBLE
-                binding.moduleTvBox3.visibility = View.VISIBLE
-            }
-            4 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p5_title)
-                binding.moduleTvBox1.setText(R.string.p5_b1)
-                binding.moduleWhiteBox1.setText(R.string.p5_b2)
-                binding.moduleTvBox2.setText(R.string.p5_b3)
-                binding.moduleWhiteBox2.visibility = View.GONE
-                binding.moduleTvBox3.visibility = View.GONE
-            }
-            5 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p6_title)
-                binding.moduleTvBox1.setText(R.string.p6_b1)
-                binding.moduleWhiteBox1.setText(R.string.p6_b2)
-                binding.moduleTvBox2.setText(R.string.p6_b3)
-            }
-            6 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p7_title)
-                binding.moduleTvBox1.setText(R.string.p7_b1)
-                binding.moduleWhiteBox1.setText(R.string.p7_b2)
-                binding.moduleTvBox2.setText(R.string.p7_b3)
-            }
-            7 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p8_title)
-                binding.moduleTvBox1.setText(R.string.p8_b1)
-                binding.moduleWhiteBox1.setText(R.string.p8_b2)
-                binding.moduleTvBox2.setText(R.string.p8_b3)
-                binding.moduleWhiteBox2.setText(R.string.p8_b4)
-                binding.moduleTvBox3.setText(R.string.p8_b5)
-                binding.moduleWhiteBox1.visibility = View.VISIBLE
-                binding.moduleWhiteBox2.visibility = View.VISIBLE
-                binding.moduleTvBox2.visibility = View.VISIBLE
-                binding.moduleTvBox3.visibility = View.VISIBLE
-            }
-            8 -> {
-                binding.moduleBox.startAnimation(fadeIn)
-                binding.tvmoduleTitle.setText(R.string.p9_title)
-                binding.moduleTvBox1.setText(R.string.p9_b1)
-                binding.moduleWhiteBox1.visibility = View.GONE
-                binding.moduleWhiteBox2.visibility = View.GONE
-                binding.moduleTvBox2.visibility = View.GONE
-                binding.moduleTvBox3.visibility = View.GONE
-                binding.nextBtn.setText(R.string.back_to_overview)
-                binding.moduleDoneBtn.visibility = View.VISIBLE
-                binding.nextBtn.visibility = View.GONE
+        val db = FirebaseFirestore.getInstance()
+        val docRef = db.collection("modules").document("1")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                when (page) {
+                    0 -> {
 
+
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p1_title"))
+                        binding.moduleTvBox1.setText(document.getString("p1_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p1_b2"))
+                        binding.moduleWhiteBox2.visibility = View.GONE
+                        binding.moduleTvBox2.setText(document.getString("p1_b3"))
+                        binding.moduleTvBox3.visibility = View.GONE
+                        binding.backBtn.visibility = View.GONE
+                    }
+                    1 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p2_title"))
+                        binding.moduleTvBox1.setText(document.getString("p2_b1"))
+                        binding.moduleWhiteBox1.visibility = View.GONE
+                        binding.moduleWhiteBox2.visibility = View.GONE
+                        binding.moduleTvBox2.visibility = View.GONE
+                        binding.moduleTvBox3.visibility = View.GONE
+                        binding.backBtn.visibility = View.VISIBLE
+                    }
+                    2 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p3_title"))
+                        binding.moduleTvBox1.setText(document.getString("p3_b1"))
+                        binding.moduleWhiteBox1.visibility = View.VISIBLE
+                        binding.moduleWhiteBox2.visibility = View.VISIBLE
+                        binding.moduleTvBox2.visibility = View.VISIBLE
+                        binding.moduleTvBox3.visibility = View.VISIBLE
+                        binding.moduleWhiteBox1.setText(document.getString("p3_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p3_b3"))
+                        binding.moduleWhiteBox2.setText(document.getString("p3_b4"))
+                        binding.moduleTvBox3.setText(document.getString("p3_b5"))
+                    }
+                    3 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p4_title"))
+                        binding.moduleTvBox1.setText(document.getString("p4_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p4_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p4_b3"))
+                        binding.moduleWhiteBox2.setText(document.getString("p4_b4"))
+                        binding.moduleTvBox3.setText(document.getString("p4_b5"))
+                        binding.moduleWhiteBox2.visibility = View.VISIBLE
+                        binding.moduleTvBox3.visibility = View.VISIBLE
+                    }
+                    4 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p5_title"))
+                        binding.moduleTvBox1.setText(document.getString("p5_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p5_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p5_b3"))
+                        binding.moduleWhiteBox2.visibility = View.GONE
+                        binding.moduleTvBox3.visibility = View.GONE
+                    }
+                    5 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p6_title"))
+                        binding.moduleTvBox1.setText(document.getString("p6_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p6_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p6_b3"))
+                    }
+                    6 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p7_title"))
+                        binding.moduleTvBox1.setText(document.getString("p7_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p7_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p7_b3"))
+                    }
+                    7 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p8_title"))
+                        binding.moduleTvBox1.setText(document.getString("p8_b1"))
+                        binding.moduleWhiteBox1.setText(document.getString("p8_b2"))
+                        binding.moduleTvBox2.setText(document.getString("p8_b3"))
+                        binding.moduleWhiteBox2.setText(document.getString("p8_b4"))
+                        binding.moduleTvBox3.setText(document.getString("p8_b5"))
+                        binding.moduleWhiteBox1.visibility = View.VISIBLE
+                        binding.moduleWhiteBox2.visibility = View.VISIBLE
+                        binding.moduleTvBox2.visibility = View.VISIBLE
+                        binding.moduleTvBox3.visibility = View.VISIBLE
+                    }
+                    8 -> {
+                        binding.moduleBox.startAnimation(fadeIn)
+                        binding.tvmoduleTitle.setText(document.getString("p9_title"))
+                        binding.moduleTvBox1.setText(document.getString("p9_b1"))
+                        binding.moduleWhiteBox1.visibility = View.GONE
+                        binding.moduleWhiteBox2.visibility = View.GONE
+                        binding.moduleTvBox2.visibility = View.GONE
+                        binding.moduleTvBox3.visibility = View.GONE
+                        binding.nextBtn.setText(R.string.back_to_overview)
+                        binding.moduleDoneBtn.visibility = View.VISIBLE
+                        binding.nextBtn.visibility = View.GONE
+
+                    }
+                }
             }
-        }
+
     }
+
 }

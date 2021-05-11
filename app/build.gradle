@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 def API_KEY = ApiKey ?: '"Api key not found"'
@@ -16,7 +17,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.kidsindata_spaceinvader"
+        applicationId "com.example.kidsindata"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -83,4 +84,9 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Firestore
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation 'com.google.firebase:firebase-firestore-ktx:22.1.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 }

@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kidsindata_spaceinvader.repository.CreateUserRepository
 import com.example.kidsindata_spaceinvader.repository.DataJourneyRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 

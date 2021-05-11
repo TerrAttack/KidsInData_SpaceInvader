@@ -2,7 +2,6 @@ package com.example.kidsindata_spaceinvader.api
 
 import com.example.kidsindata_spaceinvader.model.*
 import retrofit2.http.*
-import java.net.URL
 
 interface KidsInDataApiService {
     /**
