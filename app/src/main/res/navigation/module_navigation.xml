@@ -17,6 +17,13 @@
             app:exitAnim="@anim/slide_to_left"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_dataJourneyFragment_to_tableModuleFragment"
+            app:destination="@id/tableModuleFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
     </fragment>
     <fragment
         android:id="@+id/moduleFragment"
@@ -30,5 +37,17 @@
             app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tableModuleFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.TableModuleFragment"
+        android:label="TableModuleFragment" >
+        <action
+            android:id="@+id/action_tableModuleFragment_to_dataJourneyFragment"
+            app:destination="@id/dataJourneyFragment"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
     </fragment>
 </navigation>

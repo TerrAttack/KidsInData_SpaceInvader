@@ -36,6 +36,13 @@ interface KidsInDataApiService {
         @Query("moduleid") moduleId: Int
     ): Int
 
+    // The GET method to retrieve data for all scores.
+    @GET("/api/spaceinvaders/allscores")
+    suspend fun getAllScores(
+        @Query("apikey") apiKey: String,
+    ): AllScores
+
+
     /**
      * Trophies
      */

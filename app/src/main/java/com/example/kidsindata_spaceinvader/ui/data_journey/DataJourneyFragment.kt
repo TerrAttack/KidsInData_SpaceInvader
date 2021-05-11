@@ -190,8 +190,7 @@ class DataJourneyFragment : Fragment() {
     private fun moduleItemClicked(module: Module) {
         when (module.moduleId) {
             1 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
-            2 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
-                .show()
+            2 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_tableModuleFragment)
             3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
                 .show()
             4 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)

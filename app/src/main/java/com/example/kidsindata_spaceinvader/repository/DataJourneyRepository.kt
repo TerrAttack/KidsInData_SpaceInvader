@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.api.KidsInDataApi
 import com.example.kidsindata_spaceinvader.api.KidsInDataApiService
+import com.example.kidsindata_spaceinvader.model.AllScores
 import com.example.kidsindata_spaceinvader.model.DataJourneyProgress
 import com.example.kidsindata_spaceinvader.model.Module
 
@@ -21,6 +22,8 @@ class DataJourneyRepository {
 
     private val _dataJourneyProgress: MutableLiveData<DataJourneyProgress> = MutableLiveData()
 
+    private val _allScores: MutableLiveData<AllScores> = MutableLiveData()
+
     private val _dataJourneyCompletedModule: MutableLiveData<Int> = MutableLiveData()
 
 
@@ -35,6 +38,9 @@ class DataJourneyRepository {
         get() = _dataJourneyNextModule
 
     val dataJourneyProgress: LiveData<DataJourneyProgress>
+        get() = _dataJourneyProgress
+
+    val allScores: LiveData<DataJourneyProgress>
         get() = _dataJourneyProgress
 
     val dataJourneyCompletedModule: LiveData<Int>
@@ -80,6 +86,17 @@ class DataJourneyRepository {
             _dataJourneyProgress.value = result
         } catch (error: Throwable) {
             throw DataJourneyRefreshError("Unable to refresh data journey progress", error)
+        }
+    }
+
+    suspend fun getAllScores(){
+        try {
+            val result = withTimeout(5_000){
+                kidsInDataApiService.getAllScores(BuildConfig.ApiKey)
+            }
+            _allScores.value = result
+        } catch (error:Throwable){
+            throw DataJourneyRefreshError("Unable to refresh the alls cores list ", error)
         }
     }
 
