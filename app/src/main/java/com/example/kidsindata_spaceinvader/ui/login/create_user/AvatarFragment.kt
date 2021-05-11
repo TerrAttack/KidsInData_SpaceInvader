@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.login
+package com.example.kidsindata_spaceinvader.ui.login.create_user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.vm.UserViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentAvatarBinding
+import com.kofigyan.stateprogressbar.StateProgressBar
 
 class AvatarFragment : Fragment() {
 
@@ -33,12 +34,15 @@ class AvatarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.yourStateProgressBarId.setStateDescriptionData(descriptionData)
+        binding.progressBarSignUp.setStateDescriptionData(descriptionData)
 
         binding.nextAvatarBtn.setOnClickListener {
             Global.avatarId = avatarId
             findNavController().navigate(R.id.action_avatarFragment_to_createUserFragment)
+        }
+
+        binding.existingUser.setOnClickListener {
+            findNavController().navigate(R.id.startFragment2)
         }
 
         setAvatarListener()

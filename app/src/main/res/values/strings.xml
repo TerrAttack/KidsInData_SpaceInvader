@@ -139,5 +139,12 @@
     <string name="sign_up">Sign up</string>
     <string name="rdy_to_play">Ready to play!</string>
     <string name="remember_username">Please remember your username. You might need it in the future!</string>
+    <string name="imnew">I am new</string>
+    <string name="account_already_tv">Do you already have an account?</string>
+    <string name="copy_right">\u00a9 Kids In Data 2020</string>
+    <string name="select_charac">Please select your character</string>
+    <string name="existing_user">Existing user?</string>
+    <string name="new_user">New user?</string>
+    <string name="your_username">Search...</string>
 
 </resources>

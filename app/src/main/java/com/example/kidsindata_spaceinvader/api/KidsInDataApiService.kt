@@ -85,5 +85,10 @@ interface KidsInDataApiService {
         @Query("avatarid") avatarId: Int
     ): User
 
+    @GET("/api/spaceinvaders/workshopplayers")
+    suspend fun getUsers(
+        @Query("apikey") apiKey: String,
+    ): List<User>
+
 
 }

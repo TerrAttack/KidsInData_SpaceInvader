@@ -1,4 +1,4 @@
-package com.example.kidsindata_spaceinvader.ui.login
+package com.example.kidsindata_spaceinvader.ui.login.create_user
 
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
@@ -41,9 +41,7 @@ class UsernameFragment : Fragment() {
         binding.createUserBtn.setOnClickListener {
             createUser()
         }
-
     }
-
 
     private fun createUser() {
         //Checks if username editText is blank, if not then the user will be created
