@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/createUserFragment"
-        android:name="com.example.kidsindata.ui.login.UsernameFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.UsernameFragment"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="com.example.kidsindata.ui.login.AvatarFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.AvatarFragment"
         android:label="fragment_avatar"
         tools:layout="@layout/fragment_avatar">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/playFragment"
-        android:name="com.example.kidsindata.ui.login.PlayFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.PlayFragment"
         android:label="fragment_play"
         tools:layout="@layout/fragment_play"
         app:enterAnim="@anim/fade_in"
