@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.global_var.Global
-import com.example.kidsindata_spaceinvader.ui.login.UsernameFragment
+import com.example.kidsindata_spaceinvader.ui.login.create_user.UsernameFragment
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 import com.example.kidsindata_spaceinvader.vm.UserViewModel
@@ -48,9 +48,6 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
         viewModelThrophy.getRank()
         viewModelThrophy.getTopScore()
@@ -101,7 +98,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLastScoreAndName() {
         viewModelHome.homeGameSummary.observe(viewLifecycleOwner, {
-            binding.homeName.text = "Welcome ${Global.username.substringBefore("-")}"
+            binding.homeName.text = "Welcome ${Global.username}"
             var date = it.lastPlayed.take(10)
             if (date.take(2) == "19") {
                 binding.tvLastPlayed.text = "-"

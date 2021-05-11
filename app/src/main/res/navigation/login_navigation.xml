@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@id/avatarFragment">
+    app:startDestination="@id/startFragment2">
 
     <fragment
         android:id="@+id/createUserFragment"
-        android:name="com.example.kidsindata_spaceinvader.ui.login.UsernameFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.create_user.UsernameFragment"
         android:label="fragment_create_user"
         tools:layout="@layout/fragment_create_user">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/avatarFragment"
-        android:name="com.example.kidsindata_spaceinvader.ui.login.AvatarFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.create_user.AvatarFragment"
         android:label="fragment_avatar"
         tools:layout="@layout/fragment_avatar">
         <action
@@ -40,4 +40,37 @@
         app:exitAnim="@anim/fade_out"
         app:popEnterAnim="@anim/fade_in"
         app:popExitAnim="@anim/fade_out"/>
+    <fragment
+        android:id="@+id/startFragment2"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment2_to_avatarFragment"
+            app:destination="@id/avatarFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/action_startFragment2_to_chooseUserFragment"
+            app:destination="@id/chooseUserFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/chooseUserFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.login.choose_user.ChooseUserFragment"
+        android:label="fragment_choose_user"
+        tools:layout="@layout/fragment_choose_user" >
+        <action
+            android:id="@+id/action_chooseUserFragment_to_playFragment"
+            app:destination="@id/playFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
 </navigation>

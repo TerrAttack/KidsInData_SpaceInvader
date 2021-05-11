@@ -156,7 +156,5 @@ class WhatIsDataModuleFragment : Fragment() {
 
             }
         }
-
     }
-
 }
