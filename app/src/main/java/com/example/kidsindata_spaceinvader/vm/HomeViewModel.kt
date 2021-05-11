@@ -43,4 +43,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application){
             }
         }
     }
+
+    fun getPlayerIcon() {
+        viewModelScope.launch {
+            try {
+                homeRepository.getPlayerIcon()
+            } catch (error: HomeRepository.HomeRefreshError) {
+                _errorText.value = error.message
+                Log.e("Icon error", error.cause.toString())
+            }
+        }
+    }
 }

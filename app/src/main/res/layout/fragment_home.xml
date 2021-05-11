@@ -48,7 +48,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-        android:id="@+id/space_invaders_icon"
+        android:id="@+id/userAvatar"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
@@ -58,8 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeName"
-        app:srcCompat="@drawable/space_invaders_alien" />
+        app:layout_constraintTop_toBottomOf="@+id/homeName"/>
 
     <Button
         android:id="@+id/button_game"
@@ -221,7 +220,7 @@
         android:src="@drawable/space_invaders_slogan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space_invaders_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/userAvatar" />
 
     <TextView
         android:id="@+id/homeName"
