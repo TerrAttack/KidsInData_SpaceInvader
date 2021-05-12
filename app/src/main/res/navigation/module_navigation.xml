@@ -17,10 +17,13 @@
             app:exitAnim="@anim/slide_to_left"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_dataJourneyFragment_to_workingWithDataFragment"
+            app:destination="@id/workingWithDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/moduleFragment"
-        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WhatIsDataModuleFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WhatIsDataFragment"
         android:label="fragment_module"
         tools:layout="@layout/fragment_what_is_data_module" >
         <action
@@ -28,6 +31,19 @@
             app:destination="@id/dataJourneyFragment"
             app:enterAnim="@anim/slide_from_left"
             app:exitAnim="@anim/slide_to_right"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/workingWithDataFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WorkingWithDataFragment"
+        android:label="fragment_working_with_data"
+        tools:layout="@layout/fragment_working_with_data_module">
+        <action
+            android:id="@+id/action_workingWithDataFragment_to_dataJourneyFragment"
+            app:destination="@id/dataJourneyFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
     </fragment>

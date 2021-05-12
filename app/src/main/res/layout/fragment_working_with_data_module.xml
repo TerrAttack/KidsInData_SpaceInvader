@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WhatIsDataFragment">
-
+    tools:context="com.example.kidsindata_spaceinvader.ui.data_journey.modules.WorkingWithDataFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -63,7 +62,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/what_is_data" />
+                app:srcCompat="@drawable/working_with_data" />
 
 
             <androidx.cardview.widget.CardView
@@ -85,8 +84,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/moduleBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -205,6 +204,62 @@
                             app:layout_constraintEnd_toStartOf="@+id/nextBtn"
                             app:layout_constraintTop_toBottomOf="@+id/backToMenuText" />
 
+                        <Button
+                            android:id="@+id/btnShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/show"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/moduleTvBox3"
+
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/tableShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/btnShow"
+                            android:textColor="@color/titleKidsInData"/>
+
+                        <TextView
+                            android:id="@+id/barShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tableShow"
+                            android:textColor="@color/titleKidsInData"/>
+
+                        <TextView
+                            android:id="@+id/lineShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/barShow"
+                            android:textColor="@color/titleKidsInData"/>
+
+                        <TextView
+                            android:id="@+id/pieShow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/lineShow"
+                            android:textColor="@color/titleKidsInData"/>
 
                         <TextView
                             android:id="@+id/backToMenuText"
@@ -216,7 +271,7 @@
                             android:textSize="12sp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/moduleTvBox3"
+                            app:layout_constraintTop_toBottomOf="@+id/pieShow"
                             android:textColor="#858E96"
                             android:visibility="gone"/>
 

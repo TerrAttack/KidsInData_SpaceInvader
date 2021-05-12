@@ -17,6 +17,11 @@
     <string name="learning_modules_title">Learning modules</string>
     <string name="completed_">COMPLETED</string>
 
+    <!--    Modules-->
+    <string name="show">Show next chart...</string>
+    <string name="back_menu_text"><font size='11px' fgcolor='#858E96'>Please press "Back to menu" below to go back and select the next module.</font></string>
+
+
 
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>
@@ -82,56 +87,9 @@
     <string name="controls_bullet">The bullet to hit\nthe enemy with</string>
     <string name="controls_close">Close</string>
     <string name="image_description">image_description</string>
-
-    <!--    What is data? module-->
-    <string name="back_to_overview">Back to menu</string>
-    <string name="p1_title">What is data?</string>
-    <string name="p1_b1">We encounter <b>data</b> everyday in our lives.\n\n<b>Data</b> is a collection of facts, such as collection of numbers, words or description of things.</string>
-    <string name="p1_b2"><b>Aaron</b> is <font fgcolor='#01a6a8'>8 years old.</font></string>
-    <string name="p1_b3">For example, the above sentence contains a fact about someone called Aaron, that he is 8 years old.\n\nThis fact is a piece of <b>data</b> about Aaron.</string>
-
-    <string name="p2_title">What types of data are there?</string>
-    <string name="p2_b1">Not all data is numeric. There are many types of data that explains facts differently.\n\n&#8226; Some pieces of data are descriptive, which are known as <b>qualitative</b> data.\n&#8226; Other pieces of data are numeric, which are known as <b>quantitative</b> data.</string>
-
-    <string name="p3_title">What is <b>Qualitative</b> data?</string>
-    <string name="p3_b1">Qualitative data is descriptive information about something or someone. It is not numerical.</string>
-    <string name="p3_b2"><b>Aaron</b> is a <font fgcolor='#01a6a8'>tall</font> boy.</string>
-    <string name="p3_b3">or</string>
-    <string name="p3_b4"><b>Aaron</b> can run <font fgcolor='#01a6a8'>fast</font>.</string>
-    <string name="p3_b5">The above sentences give us two pieces of information about Aaron. They tell us that Aaron is <b>tall</b> and can run <b>fast</b>\n\nThese are facts about Aaron are not numerical. These are examples of <b>qualitative</b> data.\n\nThis is descriptive data and can be expressed without numbers.</string>
-
-    <string name="p4_title">How can we use <b>Qualitative</b> data?</string>
-    <string name="p4_b1">Qualitative data can be used to <b>classify</b> or <b>categorise</b> things.</string>
-    <string name="p4_b2">Clothes come in many sizes, but mostly in - <font fgcolor='#01a6a8'>small</font>, <font fgcolor='#01a6a8'>medium</font> and <font fgcolor='#01a6a8'>large</font> sizes.</string>
-    <string name="p4_b3">We use the size to categorise clothing into groups. In the example above, it was into three groups - <font fgcolor='#01a6a8'>small</font>, <font fgcolor='#01a6a8'>medium</font> and <font fgcolor='#01a6a8'>large</font>.\n\nHere\'s another example of <b>qualitative</b> data to <b>classify</b> things.</string>
-    <string name="p4_b4">Apple is a <b>fruit</b>. Broccoli is a <b>vegetable</b>.</string>
-    <string name="p4_b5">In the example above, we have used <b>fruit</b> and <b>vegetables</b> to classify the apple and broccoli into two groups.</string>
-
-    <string name="p5_title"><b>What is Quantitative</b> data?</string>
-    <string name="p5_b1">Quantitative data refers to numbers. It is numeric information about something or someone.</string>
-    <string name="p5_b2"><b>Aaron</b> is <font fgcolor='#01a6a8'>8</font> years old.</string>
-    <string name="p5_b3">In the sentence above, Aaron\'s age is <font fgcolor='#01a6a8'>8</font>, this is a numeric information about Aaron.\n\nThis is called <b>quantitative</b> data.\n\nThere are two types of <b>quantitative</b> data:\n\n1. Discrete data\n2. Continuous data</string>
-
-    <string name="p6_title">What is <b>Discrete</b> data?</string>
-    <string name="p6_b1">Discrete data is <b>countable</b>, it involves whole numbers.</string>
-    <string name="p6_b2">There are <font fgcolor='#01a6a8'>11</font> football (soccer) players in each team, and <font fgcolor='#01a6a8'>5,000</font> spectators in the stadium.</string>
-    <string name="p6_b3">In the above example, the number of players and the number of people in the stadium is <b>discrete</b> data.\n\nSpectators and players are countable and can be presented in whole numbers.\n\nYou cannot have <font fgcolor='#EF4228'>10.5</font>  players per team or <font fgcolor='#EF4228'>4,555.5</font>  spectators.</string>
-
-    <string name="p7_title">What is <b>Continuous</b> data?</string>
-    <string name="p7_b1">Continuous data refers to the <b>measure</b> of something and can be any numbers in a certain range.</string>
-    <string name="p7_b2"><b>Aaron</b> drank <font fgcolor='#01a6a8'>1.5</font> litres of water today.</string>
-    <string name="p7_b3">In the above example, the amount Aaron drank (<font fgcolor='#01a6a8'>1.5</font> litres) is <b>continuous</b> data. It is a measure of how much he has drank.\n\nSomeone\'s or something\'s height, weight can also be a <b>continuous</b> data.</string>
-
-    <string name="p8_title">Why is data important?</string>
-    <string name="p8_b1">Data is important because it helps us answer questions. It helps us find patterns and work out how some facts are related and affect things in our life.</string>
-    <string name="p8_b2"><b>Aaron</b> is <font fgcolor='#01a6a8'>tall</font> and can run <font fgcolor='#01a6a8'>fast</font>.</string>
-    <string name="p8_b3">The above example shows us how being <b>tall</b> is related to running <b>fast</b>.</string>
-    <string name="p8_b4"><b>Aaron\'s</b> height is <font fgcolor='#01a6a8'>1 meter and 20 centimeters</font>.</string>
-    <string name="p8_b5">The above data helps us answer the question - "What is Aaron's <b>height</b>?"\n\nWe have now seen how we use data and how it helps us answer questions. It is important that we understand the different types of data as not only do they help us answer questions, they also help us ask the right questions so we get the answers we need..</string>
-
-    <string name="p9_title">What have we learnt so far?</string>
-    <string name="p9_b1"><font fgcolor='#01a6a8'>Well done!</font>. You have now completed your first module and on your way with your data literacy journey.\nHere is a quick recap of what we have learnt so far:\n\n&#8226; What is <b>data?</b>\n&#8226; Different types of <b>data.</b>\n&#8226; Importance of <b>data</b> and how we use <b>data.</b>\n\n<font fgcolor='#858E96' size="12">Please press \"Back to menu\" below to go back and select the next module.</font></string>
     <string name="lets_start">Let"s start!</string>
+
+    <!--    Sign up-->
     <string name="your_name">Your name...</string>
     <string name="type_name">Please type your name</string>
     <string name="previous">Previous</string>
@@ -146,5 +104,6 @@
     <string name="existing_user">Existing user?</string>
     <string name="new_user">New user?</string>
     <string name="your_username">Search...</string>
+    <string name="back_to_overview">Back to menu</string>
 
 </resources>
