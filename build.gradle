@@ -19,6 +19,19 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven{
+            url "https://maven.pkg.jetbrains.space/data2viz/p/maven/dev"
+        }
+        maven{
+            url "https://maven.pkg.jetbrains.space/data2viz/p/maven/public"
+        }
+        maven {
+            url "https://maven.pkg.jetbrains.space/data2viz/p/charts-1-r/maven"
+            credentials {
+                username "ab2d4db5-b102-4141-b7fb-baa5948d2d09"                                 // your client id
+                password "aa079f29e6d2616d70edb10211c801f8d3d8e4bc7d0a4a4483b57609474089e4"     // your client secret
+            }
+        }
     }
 }
 

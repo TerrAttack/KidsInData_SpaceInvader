@@ -70,8 +70,11 @@ interface KidsInDataApiService {
     /**
      * Dashboard
      */
-//    @GET("/api/spaceinvaders/playertrend?apikey=40440e4c-9148-11eb-8e8a-281878c7351f&playerusername=aminhva-139")
-//    suspend fun getScoringTrend(): List<ScoringTrend>
+    @GET("/api/spaceinvaders/playertrend")
+    suspend fun getPlayerTrend(
+            @Query("apikey") apiKey: String,
+            @Query("playerusername") username: String
+    ): ScoringTrend
 
     /**
      * Create new user
