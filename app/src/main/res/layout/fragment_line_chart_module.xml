@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kidsindata_spaceinvader.ui.data_journey.modules.BarChartFragment">
+    tools:context="com.example.kidsindata_spaceinvader.ui.data_journey.modules.LineChartFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,8 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/backToOverview"
@@ -64,7 +63,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/kid_e_learn_bar_chart" />
+                app:srcCompat="@drawable/kid_e_learn_line_chart" />
 
 
             <androidx.cardview.widget.CardView
@@ -173,6 +172,19 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/moduleWhiteBox3" />
 
+                        <TextView
+                            android:id="@+id/moduleWhiteBox5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/rounded_corner"
+                            android:padding="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/moduleWhiteBox4" />
+
 
                         <Button
                             android:id="@+id/nextBtn"
@@ -224,7 +236,7 @@
                             android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/moduleWhiteBox4" />
+                            app:layout_constraintTop_toBottomOf="@+id/moduleWhiteBox5" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
