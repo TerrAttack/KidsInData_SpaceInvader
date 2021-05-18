@@ -129,7 +129,7 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLastScoreAndName() {
         viewModelHome.homeGameSummary.observe(viewLifecycleOwner, {
-            binding.homeName.text = "Welcome ${Global.username}"
+            binding.homeName.text = "Welcome ${Global.username.substringBefore("-")} (${Global.username.substringAfter("-")}) "
             var date = it.lastPlayed.take(10)
             if (date.take(2) == "19") {
                 binding.tvLastPlayed.text = "-"
