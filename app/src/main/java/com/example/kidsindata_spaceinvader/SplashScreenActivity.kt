@@ -60,7 +60,7 @@ class SplashScreenActivity : AppCompatActivity() {
             var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isfirstrun", true)
 
-            if (true) {
+            if (isFirstRun) {
                 handler.postDelayed({
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
