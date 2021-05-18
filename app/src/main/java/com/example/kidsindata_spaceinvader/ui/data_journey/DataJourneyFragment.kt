@@ -143,16 +143,12 @@ class DataJourneyFragment : Fragment() {
 
             binding.nextModuleCard.setOnClickListener {
                 when (moduleId) {
-                    1 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                    2 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
-                        .show()
+                    1 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
+                    2 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_workingWithDataFragment)
                     3 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
                         .show()
-                    4 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                    5 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
-                        .show()
+                    4 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_barChartModule)
+                    5 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_lineChartFragment)
                     else -> Snackbar.make(
                         binding.nextModuleCard,
                         "Coming soon...",
@@ -194,8 +190,7 @@ class DataJourneyFragment : Fragment() {
             3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
                 .show()
             4 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_barChartModule)
-            5 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
-                .show()
+            5 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_lineChartFragment)
             else -> Snackbar.make(binding.nextModuleCard, "Coming soon...", Snackbar.LENGTH_SHORT)
                 .show()
         }
