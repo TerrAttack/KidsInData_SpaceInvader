@@ -74,7 +74,7 @@ interface KidsInDataApiService {
     suspend fun getPlayerTrend(
             @Query("apikey") apiKey: String,
             @Query("playerusername") username: String
-    ): ScoringTrend
+    ): Array<ScoringTrend>
 
     /**
      * Create new user
@@ -91,6 +91,7 @@ interface KidsInDataApiService {
     suspend fun getUsers(
         @Query("apikey") apiKey: String,
     ): List<User>
+
 
 
 }
