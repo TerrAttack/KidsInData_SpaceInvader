@@ -76,6 +76,11 @@ interface KidsInDataApiService {
             @Query("playerusername") username: String
     ): Array<ScoringTrend>
 
+    @GET("api/spaceinvaders/toptenscores")
+    suspend fun getTopTenScores(
+            @Query("apikey") apiKey: String,
+    ): List<TopScore>
+
     /**
      * Create new user
      */

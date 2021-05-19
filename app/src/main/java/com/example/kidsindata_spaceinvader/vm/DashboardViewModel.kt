@@ -5,20 +5,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kidsindata_spaceinvader.model.ScoringTrend
 import com.example.kidsindata_spaceinvader.repository.DashboardRepository
-import com.example.kidsindata_spaceinvader.repository.TrophiesRepository
+import com.example.kidsindata_spaceinvader.repository.DataJourneyRepository
 import kotlinx.coroutines.launch
 
-class DashboardViewModel : ViewModel() {
 
+class DashboardViewModel : ViewModel() {
     private val dashboardRepository = DashboardRepository()
+
+    private var _spinner: MutableLiveData<Boolean> = MutableLiveData()
+
+    private val _errorText: MutableLiveData<String> = MutableLiveData()
+
+    val dashboardTopScore = dashboardRepository.dashboardTopScore
+
     /**
      * This property points direct to the LiveData in the repository, that value
      */
     val playerScoringTrend = dashboardRepository.graphScoringTrend
-
-    private val _errorText: MutableLiveData<String> = MutableLiveData()
 
     val errorText: LiveData<String>
         get() = _errorText
@@ -27,10 +31,25 @@ class DashboardViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 dashboardRepository.getPlayerScoringTrend()
-            } catch (error: TrophiesRepository.TrophiesRefreshError) {
+            } catch (error: DashboardRepository.DashboardError) {
                 _errorText.value = error.message
                 Log.e("Game summary error", error.cause.toString())
             }
         }
     }
+
+    fun getTopTenScores() {
+        viewModelScope.launch {
+            try {
+                _spinner.value = true
+                dashboardRepository.getLeaderboard()
+            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+                _errorText.value = error.message
+                Log.e("Topscore error", error.cause.toString())
+            } finally {
+                _spinner.value = false
+            }
+        }
+    }
 }
+
