@@ -13,14 +13,14 @@ import kotlinx.coroutines.withTimeout
 class DashboardRepository {
 
     private val kidsInDataApiService: KidsInDataApiService = KidsInDataApi.createApi()
-    private val _scoringTrend: MutableLiveData<Array<ScoringTrend>> = MutableLiveData()
+    private val _scoringTrend: MutableLiveData<ArrayList<ScoringTrend>> = MutableLiveData()
     private val _dashboardTopScore: MutableLiveData<List<TopScore>> = MutableLiveData()
 
     /**
      * Expose non MutableLiveData via getter
      * Encapsulation :)
      */
-    val graphScoringTrend: MutableLiveData<Array<ScoringTrend>>
+    val graphScoringTrend: MutableLiveData<ArrayList<ScoringTrend>>
         get() = _scoringTrend
 
 
@@ -47,7 +47,6 @@ class DashboardRepository {
             val result = withTimeout(5_000) {
                 kidsInDataApiService.getTopTenScores(BuildConfig.ApiKey)
             }
-
             _dashboardTopScore.value = result
         } catch (error: Throwable) {
             throw DataJourneyRepository.DataJourneyRefreshError("Unable to refresh data", error)

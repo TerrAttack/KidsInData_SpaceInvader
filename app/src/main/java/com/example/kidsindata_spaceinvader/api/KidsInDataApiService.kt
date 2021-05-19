@@ -74,7 +74,7 @@ interface KidsInDataApiService {
     suspend fun getPlayerTrend(
             @Query("apikey") apiKey: String,
             @Query("playerusername") username: String
-    ): Array<ScoringTrend>
+    ): ArrayList<ScoringTrend>
 
     @GET("api/spaceinvaders/toptenscores")
     suspend fun getTopTenScores(
