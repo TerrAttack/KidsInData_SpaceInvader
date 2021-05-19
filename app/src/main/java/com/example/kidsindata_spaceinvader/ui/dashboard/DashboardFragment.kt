@@ -51,6 +51,7 @@ class DashboardFragment : Fragment() {
         setTopTenScores()
         setTopScore()
         setRanking()
+        setGamesPlayed()
     }
 
     private fun setTopTenScores() {
@@ -85,7 +86,11 @@ class DashboardFragment : Fragment() {
         })
     }
 
-    private fun setGamesPlayed(){}
+    private fun setGamesPlayed(){
+        viewModelThrophy.trophiesGameSummary.observe(viewLifecycleOwner, {
+            binding.tvGamesPlayed.text = it.noOfGames.toString()
+        })
+    }
 
     private fun setPlayTime(){}
 }
