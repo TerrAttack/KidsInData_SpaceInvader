@@ -17,6 +17,8 @@ class DashboardViewModel : ViewModel() {
 
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
+    val dashboardTopScore = dashboardRepository.dashboardTopScore
+
     val spinner: LiveData<Boolean>
         get() = _spinner
 

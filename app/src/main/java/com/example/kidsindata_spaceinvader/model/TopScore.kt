@@ -13,9 +13,9 @@ data class TopScore (
 
         @SerializedName("playerScore") var playerScore: Int,
 
-        @SerializedName("playedDateTime") var playedDateTime: Date,
+        @SerializedName("playedDateTime") var playedDateTime: String,
 
-        @SerializedName("gameDuration") var gameDuration: Time,
+        @SerializedName("gameDuration") var gameDuration: Int,
 
         @SerializedName("playerAvatar") var playerAvatar: String,
 

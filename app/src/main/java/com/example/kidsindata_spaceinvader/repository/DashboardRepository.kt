@@ -24,7 +24,7 @@ class DashboardRepository {
 
             _dashboardTopScore.value = result
         } catch (error: Throwable) {
-            throw HomeRepository.HomeRefreshError("Unable to refresh data", error)
+            throw DataJourneyRepository.DataJourneyRefreshError("Unable to refresh data", error)
         }
 
     }
