@@ -21,8 +21,8 @@ class DashboardTopScoreAdapter(private var topScores: List<TopScore>): RecyclerV
 
         @SuppressLint("SetTextI18n")
         fun dataBind(topScore: TopScore) {
-            binding.userName.text = topScore.playerName
-            binding.userTopScore.text = "Score: " + topScore.playerScore.toString()
+            binding.userName.text = topScore.playerUserName
+            binding.userTopScore.text = "Top-score: " + topScore.playerScore.toString()
             Glide.with(context).load(topScore.getAvatarUrl()).into(binding.userAvatarRv)
         }
     }

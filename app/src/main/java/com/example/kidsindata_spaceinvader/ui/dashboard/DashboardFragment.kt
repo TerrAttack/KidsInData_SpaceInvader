@@ -12,8 +12,10 @@ import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.numberskotlin.databinding.FragmentDashboardBinding
 import com.example.kidsindata_spaceinvader.charts.DashboardCharts
 import com.example.kidsindata_spaceinvader.model.TopScore
+import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 
 class DashboardFragment : Fragment() {
+    private val viewModelThrophy: TrophiesViewModel by activityViewModels()
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
@@ -47,6 +49,8 @@ class DashboardFragment : Fragment() {
         binding.rvtTopPlayers.adapter = dashboardTopScoreAdapter
 
         setTopTenScores()
+        setTopScore()
+        setRanking()
     }
 
     private fun setTopTenScores() {
@@ -69,4 +73,19 @@ class DashboardFragment : Fragment() {
             dashboardTopScoreAdapter.notifyDataSetChanged()
         })
     }
+    private fun setTopScore(){
+        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner, {
+            binding.tvTopScore.text = it.toString()
+        })
+    }
+
+    private fun setRanking(){
+        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner, {
+            binding.tvRanking.text = it.toString()
+        })
+    }
+
+    private fun setGamesPlayed(){}
+
+    private fun setPlayTime(){}
 }
