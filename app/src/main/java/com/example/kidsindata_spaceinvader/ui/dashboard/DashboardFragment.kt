@@ -52,6 +52,7 @@ class DashboardFragment : Fragment() {
         setTopTenScores()
         setTopScore()
         setRanking()
+        setGamesPlayed()
     }
 
     private fun setTopTenScores() {
@@ -94,6 +95,11 @@ class DashboardFragment : Fragment() {
         // Observe the error message.
         dashboardViewModel.errorText.observe(viewLifecycleOwner, {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+        })
+    }
+    private fun setGamesPlayed() {
+        viewModelThrophy.trophiesGameSummary.observe(viewLifecycleOwner, {
+            binding.tvGamesPlayed.text = it.noOfGames.toString()
         })
     }
 }
