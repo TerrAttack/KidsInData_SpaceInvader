@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statsText">
 
@@ -113,12 +113,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ranking_dashboard"
                     android:layout_marginRight="5dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvRanking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent" />
 
             </TableRow>
@@ -134,12 +138,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/top_score_dashboard"
                     android:layout_marginRight="5dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvTopScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent" />
             </TableRow>
 
@@ -153,6 +161,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/games_played_dashboard"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     android:layout_marginRight="5dp"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -160,6 +170,8 @@
                     android:id="@+id/tvGamesPlayed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent" />
 
             </TableRow>
