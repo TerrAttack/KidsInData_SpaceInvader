@@ -111,6 +111,7 @@ class DataJourneyFragment : Fragment() {
                     })
                     .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
                         navigateToHome()
+                        
                     })
                 val alert = dialogBuilder.create()
                 alert.setTitle("No Internet Connection")

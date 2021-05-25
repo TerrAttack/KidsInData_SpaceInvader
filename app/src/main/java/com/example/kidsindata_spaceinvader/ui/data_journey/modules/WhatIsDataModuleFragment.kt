@@ -1,5 +1,6 @@
 package com.example.kidsindata_spaceinvader.ui.data_journey.modules
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -59,48 +60,54 @@ class WhatIsDataModuleFragment : Fragment() {
         }
     }
 
+    private fun setTable(){
+
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setPage(page: Int) {
         var fadeIn = AnimationUtils.loadAnimation(activity?.baseContext,R.anim.fade_in)
         binding.moduleDoneBtn.visibility = View.GONE
         val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("modules").document("1")
+        val docRef = db.collection("modules").document("3")
         docRef.get()
             .addOnSuccessListener { document ->
                 when (page) {
                     0 -> {
-
-
                         binding.moduleBox.startAnimation(fadeIn)
                         binding.tvmoduleTitle.setText(document.getString("p1_title"))
                         binding.moduleTvBox1.setText(document.getString("p1_b1"))
-                        binding.moduleWhiteBox1.setText(document.getString("p1_b2"))
+                        binding.moduleWhiteBox1.visibility = View.GONE
                         binding.moduleWhiteBox2.visibility = View.GONE
-                        binding.moduleTvBox2.setText(document.getString("p1_b3"))
-                        binding.moduleTvBox3.visibility = View.GONE
+                        binding.moduleTvBox2.setText(document.getString("p1_b2"))
+                        binding.moduleTvBox3.setText(document.getString("p1_b3"))
                         binding.backBtn.visibility = View.GONE
                     }
                     1 -> {
                         binding.moduleBox.startAnimation(fadeIn)
+                        binding.backBtn.visibility = View.VISIBLE
+                        binding.moduleWhiteBox1.visibility = View.VISIBLE
                         binding.tvmoduleTitle.setText(document.getString("p2_title"))
                         binding.moduleTvBox1.setText(document.getString("p2_b1"))
-                        binding.moduleWhiteBox1.visibility = View.GONE
-                        binding.moduleWhiteBox2.visibility = View.GONE
-                        binding.moduleTvBox2.visibility = View.GONE
-                        binding.moduleTvBox3.visibility = View.GONE
-                        binding.backBtn.visibility = View.VISIBLE
+                        binding.moduleWhiteBox1.setText(document.getString("p2_b2_1") +"\n"+ document.getString("p2_b2_2") +"\n"+ document.getString("p2_b2_3") +"\n")
+                        binding.moduleTvBox2.setText(document.getString("p2_b3"))
+                        binding.moduleTvBox3.setText(document.getString("p2_b4"))
+
                     }
                     2 -> {
                         binding.moduleBox.startAnimation(fadeIn)
-                        binding.tvmoduleTitle.setText(document.getString("p3_title"))
-                        binding.moduleTvBox1.setText(document.getString("p3_b1"))
                         binding.moduleWhiteBox1.visibility = View.VISIBLE
-                        binding.moduleWhiteBox2.visibility = View.VISIBLE
                         binding.moduleTvBox2.visibility = View.VISIBLE
                         binding.moduleTvBox3.visibility = View.VISIBLE
+
+                        binding.moduleWhiteBox2.visibility = View.GONE
+
+                        binding.tvmoduleTitle.setText(document.getString("p3_title"))
+                        binding.moduleTvBox1.setText(document.getString("p3_b1"))
                         binding.moduleWhiteBox1.setText(document.getString("p3_b2"))
                         binding.moduleTvBox2.setText(document.getString("p3_b3"))
                         binding.moduleWhiteBox2.setText(document.getString("p3_b4"))
-                        binding.moduleTvBox3.setText(document.getString("p3_b5"))
+                        binding.moduleTvBox3.setText(document.getString("p3_b4"))
                     }
                     3 -> {
                         binding.moduleBox.startAnimation(fadeIn)
@@ -160,7 +167,6 @@ class WhatIsDataModuleFragment : Fragment() {
                         binding.nextBtn.setText(R.string.back_to_overview)
                         binding.moduleDoneBtn.visibility = View.VISIBLE
                         binding.nextBtn.visibility = View.GONE
-
                     }
                 }
             }
