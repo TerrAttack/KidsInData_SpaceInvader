@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
@@ -56,50 +57,50 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setTopTenScores() {
-        dashboardViewModel.dashboardTopScore.observe(viewLifecycleOwner, {
+        dashboardViewModel.dashboardTopScore.observe(viewLifecycleOwner) {
             topScores.clear()
             for (i in it.indices) {
                 topScores.add(
-                        TopScore(
-                                it[i].gameId,
-                                it[i].playerName,
-                                it[i].playerUserName,
-                                it[i].playerScore,
-                                it[i].playedDateTime,
-                                it[i].gameDuration,
-                                it[i].playerAvatar,
-                                it[i].playerAvatarId
-                        )
+                    TopScore(
+                        it[i].gameId,
+                        it[i].playerName,
+                        it[i].playerUserName,
+                        it[i].playerScore,
+                        it[i].playedDateTime,
+                        it[i].gameDuration,
+                        it[i].playerAvatar,
+                        it[i].playerAvatarId
+                    )
                 )
             }
             dashboardTopScoreAdapter.notifyDataSetChanged()
-        })
+        }
     }
     private fun setTopScore(){
-        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner) {
             binding.tvTopScore.text = it.toString()
-        })
+        }
     }
 
     private fun setRanking(){
-        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner) {
             binding.tvRanking.text = it.toString()
-        })
+        }
     }
 
     private fun observeValues() {
-        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, {
-//            binding.textView13.text = it.size.toString()
-        })
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner) {
+    //            binding.textView13.text = it.size.toString()
+        }
 
         // Observe the error message.
-        dashboardViewModel.errorText.observe(viewLifecycleOwner, {
+        dashboardViewModel.errorText.observe(viewLifecycleOwner) {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-        })
+        }
     }
     private fun setGamesPlayed() {
-        viewModelThrophy.trophiesGameSummary.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesGameSummary.observe(viewLifecycleOwner) {
             binding.tvGamesPlayed.text = it.noOfGames.toString()
-        })
+        }
     }
 }
