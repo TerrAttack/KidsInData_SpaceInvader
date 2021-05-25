@@ -23,6 +23,15 @@
 
 
 
+    <!-- Dashboard -->
+    <string name="top_score_dashboard">Top score:</string>
+    <string name="ranking_dashboard">Ranking:</string>
+    <string name="rankings_dashboard">Rankings:</string>
+    <string name="games_played_dashboard">Games played:</string>
+    <string name="play_time_dashboard">Play time:</string>
+    <string name="stats_dashboard">Your statistics:</string>
+
+
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>
         <item>Completed 40% of your own data journey</item>

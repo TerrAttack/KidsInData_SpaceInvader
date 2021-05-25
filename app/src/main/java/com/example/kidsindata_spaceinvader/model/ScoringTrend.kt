@@ -8,5 +8,5 @@ data class ScoringTrend (
 
     @SerializedName("gameDateTime") var gameDateTime: String,
 
-    @SerializedName("playerScore") var playerScore: Int
+    @SerializedName("playerScore") var playerScore: Double
 )
