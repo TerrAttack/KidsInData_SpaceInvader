@@ -76,6 +76,8 @@ class DashboardFragment : Fragment() {
             dashboardTopScoreAdapter.notifyDataSetChanged()
         }
     }
+
+
     private fun setTopScore(){
         viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner) {
             binding.tvTopScore.text = it.toString()
