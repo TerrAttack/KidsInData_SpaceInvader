@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.numberskotlin.databinding.FragmentDashboardBinding
-import com.example.kidsindata_spaceinvader.charts.DashboardCharts
 import com.example.kidsindata_spaceinvader.model.TopScore
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 
