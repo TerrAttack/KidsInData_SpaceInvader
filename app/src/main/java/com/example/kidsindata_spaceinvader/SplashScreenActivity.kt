@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
@@ -23,6 +24,8 @@ class SplashScreenActivity : AppCompatActivity() {
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         checkConnectivity()
