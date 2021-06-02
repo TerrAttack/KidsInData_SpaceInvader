@@ -7,6 +7,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
@@ -21,6 +22,8 @@ class DataJourneyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDataJourneyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         super.onCreate(savedInstanceState)
         binding = ActivityDataJourneyBinding.inflate(layoutInflater)
         setContentView(binding.root)
