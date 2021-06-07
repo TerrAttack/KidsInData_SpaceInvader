@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.example.kidsindata_spaceinvader.model.ScoringTrend
+import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.numberskotlin.databinding.FragmentDashboardBinding
+import com.example.numberskotlin.databinding.FragmentDashboardGraphBinding
 import io.data2viz.charts.chart.Chart
 import io.data2viz.charts.chart.chart
 import io.data2viz.charts.chart.discrete
@@ -18,12 +22,34 @@ import io.data2viz.timer.now
 import io.data2viz.viz.VizContainerView
 
 class LineChartFragment: Fragment() {
+    private var _binding: FragmentDashboardGraphBinding? = null
+    private val binding get() = _binding!!
+
+    private val dashboardViewModel: DashboardViewModel by activityViewModels()
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        return DrawChart(this.requireContext())
+
+        _binding = FragmentDashboardGraphBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val drawChart = DrawChart(requireContext())
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+             drawChart.scores = it
+        })
+
+
+        binding.graphContainer.addView(drawChart)
+
+
     }
 }
 
@@ -31,14 +57,7 @@ class DrawChart(context: Context) : VizContainerView(context) {
 
     private val vizSize = 500.0
 
-    private val scores = listOf(
-            ScoringTrend(1, now().toString(), 100.0),
-            ScoringTrend(2, now().toString(), 150.0),
-            ScoringTrend(3, now().toString(), 160.0),
-            ScoringTrend(4, now().toString(), 110.0),
-            ScoringTrend(5, now().toString(), 120.0),
-            ScoringTrend(6, now().toString(), 140.0)
-    )
+    var scores = arrayListOf<ScoringTrend>()
 
     private val chart: Chart<ScoringTrend> = chart(scores) {
         size = Size(vizSize, vizSize)
