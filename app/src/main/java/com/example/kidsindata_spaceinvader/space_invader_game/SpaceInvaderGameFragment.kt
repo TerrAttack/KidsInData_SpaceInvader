@@ -1,60 +1,49 @@
-package com.example.kidsindata_spaceinvader.space_invader_game
-
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.example.numberskotlin.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SpaceInvaderGameFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SpaceInvaderGameFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_space_invader_game, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SpaceInvaderGameFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SpaceInvaderGameFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-}
+//package com.example.kidsindata_spaceinvader.ui.space_invader_game
+//
+//import android.content.Intent
+//import android.os.Bundle
+//import androidx.fragment.app.Fragment
+//import android.view.LayoutInflater
+//import android.view.View
+//import android.view.ViewGroup
+//import androidx.navigation.fragment.findNavController
+//import com.example.kidsindata_spaceinvader.DataJourneyActivity
+//import com.example.kidsindata_spaceinvader.MainActivity
+//import com.example.kidsindata_spaceinvader.ui.explanation.ControlsDialogFragment
+//import com.example.kidsindata_spaceinvader.ui.explanation.ExplanationDialogFragment
+//import com.example.numberskotlin.R
+//import com.example.numberskotlin.databinding.FragmentHomeBinding
+//import com.example.numberskotlin.databinding.FragmentSpaceInvaderGameBinding
+//import com.unity3d.player.UnityPlayerActivity
+//
+//class SpaceInvaderGameFragment : Fragment() {
+//
+//    private var _binding: FragmentSpaceInvaderGameBinding? = null
+//    private val binding get() = _binding!!
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        _binding = FragmentSpaceInvaderGameBinding.inflate(inflater, container, false)
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        binding.startGameBtn.setOnClickListener {
+//            findNavController().navigate(R.id.action_spaceInvaderGameFragment2_to_rotatePhoneFragment)
+//        }
+//
+//        binding.instructionsBtn.setOnClickListener {
+//            ControlsDialogFragment().show(parentFragmentManager, "custom dialog")
+//        }
+//
+//        binding.homeImage.setOnClickListener {
+//            val intent = Intent(activity, MainActivity::class.java)
+//            startActivity(intent)
+//            activity?.overridePendingTransition(R.anim.slide_from_bottom, R.anim.slide_to_top)
+//        }
+//    }
+//}
