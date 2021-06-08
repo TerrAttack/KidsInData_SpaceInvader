@@ -9,7 +9,7 @@
         android:id="@+id/lineChart"
         android:layout_width="360dp"
         android:layout_height="170dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -18,7 +18,7 @@
         android:id="@+id/barChart"
         android:layout_width="360dp"
         android:layout_height="170dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,17 +58,6 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barChart" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/score"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     <LinearLayout
