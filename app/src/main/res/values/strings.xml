@@ -19,8 +19,7 @@
 
     <!--    Modules-->
     <string name="show">Show next chart...</string>
-    <string name="back_menu_text"><font size='11px' fgcolor='#858E96'>Please press "Back to menu" below to go back and select the next module.</font></string>
-
+    <string name="back_menu_text"><font fgcolor='#858E96' size='11px'>Please press "Back to menu" below to go back and select the next module.</font></string>
 
 
     <!-- Dashboard -->
@@ -32,6 +31,74 @@
     <string name="stats_dashboard">Your statistics:</string>
 
 
+    <string name="home_title"><font fgcolor='#FF01a6a8'>Kids </font><font fgcolor='#FFef4129'>in </font><font fgcolor='#FFb0c54c'>Data</font></string>
+
+    <!--Home strings-->
+    <string name="home_game">Play Space Invaders</string>
+    <string name="home_datajourney">Datajourney</string>
+    <string name="home_space_invaders">Space Invaders!</string>
+    <string name="home_last_played">Last Played: </string>
+    <string name="home_high_score">High Score: </string>
+    <string name="home_player_ranking">Player Ranking: </string>
+    <string name="space_invaders_title">Space Invaders</string>
+
+
+    <string name="kids_in_data_title">Kids in data</string>
+    <string name="played_before">Have you played before?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="kids">Kids</string>
+
+    <!--Splash screen-->
+    <string name="in">In</string>
+    <string name="data">Data</string>
+    <string name="start_header">Explanation</string>
+    <!-- Start   -->
+    <string name="coming_soon">Coming soon…</string>
+    <string name="score_title">Score:</string>
+
+    <!--Thropies strings-->
+    <string name="achievement_score">100/100</string>
+    <string name="explanation_start">The next few screens will quickly take you through some of the key features of the workshop before you start. Please press "Next" to start your tour.</string>
+
+
+    <!--    Explanation resources-->
+    <string name="explanation_first">The goal of this app is to show you what data is and what can be done with it.\n\nBut first of all, what is data? According to Oxford Dictionaries, it consists of facts and statistics collected together for reference or analysis. In your everyday life, almost everything you do generates data, such as the time at which you are reading this.</string>
+    <string name="explanation_second">So, while playing the game, data is generated. This data is for example the amount of shots fired, or the time at which the game was played. This data can then be used by others to be analyzed.We also can show a graph of how you performed over time. In your everyday life, there is always data generated.</string>
+    <string name="explanation_third">For example, you are reading this at a certain time. This generated data. Remember earlier, when we discussed the definition? Data is just facts and statistics collected for reference or analysis. So we can say that you have read this at a certain time, which is data we can collect and analyse if we want to. Do you know any more examples?</string>
+    <string name="explanation_header">Data-usage</string>
+    <string name="next">Next</string>
+
+    <!--    Controls resources-->
+    <string name="back">Back</string>
+    <string name="controls">Controls</string>
+    <string name="enemy">Enemy</string>
+    <string name="player">The player (you)</string>
+    <string name="controls_header">Controls \nSpace-Invaders</string>
+    <string name="controls_text">Swipe left and right to move the spaceship. The spaceship can be fired by tapping anywhere on the screen.</string>
+    <string name="controls_bullet">The bullet to hit\nthe enemy with</string>
+    <string name="controls_close">Close</string>
+    <string name="image_description">image_description</string>
+    <string name="lets_start">Let"s start!</string>
+    <string name="your_name">Your name...</string>
+
+    <!--    Sign up-->
+    <string name="type_name">Please type your name</string>
+    <string name="previous">Previous</string>
+    <string name="pick_avatar">Please pick your avatar</string>
+    <string name="sign_up">Sign up</string>
+    <string name="rdy_to_play">Ready to play!</string>
+    <string name="remember_username">Please remember your username. You might need it in the future!</string>
+    <string name="imnew">I am new</string>
+    <string name="account_already_tv">Do you already have an account?</string>
+    <string name="copy_right">\u00a9 Kids In Data 2020</string>
+    <string name="select_charac">Please select your character</string>
+    <string name="existing_user">Existing user?</string>
+    <string name="new_user">New user?</string>
+    <string name="your_username">Search...</string>
+    <string name="back_to_overview">Back to menu</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>
         <item>Completed 40% of your own data journey</item>
@@ -48,71 +115,5 @@
         <item>Filler</item>
         <item>Filler</item>
     </string-array>
-
-    <!--Home strings-->
-    <string name="home_title"><font fgcolor='#FF01a6a8'>Kids </font><font fgcolor='#FFef4129'>in </font><font fgcolor='#FFb0c54c'>Data</font></string>
-    <string name="home_game">Play Space Invaders</string>
-    <string name="home_datajourney">Datajourney</string>
-    <string name="home_space_invaders">Space Invaders!</string>
-    <string name="home_last_played">Last Played: </string>
-    <string name="home_high_score">High Score: </string>
-    <string name="home_player_ranking">Player Ranking: </string>
-
-
-    <string name="space_invaders_title">Space Invaders</string>
-    <string name="kids_in_data_title">Kids in data</string>
-    <string name="played_before">Have you played before?</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
-
-    <!--Splash screen-->
-    <string name="kids">Kids</string>
-    <string name="in">In</string>
-    <string name="data">Data</string>
-    <!-- Start   -->
-    <string name="start_header">Explanation</string>
-    <string name="coming_soon">Coming soon…</string>
-
-    <!--Thropies strings-->
-    <string name="score_title">Score:</string>
-    <string name="achievement_score">100/100</string>
-
-
-    <!--    Explanation resources-->
-    <string name="explanation_start">The next few screens will quickly take you through some of the key features of the workshop before you start. Please press "Next" to start your tour.</string>
-    <string name="explanation_first">The goal of this app is to show you what data is and what can be done with it.\n\nBut first of all, what is data? According to Oxford Dictionaries, it consists of facts and statistics collected together for reference or analysis. In your everyday life, almost everything you do generates data, such as the time at which you are reading this.</string>
-    <string name="explanation_second">So, while playing the game, data is generated. This data is for example the amount of shots fired, or the time at which the game was played. This data can then be used by others to be analyzed.We also can show a graph of how you performed over time. In your everyday life, there is always data generated.</string>
-    <string name="explanation_third">For example, you are reading this at a certain time. This generated data. Remember earlier, when we discussed the definition? Data is just facts and statistics collected for reference or analysis. So we can say that you have read this at a certain time, which is data we can collect and analyse if we want to. Do you know any more examples?</string>
-    <string name="explanation_header">Data-usage</string>
-
-    <!--    Controls resources-->
-    <string name="next">Next</string>
-    <string name="back">Back</string>
-    <string name="controls">Controls</string>
-    <string name="enemy">Enemy</string>
-    <string name="player">The player (you)</string>
-    <string name="controls_header">Controls \nSpace-Invaders</string>
-    <string name="controls_text">Swipe left and right to move the spaceship. The spaceship can be fired by tapping anywhere on the screen.</string>
-    <string name="controls_bullet">The bullet to hit\nthe enemy with</string>
-    <string name="controls_close">Close</string>
-    <string name="image_description">image_description</string>
-    <string name="lets_start">Let"s start!</string>
-
-    <!--    Sign up-->
-    <string name="your_name">Your name...</string>
-    <string name="type_name">Please type your name</string>
-    <string name="previous">Previous</string>
-    <string name="pick_avatar">Please pick your avatar</string>
-    <string name="sign_up">Sign up</string>
-    <string name="rdy_to_play">Ready to play!</string>
-    <string name="remember_username">Please remember your username. You might need it in the future!</string>
-    <string name="imnew">I am new</string>
-    <string name="account_already_tv">Do you already have an account?</string>
-    <string name="copy_right">\u00a9 Kids In Data 2020</string>
-    <string name="select_charac">Please select your character</string>
-    <string name="existing_user">Existing user?</string>
-    <string name="new_user">New user?</string>
-    <string name="your_username">Search...</string>
-    <string name="back_to_overview">Back to menu</string>
 
 </resources>
