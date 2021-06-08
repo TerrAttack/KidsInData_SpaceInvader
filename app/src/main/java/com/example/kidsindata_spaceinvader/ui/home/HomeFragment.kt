@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.SpaceInvaderActivity
 import com.example.kidsindata_spaceinvader.global_var.Global
@@ -118,21 +119,21 @@ class HomeFragment : Fragment() {
 
 
     private fun setHighScore() {
-        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner) {
             binding.tvHomeHighScore.text = it.toString()
-        })
+        }
     }
 
     private fun setPlayerRanking() {
-        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner) {
             binding.tvHomePlayerRanking.text = it.toString()
-        })
+        }
     }
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLastScoreAndName() {
-        viewModelHome.homeGameSummary.observe(viewLifecycleOwner, {
+        viewModelHome.homeGameSummary.observe(viewLifecycleOwner) {
             binding.homeName.text = "Welcome ${Global.username.substringBefore("-")} (${Global.username.substringAfter("-")}) "
             var date = it.lastPlayed.take(10)
             if (date.take(2) == "19") {
@@ -146,7 +147,7 @@ class HomeFragment : Fragment() {
                     binding.tvLastPlayed.text = "$days days ago"
                 }
             }
-        })
+        }
     }
 }
 

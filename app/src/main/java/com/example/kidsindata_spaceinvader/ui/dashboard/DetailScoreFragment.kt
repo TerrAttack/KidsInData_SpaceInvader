@@ -1,65 +1,52 @@
 package com.example.kidsindata_spaceinvader.ui.dashboard
 
-import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.kidsindata_spaceinvader.global_var.Global
-import com.example.kidsindata_spaceinvader.model.Module
 import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
-import com.example.numberskotlin.databinding.FragmentDashboardBinding
-import com.example.kidsindata_spaceinvader.model.TopScore
-import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyAdapter
-import com.example.kidsindata_spaceinvader.ui.explanation.ControlsDialogFragment
-import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 import com.example.numberskotlin.R
+import com.example.numberskotlin.databinding.FragmentControlsBinding
+import com.example.numberskotlin.databinding.FragmentDashboardBinding
+import com.example.numberskotlin.databinding.FragmentDetailScoreBinding
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.*
 
-class DashboardFragment : Fragment() {
-    private val viewModelThrophy: TrophiesViewModel by activityViewModels()
-
-    private var _binding: FragmentDashboardBinding? = null
-    private val binding get() = _binding!!
-
-    private val topScores = arrayListOf<TopScore>()
-    private val dashboardTopScoreAdapter =
-        DashboardTopScoreAdapter(topScores) { topScore: TopScore -> topScoreItemClick(topScore) }
+class DetailScoreFragment(var username: String) : DialogFragment() {
 
     private val dashboardViewModel: DashboardViewModel by activityViewModels()
 
+    private var _binding: FragmentDetailScoreBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+    ): View? {
+        _binding = FragmentDetailScoreBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dashboardViewModel.getScoringTrend()
-        dashboardViewModel.getTopTenScores()
+        dashboardViewModel.getScoringTrendUsers(username)
+
         setLineChart()
         setBarChart()
         switchChart()
-        initViews()
-        observeValues()
+        binding.barChart.visibility = View.GONE
+
+        binding.closeDetail.setOnClickListener {
+            dismiss()
+        }
     }
 
     private fun switchChart() {
@@ -86,28 +73,19 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun initViews() {
-        binding.rvtTopPlayers.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding.rvtTopPlayers.adapter = dashboardTopScoreAdapter
-        binding.barChart.visibility = View.GONE
-        setTopTenScores()
-        setTopScore()
-        setRanking()
-        setGamesPlayed()
-    }
-
     private fun setLineChart() {
-        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+        binding.scoringTrendUser.text = getString(R.string.scoring_trend_for_s, username.substringBefore("-"))
+
+        dashboardViewModel.playerScoringTrendUsers.observe(viewLifecycleOwner, Observer {
             val entries: ArrayList<Entry> = arrayListOf()
 
             for (i in it.indices) {
                 entries.add(Entry(it[i].game.toFloat(), it[i].playerScore.toFloat()))
             }
 
-            var dataSet = LineDataSet(entries, "Test")
+            var dataSet = LineDataSet(entries, "Dialog")
             dataSet.fillColor = R.color.titleKidsInData
-            dataSet.valueTextSize = 10f
+            dataSet.valueTextSize = 8f
             dataSet.setColors(
                 intArrayOf(
                     R.color.titleKidsInData,
@@ -133,9 +111,9 @@ class DashboardFragment : Fragment() {
 
             val xAxis: XAxis = binding.lineChart.xAxis
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-            xAxis.textSize = 10f
+            xAxis.textSize = 8f
             xAxis.textColor = R.color.titleKidsInData
-            xAxis.setDrawAxisLine(true)
+            xAxis.axisMaximum = 5f
 
             binding.lineChart.invalidate() // refresh
 
@@ -143,7 +121,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setBarChart() {
-        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+        dashboardViewModel.playerScoringTrendUsers.observe(viewLifecycleOwner, Observer {
             val entries: ArrayList<BarEntry> = arrayListOf()
 
             for (i in it.indices) {
@@ -152,7 +130,7 @@ class DashboardFragment : Fragment() {
 
             var dataSet = BarDataSet(entries, "Test")
             dataSet.valueTextColor = R.color.redKidsInData;
-            dataSet.valueTextSize = 10f
+            dataSet.valueTextSize = 8f
             dataSet.setColors(
                 intArrayOf(
                     R.color.titleKidsInData,
@@ -175,7 +153,7 @@ class DashboardFragment : Fragment() {
 
             val xAxis: XAxis = binding.barChart.xAxis
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-            xAxis.textSize = 10f
+            xAxis.textSize = 8f
             xAxis.textColor = R.color.titleKidsInData
             xAxis.setCenterAxisLabels(true)
             xAxis.setDrawAxisLine(true)
@@ -184,59 +162,4 @@ class DashboardFragment : Fragment() {
         })
     }
 
-    private fun setTopTenScores() {
-        dashboardViewModel.dashboardTopScore.observe(viewLifecycleOwner) {
-            topScores.clear()
-            for (i in it.indices) {
-                topScores.add(
-                    TopScore(
-                        it[i].gameId,
-                        it[i].playerName,
-                        it[i].playerUserName,
-                        it[i].playerScore,
-                        it[i].playedDateTime,
-                        it[i].gameDuration,
-                        it[i].playerAvatar,
-                        it[i].playerAvatarId
-                    )
-                )
-            }
-            dashboardTopScoreAdapter.notifyDataSetChanged()
-        }
-    }
-
-
-    private fun setTopScore() {
-        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner) {
-            binding.tvTopScore.text = it.toString()
-        }
-    }
-
-    private fun setRanking() {
-        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner) {
-            binding.tvRanking.text = it.toString()
-        }
-    }
-
-    private fun observeValues() {
-        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner) {
-            //            binding.textView13.text = it.size.toString()
-        }
-
-        // Observe the error message.
-        dashboardViewModel.errorText.observe(viewLifecycleOwner) {
-            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun setGamesPlayed() {
-        viewModelThrophy.trophiesGameSummary.observe(viewLifecycleOwner) {
-            binding.tvGamesPlayed.text = it.noOfGames.toString()
-        }
-    }
-
-    private fun topScoreItemClick(topScore: TopScore) {
-        DetailScoreFragment(topScore.playerUserName).show(parentFragmentManager, "Detail topscore")
-
-    }
 }

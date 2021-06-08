@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/rotatePhoneFragment"
-        android:name="com.example.kidsindata_spaceinvader.space_invader_game.RotatePhoneFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.space_invader_game.RotatePhoneFragment"
         android:label="fragment_rotate_phone"
         tools:layout="@layout/fragment_rotate_phone" />
 </navigation>
