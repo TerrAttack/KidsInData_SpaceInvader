@@ -50,6 +50,7 @@ class ExplanationDialogFragment : DialogFragment() {
             0 -> {
                 binding.tvContent.setText(R.string.explanation_start)
                 binding.ivIcon.setImageResource(R.drawable.childreading)
+                binding.btnGoBack.visibility = View.GONE
             }
             1 -> {
                 binding.tvHeader.setText(R.string.explanation_header)
@@ -66,7 +67,6 @@ class ExplanationDialogFragment : DialogFragment() {
             }
             4 -> {
                 dismiss()
-                ControlsDialogFragment().show(parentFragmentManager, "custom Dialog")
             }
             else -> dismiss()
         }

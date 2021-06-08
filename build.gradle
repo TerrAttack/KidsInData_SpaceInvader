@@ -32,6 +32,7 @@ allprojects {
                 password "aa079f29e6d2616d70edb10211c801f8d3d8e4bc7d0a4a4483b57609474089e4"     // your client secret
             }
         }
+        maven { url 'https://jitpack.io' }
     }
 }
 

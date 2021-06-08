@@ -100,6 +100,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start_game">Start game</string>
     <string name="please_rotate_your_phone">Please rotate your phone</string>
+    <string name="linechart">Linechart</string>
+    <string name="barchart">Barchart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>

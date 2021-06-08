@@ -4,17 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.numberskotlin.databinding.FragmentDashboardBinding
-import com.example.kidsindata_spaceinvader.charts.DashboardCharts
 import com.example.kidsindata_spaceinvader.model.TopScore
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
+import com.example.numberskotlin.R
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.*
 
 class DashboardFragment : Fragment() {
     private val viewModelThrophy: TrophiesViewModel by activityViewModels()
@@ -41,21 +47,129 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         dashboardViewModel.getScoringTrend()
         dashboardViewModel.getTopTenScores()
+        setLineChart()
+        setBarChart()
         initViews()
         observeValues()
+
+        var index = 0
+
+        binding.btnChangeChart.setOnClickListener {
+            var fadeIn = AnimationUtils.loadAnimation(activity?.baseContext, R.anim.fade_in)
+
+            when(index) {
+                0 -> {
+                    binding.barChart.startAnimation(fadeIn)
+                    binding.barChart.visibility = View.VISIBLE
+                    binding.lineChart.visibility = View.GONE
+                    binding.btnChangeChart.text = getString(R.string.linechart)
+                    index = 1
+                }
+                1 ->  {
+                    binding.lineChart.startAnimation(fadeIn)
+                    binding.barChart.visibility = View.GONE
+                    binding.lineChart.visibility = View.VISIBLE
+                    binding.btnChangeChart.text = getString(R.string.barchart)
+                    index = 0
+                }
+            }
+        }
     }
 
     private fun initViews() {
         binding.rvtTopPlayers.layoutManager =
                 LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvtTopPlayers.adapter = dashboardTopScoreAdapter
-
+        binding.barChart.visibility = View.GONE
         setTopTenScores()
         setTopScore()
         setRanking()
         setGamesPlayed()
     }
+    private fun setLineChart() {
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+            val entries: ArrayList<Entry> = arrayListOf()
 
+            for (i in it.indices) {
+                entries.add(Entry(it[i].game.toFloat(), it[i].playerScore.toFloat()))
+            }
+
+            var dataSet = LineDataSet(entries, "Test")
+            dataSet.fillColor =  R.color.titleKidsInData
+            dataSet.valueTextSize = 10f
+            dataSet.setColors(
+                intArrayOf(
+                    R.color.titleKidsInData,
+                ), context
+            )
+            dataSet.valueTextColor =  R.color.titleKidsInData
+            dataSet.lineWidth = 1f
+            dataSet.valueTextColor= R.color.redKidsInData
+
+            var legened: Legend = binding.lineChart.legend
+
+            legened.isEnabled = false
+
+            val lineData = LineData(dataSet)
+            binding.lineChart.data = lineData
+
+
+            binding.lineChart.axisRight.isEnabled = false;
+
+            binding.lineChart.description.text = ""
+
+            binding.lineChart.getAxis(YAxis.AxisDependency.LEFT)
+
+            val xAxis: XAxis = binding.lineChart.xAxis
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.textSize = 10f
+            xAxis.textColor = R.color.titleKidsInData
+            xAxis.setDrawAxisLine(true)
+
+            binding.lineChart.invalidate() // refresh
+
+        })
+    }
+
+    private fun setBarChart() {
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+            val entries: ArrayList<BarEntry> = arrayListOf()
+
+            for (i in it.indices) {
+                entries.add(BarEntry(it[i].game.toFloat(), it[i].playerScore.toFloat()))
+            }
+
+            var dataSet = BarDataSet(entries, "Test")
+            dataSet.valueTextColor = R.color.redKidsInData;
+            dataSet.valueTextSize = 10f
+            dataSet.setColors(
+                intArrayOf(
+                    R.color.titleKidsInData,
+                ), context
+            )
+
+            val barData = BarData(dataSet)
+            binding.barChart.data = barData
+
+            var legened: Legend = binding.barChart.legend
+
+            legened.isEnabled = false
+
+            binding.barChart.axisRight.isEnabled = false;
+
+            binding.barChart.description.text = ""
+
+            binding.barChart.getAxis(YAxis.AxisDependency.LEFT)
+
+            val xAxis: XAxis = binding.barChart.xAxis
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.textSize = 10f
+            xAxis.textColor = R.color.titleKidsInData
+            xAxis.setDrawAxisLine(true)
+
+            binding.barChart.invalidate() // refresh
+        })
+    }
     private fun setTopTenScores() {
         dashboardViewModel.dashboardTopScore.observe(viewLifecycleOwner) {
             topScores.clear()
