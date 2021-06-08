@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_navigation"
+    app:startDestination="@id/spaceInvaderGameFragment2">
+    <fragment
+        android:id="@+id/spaceInvaderGameFragment2"
+        android:name="com.example.kidsindata_spaceinvader.ui.space_invader_game.SpaceInvaderGameFragment"
+        android:label="fragment_space_invader_game"
+        tools:layout="@layout/fragment_space_invader_game" >
+        <action
+            android:id="@+id/action_spaceInvaderGameFragment2_to_rotatePhoneFragment"
+            app:destination="@id/rotatePhoneFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/rotatePhoneFragment"
+        android:name="com.example.kidsindata_spaceinvader.space_invader_game.RotatePhoneFragment"
+        android:label="fragment_rotate_phone"
+        tools:layout="@layout/fragment_rotate_phone" />
+</navigation>

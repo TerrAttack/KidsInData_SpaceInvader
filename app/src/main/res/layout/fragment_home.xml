@@ -49,7 +49,7 @@
 
     <ImageView
         android:id="@+id/userAvatar"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeName"/>
+        app:layout_constraintTop_toBottomOf="@+id/homeName" />
 
     <Button
         android:id="@+id/button_game"
@@ -67,13 +67,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/greenKidsInData"
+        android:backgroundTint="#CB2E60"
+        android:fontFamily="@font/slackey_regular"
         android:text="@string/home_game"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_score_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/home_score_layout"
+        android:drawableEnd="@drawable/ic_baseline_videogame_asset_24"/>
 
 
     <Button
@@ -83,14 +86,17 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="#FAC710"
+        android:backgroundTint="@color/titleKidsInData"
+        android:fontFamily="@font/slackey_regular"
         android:text="@string/home_datajourney"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:drawableEnd="@drawable/ic_data_journey_icon"/>
 
     <View
         android:id="@+id/divider"
