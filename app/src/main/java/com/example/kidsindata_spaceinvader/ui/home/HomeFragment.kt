@@ -31,8 +31,6 @@ class HomeFragment : Fragment() {
     private val viewModelThrophy: TrophiesViewModel by activityViewModels()
     private val viewModelHome: HomeViewModel by activityViewModels()
 
-    private val viewModelUser: UserViewModel by activityViewModels()
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -69,31 +67,31 @@ class HomeFragment : Fragment() {
             goToDataJourney()
         }
         when (Global.avatarId) {
-            1 -> {
+            0 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_1)
             }
-            2 -> {
+            1 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_2)
             }
-            3 -> {
+            2 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_3)
             }
-            4 -> {
+            3 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_4)
             }
-            5 -> {
+            4 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_5)
             }
-            6 -> {
+            5 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_6)
             }
-            7 -> {
+            6 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_7)
             }
-            8 -> {
+            7 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_8)
             }
-            9 -> {
+            8 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_9)
 
             }
