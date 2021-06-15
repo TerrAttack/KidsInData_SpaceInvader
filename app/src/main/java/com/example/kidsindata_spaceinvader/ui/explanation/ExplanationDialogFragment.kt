@@ -33,7 +33,7 @@ class ExplanationDialogFragment : DialogFragment() {
         binding.tvHeader.setText(R.string.start_header)
         setClickListeners()
         observeText()
-        viewModel.getText()
+        viewModel.getText() //Get the text at load
     }
 
     override fun onDestroyView() {
@@ -57,7 +57,7 @@ class ExplanationDialogFragment : DialogFragment() {
         }
     }
 
-    private fun setPage() {
+    private fun setPage() { //Alter the page based on which page currently needs to be displayed
         when (page) {
             0 -> {
                 binding.tvContent.text = text[0]
@@ -85,7 +85,8 @@ class ExplanationDialogFragment : DialogFragment() {
         }
     }
 
-    private fun observeText() {
+    private fun observeText() { //Observe the text in the viewmodel
+//      Fill the page with the received text
         viewModel.text.observe(viewLifecycleOwner, {
             text = it
             setPage()

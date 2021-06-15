@@ -1,6 +1,5 @@
 package com.example.kidsindata_spaceinvader.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -9,10 +8,11 @@ import kotlinx.coroutines.withTimeout
 
 class ExplanationRepository {
 
+//  Init vars to work with Firestore
     private val collectionName: String = "strings_explanation"
-
+    private val documentName: String = "1"
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private var explanationDocument = firestore.collection(collectionName).document("1")
+    private var explanationDocument = firestore.collection(collectionName).document(documentName)
 
     private val _text: MutableLiveData<ArrayList<String>> = MutableLiveData()
 
@@ -20,29 +20,26 @@ class ExplanationRepository {
         get() = _text
 
     suspend fun getText() {
-        try {
-            withTimeout(5_000) {
+        try {   //Timeout triggers after 5 seconds
+            withTimeout(5000) {
                 val data = explanationDocument
                     .get()
                     .await()
 
-                val textStart = data.getString("explanation_start").toString()
-                val text1 = data.getString("explanation_first").toString()
-                val text2 = data.getString("explanation_second").toString()
-                val text3 = data.getString("explanation_third").toString()
-
-                val tempArray: ArrayList<String> = ArrayList()
-                tempArray.add(textStart)
-                tempArray.add(text1)
-                tempArray.add(text2)
-                tempArray.add(text3)
-                _text.value = tempArray
+//                Set the returned values in the array of text
+//                The viewmodels observer receives the data
+                _text.value = arrayListOf(
+                    data.getString("explanation_start").toString(),
+                    data.getString("explanation_first").toString(),
+                    data.getString("explanation_second").toString(),
+                    data.getString("explanation_third").toString()
+                )
 
             }
         } catch (e: Exception) {
-            throw QuizRetrievalError("$e Gaat fout broer")
+            throw FirestoreFetchingError(e.message.toString())
         }
     }
 
-    class QuizRetrievalError(message: String) : Exception(message)
+    class FirestoreFetchingError(message: String) : Exception(message)
 }

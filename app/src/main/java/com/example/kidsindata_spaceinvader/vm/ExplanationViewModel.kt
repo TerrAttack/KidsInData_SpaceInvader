@@ -17,8 +17,10 @@ class ExplanationViewModel(application: Application) : AndroidViewModel(applicat
     fun getText() {
         viewModelScope.launch {
             try {
-                explanationRepository.getText()
-            } catch (ex: ExplanationRepository.QuizRetrievalError) {
+                explanationRepository.getText() //Execute the getText function, which gets the text from Firestore
+            } catch (ex: ExplanationRepository.FirestoreFetchingError) {
+                val errorMsg = "Something went wrong while fetching the text"
+                Log.e("FIREBASE EXPLANATION", ex.message ?: errorMsg)
             }
         }
     }
