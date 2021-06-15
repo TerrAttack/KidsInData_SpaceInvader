@@ -20,7 +20,7 @@ class TrophyAdapter(private val trophies: List<Trophy>) :
             binding.TrophyDescription.text = trophy.trophyDesc
 
 
-            if(trophy.trophyCompletion ) binding.TrophyCompletionBG.setBackgroundResource(R.drawable.circle_trophy_rv)
+            if(trophy.trophyCompletion == true) binding.TrophyCompletionBG.setBackgroundResource(R.drawable.circle_trophy_rv)
 
         }
     }

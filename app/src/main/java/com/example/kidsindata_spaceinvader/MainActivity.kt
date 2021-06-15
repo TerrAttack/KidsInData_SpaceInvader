@@ -1,31 +1,33 @@
 package com.example.kidsindata_spaceinvader
 
-import android.content.Context
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.activityViewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.kidsindata_spaceinvader.ui.data_journey.DataJourneyViewModel
-import com.example.kidsindata_spaceinvader.ui.trophies.TrophiesViewModel
+import com.example.kidsindata_spaceinvader.ui.explanation.ExplanationDialogFragment
+import com.example.kidsindata_spaceinvader.vm.HomeViewModel
+import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
-
     private val trophiesViewModel: TrophiesViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -44,5 +46,24 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        checkFirstRun()
+
+        homeViewModel.getGameSummary()
+        trophiesViewModel.getRank()
+        trophiesViewModel.getTopScore()
+        trophiesViewModel.getGameSummary()
+    }
+
+    private fun checkFirstRun() {
+        var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+            .getBoolean("isfirstexplanation", true)
+
+        if (isFirstRun) {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                .putBoolean("isfirstexplanation", false).apply()
+
+            ExplanationDialogFragment().show(supportFragmentManager, "custom dialog")
+        }
     }
 }

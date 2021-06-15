@@ -71,28 +71,15 @@
         app:tint="@color/black" />
 
     <Button
-        android:id="@+id/btnGoBackControls"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/back"
-        app:layout_constraintEnd_toStartOf="@+id/btnCloseControls"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <Button
         android:id="@+id/btnCloseControls"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/controls_close"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnGoBackControls"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
