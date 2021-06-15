@@ -59,13 +59,8 @@
 
     <!--Thropies strings-->
     <string name="achievement_score">100/100</string>
-    <string name="explanation_start">The next few screens will quickly take you through some of the key features of the workshop before you start. Please press "Next" to start your tour.</string>
-
 
     <!--    Explanation resources-->
-    <string name="explanation_first">The goal of this app is to show you what data is and what can be done with it.\n\nBut first of all, what is data? According to Oxford Dictionaries, it consists of facts and statistics collected together for reference or analysis. In your everyday life, almost everything you do generates data, such as the time at which you are reading this.</string>
-    <string name="explanation_second">So, while playing the game, data is generated. This data is for example the amount of shots fired, or the time at which the game was played. This data can then be used by others to be analyzed.We also can show a graph of how you performed over time. In your everyday life, there is always data generated.</string>
-    <string name="explanation_third">For example, you are reading this at a certain time. This generated data. Remember earlier, when we discussed the definition? Data is just facts and statistics collected for reference or analysis. So we can say that you have read this at a certain time, which is data we can collect and analyse if we want to. Do you know any more examples?</string>
     <string name="explanation_header">Data-usage</string>
     <string name="next">Next</string>
 
