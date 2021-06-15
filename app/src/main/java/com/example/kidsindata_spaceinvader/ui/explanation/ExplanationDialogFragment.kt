@@ -67,6 +67,7 @@ class ExplanationDialogFragment : DialogFragment() {
             }
             4 -> {
                 dismiss()
+                ControlsDialogFragment().show(parentFragmentManager, "custom dialog")
             }
             else -> dismiss()
         }
