@@ -51,7 +51,7 @@
     <string name="enemy">Enemy</string>
     <string name="player">The player (you)</string>
     <string name="controls_header">Controls \nSpace-Invaders</string>
-    <string name="controls_text">Swipe left and right to move the spaceship. The spaceship can be fired by tapping anywhere on the screen.</string>
+    <string name="controls_text">Tap left and right to move the spaceship. The spaceship can be fired by tapping anywhere on the screen.</string>
     <string name="controls_bullet">The bullet to hit\nthe enemy with</string>
     <string name="controls_close">Close</string>
     <string name="image_description">image_description</string>
