@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.SpaceInvaderActivity
 import com.example.kidsindata_spaceinvader.global_var.Global
@@ -29,8 +30,6 @@ class HomeFragment : Fragment() {
 
     private val viewModelThrophy: TrophiesViewModel by activityViewModels()
     private val viewModelHome: HomeViewModel by activityViewModels()
-
-    private val viewModelUser: UserViewModel by activityViewModels()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -68,31 +67,31 @@ class HomeFragment : Fragment() {
             goToDataJourney()
         }
         when (Global.avatarId) {
-            1 -> {
+            0 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_1)
             }
-            2 -> {
+            1 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_2)
             }
-            3 -> {
+            2 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_3)
             }
-            4 -> {
+            3 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_4)
             }
-            5 -> {
+            4 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_5)
             }
-            6 -> {
+            5 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_6)
             }
-            7 -> {
+            6 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_7)
             }
-            8 -> {
+            7 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_8)
             }
-            9 -> {
+            8 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_9)
 
             }
@@ -118,21 +117,21 @@ class HomeFragment : Fragment() {
 
 
     private fun setHighScore() {
-        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesTopScore.observe(viewLifecycleOwner) {
             binding.tvHomeHighScore.text = it.toString()
-        })
+        }
     }
 
     private fun setPlayerRanking() {
-        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner, {
+        viewModelThrophy.trophiesPlayerRank.observe(viewLifecycleOwner) {
             binding.tvHomePlayerRanking.text = it.toString()
-        })
+        }
     }
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setLastScoreAndName() {
-        viewModelHome.homeGameSummary.observe(viewLifecycleOwner, {
+        viewModelHome.homeGameSummary.observe(viewLifecycleOwner) {
             binding.homeName.text = "Welcome ${Global.username.substringBefore("-")} (${Global.username.substringAfter("-")}) "
             var date = it.lastPlayed.take(10)
             if (date.take(2) == "19") {
@@ -146,7 +145,7 @@ class HomeFragment : Fragment() {
                     binding.tvLastPlayed.text = "$days days ago"
                 }
             }
-        })
+        }
     }
 }
 

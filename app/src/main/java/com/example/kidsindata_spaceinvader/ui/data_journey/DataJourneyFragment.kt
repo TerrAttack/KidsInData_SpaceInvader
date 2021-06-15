@@ -13,6 +13,7 @@ import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -73,8 +74,8 @@ class DataJourneyFragment : Fragment() {
 
 
     private fun setModulesList() {
-        viewModel.dataJourneyModules.observe(viewLifecycleOwner, {
-         modules.clear()
+        viewModel.dataJourneyModules.observe(viewLifecycleOwner) {
+            modules.clear()
             for (i in it.indices) {
                 modules.add(
                     Module(
@@ -92,15 +93,15 @@ class DataJourneyFragment : Fragment() {
                 )
             }
             dataJourneyAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     private fun connectionLoader() {
-        viewModel.spinner.observe(viewLifecycleOwner, {
+        viewModel.spinner.observe(viewLifecycleOwner) {
             if (it) binding.loaderBar.visibility = View.VISIBLE
-             else binding.loaderBar.visibility = View.GONE
-        })
-        viewModel.connection.observe(viewLifecycleOwner, {
+            else binding.loaderBar.visibility = View.GONE
+        }
+        viewModel.connection.observe(viewLifecycleOwner) {
             if (it == false) {
                 val dialogBuilder = AlertDialog.Builder(context)
                 dialogBuilder.setMessage("Make sure that WI-FI or mobile data is turned on, then try again")
@@ -117,12 +118,12 @@ class DataJourneyFragment : Fragment() {
                 alert.setIcon(R.drawable.kid_logo_inverted)
                 alert.show()
             }
-        })
+        }
 
     }
 
     private fun updateNextModule() {
-        viewModel.dataJourneyNextModule.observe(viewLifecycleOwner, {
+        viewModel.dataJourneyNextModule.observe(viewLifecycleOwner) {
             var moduleId = it.moduleId
             binding.moduleNumber.text = it.moduleId.toString()
             binding.moduleTitle.text = it.moduleName
@@ -157,12 +158,12 @@ class DataJourneyFragment : Fragment() {
                 }
             }
             dataJourneyAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun updateProgress() {
-        viewModel.dataJourneyProgress.observe(viewLifecycleOwner, {
+        viewModel.dataJourneyProgress.observe(viewLifecycleOwner) {
             val mProgressBar = binding.progressBar
             val progressAnimator = ObjectAnimator.ofInt(
                 mProgressBar,
@@ -180,7 +181,7 @@ class DataJourneyFragment : Fragment() {
                 getString(R.string.modules_completed, it.modulesCompleted, it.totalActiveModules)
 
             dataJourneyAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     private fun moduleItemClicked(module: Module) {

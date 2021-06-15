@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangeChart" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
@@ -93,13 +93,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/slackey_regular"
             android:text="@string/stats_dashboard"
             android:textColor="@color/titleKidsInData"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/gameNumberTv" />
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -209,19 +209,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rankingsText" />
 
+        <TextView
+            android:id="@+id/gameNumberTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/game_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btnChangeChart"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
-        android:text="Barchart"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <TextView
+            android:id="@+id/lineChartBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:height="10dp"
+            android:background="@drawable/button_chart_border_seleted"
+            android:gravity="center"
+            android:text="@string/linechart"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/barChartBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_chart_border"
+            android:gravity="center"
+            android:text="@string/barchart"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,8 @@ class DashboardViewModel : ViewModel() {
      */
     val playerScoringTrend = dashboardRepository.graphScoringTrend
 
+    val playerScoringTrendUsers = dashboardRepository.graphScoringTrendUser
+
     val errorText: LiveData<String>
         get() = _errorText
 
@@ -31,6 +33,17 @@ class DashboardViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 dashboardRepository.getPlayerScoringTrend()
+            } catch (error: DashboardRepository.DashboardError) {
+                _errorText.value = error.message
+                Log.e("Game summary error", error.cause.toString())
+            }
+        }
+    }
+
+    fun getScoringTrendUsers(username: String) {
+        viewModelScope.launch {
+            try {
+                dashboardRepository.getUsersScoringTrend(username)
             } catch (error: DashboardRepository.DashboardError) {
                 _errorText.value = error.message
                 Log.e("Game summary error", error.cause.toString())

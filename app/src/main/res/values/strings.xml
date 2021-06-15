@@ -102,6 +102,9 @@
     <string name="please_rotate_your_phone">Please rotate your phone</string>
     <string name="linechart">Linechart</string>
     <string name="barchart">Barchart</string>
+    <string name="scoring_trend_for_s">Scoring trend for - %s</string>
+    <string name="score">Score</string>
+    <string name="game_number">Game number</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string-array name="string_array_name">
         <item>Completed 20% of your own data journey</item>

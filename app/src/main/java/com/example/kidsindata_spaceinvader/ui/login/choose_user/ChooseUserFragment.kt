@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -97,7 +98,7 @@ class ChooseUserFragment : Fragment() {
     }
 
     private fun setUsersList() {
-        userViewModel.chooseUser.observe(viewLifecycleOwner, {
+        userViewModel.chooseUser.observe(viewLifecycleOwner) {
             users.clear()
             for (i in it.indices) {
                 users.add(
@@ -115,13 +116,16 @@ class ChooseUserFragment : Fragment() {
                 )
             }
             chooseUserAdapter.notifyDataSetChanged()
-        })
+        }
     }
 
     private fun userItemClicked(user: User) {
         selectedUser = user
         Global.username = selectedUser?.playerUserName.toString()
-        Global.avatarId = selectedUser?.playerAvatar?.get(24)?.toInt()!!
+        var avatar = selectedUser!!.playerAvatar.substringAfter("-")
+        var avatarId = avatar[0].toString().toInt()
+        Global.avatarId = avatarId
+
     }
 
     private fun next() {

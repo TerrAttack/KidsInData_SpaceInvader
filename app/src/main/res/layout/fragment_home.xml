@@ -96,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        android:drawableEnd="@drawable/ic_data_journey_icon"/>
+        android:drawableEnd="@drawable/data_journey_icon_white"/>
 
     <View
         android:id="@+id/divider"

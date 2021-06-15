@@ -14,6 +14,7 @@ class DashboardRepository {
 
     private val kidsInDataApiService: KidsInDataApiService = KidsInDataApi.createApi()
     private val _scoringTrend: MutableLiveData<ArrayList<ScoringTrend>> = MutableLiveData()
+    private val _scoringTrendUser: MutableLiveData<ArrayList<ScoringTrend>> = MutableLiveData()
     private val _dashboardTopScore: MutableLiveData<List<TopScore>> = MutableLiveData()
 
     /**
@@ -23,10 +24,25 @@ class DashboardRepository {
     val graphScoringTrend: MutableLiveData<ArrayList<ScoringTrend>>
         get() = _scoringTrend
 
+    val graphScoringTrendUser: MutableLiveData<ArrayList<ScoringTrend>>
+        get() = _scoringTrendUser
+
 
     /**
      * suspend function that calls a suspend function from the moduleApi call
      */
+    suspend fun getUsersScoringTrend(username: String) {
+        try {
+            //timeout the request after 5 seconds
+            val result = withTimeout(5_000) {
+                kidsInDataApiService.getPlayerTrend(BuildConfig.ApiKey, username)
+            }
+            _scoringTrendUser.value = result
+        } catch (error: Throwable) {
+            throw DashboardError("Unable to fetch data for dashboard", error)
+        }
+    }
+
     suspend fun getPlayerScoringTrend() {
         try {
             //timeout the request after 5 seconds
@@ -38,6 +54,7 @@ class DashboardRepository {
             throw DashboardError("Unable to fetch data for dashboard", error)
         }
     }
+
 
     val dashboardTopScore: LiveData<List<TopScore>>
         get() = _dashboardTopScore
