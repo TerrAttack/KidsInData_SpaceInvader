@@ -79,32 +79,31 @@ class HomeFragment : Fragment() {
                 binding.userAvatar.setImageResource(R.drawable.avatar_1)
             }
             1 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_2)
-            }
-            2 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_3)
             }
-            3 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_4)
-            }
-            4 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_5)
-            }
-            5 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_6)
-            }
-            6 -> {
+            2 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_7)
             }
-            7 -> {
+            3-> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_9)
+            }
+            4 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_6)
+            }
+            5 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_8)
             }
+            6 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_5)
+            }
+            7 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_4)
+            }
             8 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_9)
+                binding.userAvatar.setImageResource(R.drawable.avatar_2)
 
             }
         }
-
         setHighScore()
         setPlayerRanking()
         setLastScoreAndName()

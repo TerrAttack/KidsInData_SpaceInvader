@@ -8,10 +8,19 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentLineChartModuleBinding
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LineChartFragment : Fragment() {
@@ -23,6 +32,8 @@ class LineChartFragment : Fragment() {
 
     private var page: Int = 0
 
+    private val dashboardViewModel: DashboardViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,8 +44,12 @@ class LineChartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dashboardViewModel.getScoringTrend()
+        setLineChart()
         setClickListeners()
         setPage(page)
+
     }
 
     private fun setClickListeners() {
@@ -54,11 +69,58 @@ class LineChartFragment : Fragment() {
 
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted(5)
-            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
+            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
                 findNavController().navigate(R.id.action_barChartModule_to_dataJourneyFragment)
-            })
+            }
         }
     }
+
+    private fun setLineChart() {
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+            val entries: ArrayList<Entry> = arrayListOf()
+
+            for (i in it.indices) {
+                entries.add(Entry(it[i].game.toFloat(), it[i].playerScore.toFloat()))
+            }
+
+            var dataSet = LineDataSet(entries, "Test")
+            dataSet.fillColor = R.color.titleKidsInData
+            dataSet.valueTextSize = 10f
+            dataSet.setColors(
+                intArrayOf(
+                    R.color.titleKidsInData,
+                ), context
+            )
+            dataSet.valueTextColor = R.color.titleKidsInData
+            dataSet.lineWidth = 1f
+            dataSet.valueTextColor = R.color.redKidsInData
+
+            var legened: Legend = binding.lineChartModule.legend
+
+            legened.isEnabled = false
+
+            val lineData = LineData(dataSet)
+            binding.lineChartModule.data = lineData
+
+
+            binding.lineChartModule.axisRight.isEnabled = false;
+
+            binding.lineChartModule.description.text = ""
+
+            binding.lineChartModule.getAxis(YAxis.AxisDependency.LEFT)
+
+            val xAxis: XAxis = binding.lineChartModule.xAxis
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.textSize = 10f
+            xAxis.textColor = R.color.titleKidsInData
+            xAxis.setDrawAxisLine(true)
+            xAxis.axisMaximum = 5f
+
+            binding.lineChartModule.invalidate() // refresh
+
+        })
+    }
+
 
     @SuppressLint("SetTextI18n")
     private fun setPage(page: Int) {

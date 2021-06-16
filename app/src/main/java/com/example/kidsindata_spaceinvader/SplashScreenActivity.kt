@@ -31,12 +31,14 @@ class SplashScreenActivity : AppCompatActivity() {
         checkConnectivity()
     }
 
+
+    //Checks the connection of your phone
     private fun checkConnectivity() {
         val manager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = manager.activeNetworkInfo
 
         if (null == activeNetwork) {
-            onPause()
+           onPause()
             val dialogBuilder = AlertDialog.Builder(this)
             // set message of alert dialog
             dialogBuilder.setMessage("Make sure that WI-FI or mobile data is turned on, then try again")
@@ -63,18 +65,21 @@ class SplashScreenActivity : AppCompatActivity() {
             var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isfirstrun", true)
 
-            if (true) {
+            if (isFirstRun) {
                 handler.postDelayed({
                     startActivity(Intent(applicationContext, LoginActivity::class.java))
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
                     finish()
                 }, 2000)
             } else {
+                //Gets the username from the sharedPreference
                 handler.postDelayed({
                     val sharedPreferences =
                         applicationContext.getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
                     var username: String? = sharedPreferences?.getString("USERNAME_FILLED", "")
+                    var avatarId: Int? = sharedPreferences?.getInt("AVATAR_ID", 0)
                     Global.username = username!!
+                    Global.avatarId = avatarId!!
 
                     homeViewModel.getGameSummary()
                     trophiesViewModel.getRank()
