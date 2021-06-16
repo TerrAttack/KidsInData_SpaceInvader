@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.vm.UserViewModel
@@ -45,20 +46,21 @@ class UsernameFragment : Fragment() {
 
     private fun createUser() {
         //Checks if username editText is blank, if not then the user will be created
-        if (binding.etUsername.editText?.text.toString().trim().isBlank()) {
+        if (binding.etUsername.editText?.text.toString().trim()
+                .isBlank() || binding.etUsername.editText?.text.toString().contains("-")
+        ) {
             Snackbar.make(
                 binding.createUserBtn,
-                "Your name cannot be blank!",
+                "Invalid username...",
                 Snackbar.LENGTH_SHORT
             ).show()
-        }
-        else {
+        } else {
             userViewModel.postCreateUser(
                 binding.etUsername.editText?.text.toString(),
                 Global.avatarId
             )
 
-            userViewModel.createUser.observe(viewLifecycleOwner, {
+            userViewModel.createUser.observe(viewLifecycleOwner) {
                 //Writes username to shared preference so the app remembers the user when he comes back
                 val sharedPreferences =
                     requireContext().getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
@@ -78,7 +80,7 @@ class UsernameFragment : Fragment() {
                     ?.putBoolean("isfirstrun", false)?.apply()
 
                 findNavController().navigate(R.id.action_createUserFragment_to_playFragment)
-            })
+            }
         }
     }
 

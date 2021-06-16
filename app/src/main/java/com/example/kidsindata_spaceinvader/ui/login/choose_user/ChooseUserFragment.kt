@@ -70,6 +70,8 @@ class ChooseUserFragment : Fragment() {
 
         setUsersList()
         searchUser()
+
+        binding.nextChooseUser.isEnabled = false
     }
 
     //to search for user
@@ -125,7 +127,7 @@ class ChooseUserFragment : Fragment() {
         var avatar = selectedUser!!.playerAvatar.substringAfter("-")
         var avatarId = avatar[0].toString().toInt()
         Global.avatarId = avatarId
-
+        binding.nextChooseUser.isEnabled = true
     }
 
     private fun next() {
