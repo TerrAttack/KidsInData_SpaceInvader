@@ -142,6 +142,7 @@ class DashboardFragment : Fragment() {
         })
     }
 
+
     private fun setBarChart() {
         dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
             val entries: ArrayList<BarEntry> = arrayListOf()

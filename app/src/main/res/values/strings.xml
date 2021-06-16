@@ -16,11 +16,10 @@
     <string name="what_to_learn_next">What to learn next?</string>
     <string name="learning_modules_title">Learning modules</string>
     <string name="completed_">COMPLETED</string>
+    <string name="back_to_overview">Back to menu</string>
 
     <!--    Modules-->
     <string name="show">Show next chart...</string>
-    <string name="back_menu_text"><font fgcolor='#858E96' size='11px'>Please press "Back to menu" below to go back and select the next module.</font></string>
-
 
     <!-- Dashboard -->
     <string name="top_score_dashboard">Top score:</string>
@@ -29,6 +28,11 @@
     <string name="games_played_dashboard">Games played:</string>
     <string name="play_time_dashboard">Play time:</string>
     <string name="stats_dashboard">Your statistics:</string>
+    <string name="linechart">Linechart</string>
+    <string name="barchart">Barchart</string>
+    <string name="scoring_trend_for_s">Scoring trend for - %s</string>
+    <string name="score">Score</string>
+    <string name="game_number">Game number</string>
 
 
     <string name="home_title"><font fgcolor='#FF01a6a8'>Kids </font><font fgcolor='#FFef4129'>in </font><font fgcolor='#FFb0c54c'>Data</font></string>
@@ -91,31 +95,8 @@
     <string name="existing_user">Existing user?</string>
     <string name="new_user">New user?</string>
     <string name="your_username">Search...</string>
-    <string name="back_to_overview">Back to menu</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Game-->
     <string name="start_game">Start game</string>
     <string name="please_rotate_your_phone">Please rotate your phone</string>
-    <string name="linechart">Linechart</string>
-    <string name="barchart">Barchart</string>
-    <string name="scoring_trend_for_s">Scoring trend for - %s</string>
-    <string name="score">Score</string>
-    <string name="game_number">Game number</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string-array name="string_array_name">
-        <item>Completed 20% of your own data journey</item>
-        <item>Completed 40% of your own data journey</item>
-        <item>Completed 60% of your own data journey</item>
-        <item>Completed 80% of your own data journey</item>
-        <item>Completed 100% of your own data journey</item>
-        <item>Reached top 10 in the leaderboard</item>
-        <item>Reached top 100 in the leaderboard</item>
-        <item>Reached top 200 in the leaderboard</item>
-        <item>Reached top 500 in the leaderboard</item>
-        <item>Filler</item>
-        <item>Filler</item>
-        <item>Filler</item>
-        <item>Filler</item>
-        <item>Filler</item>
-    </string-array>
-
 </resources>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import com.example.kidsindata_spaceinvader.vm.ExplanationViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentExplanationBinding
@@ -87,9 +88,9 @@ class ExplanationDialogFragment : DialogFragment() {
 
     private fun observeText() { //Observe the text in the viewmodel
 //      Fill the page with the received text
-        viewModel.text.observe(viewLifecycleOwner, {
+        viewModel.text.observe(viewLifecycleOwner) {
             text = it
             setPage()
-        })
+        }
     }
 }
