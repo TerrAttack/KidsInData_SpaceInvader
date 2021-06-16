@@ -33,7 +33,6 @@ class ChooseUserFragment : Fragment() {
 
     var selectedUser: User? = null
 
-
     private val userViewModel: UserViewModel by activityViewModels()
 
     var descriptionData = arrayOf("Select user", "Play")
@@ -139,6 +138,7 @@ class ChooseUserFragment : Fragment() {
             "USERNAME_FILLED",
             selectedUser?.playerUserName
         )
+        editor.putInt("AVATAR_ID", Global.avatarId)
         editor.apply()
 
         if (Global.username != "defaultValue") {

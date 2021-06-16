@@ -69,6 +69,7 @@ class UsernameFragment : Fragment() {
                     "USERNAME_FILLED",
                     binding.etUsername.editText?.text.toString().trim() + "-" + it.playerId
                 )
+                editor.putInt("AVATAR_ID", Global.avatarId)
                 editor.apply()
 
                 //Sets username in the Global variable class

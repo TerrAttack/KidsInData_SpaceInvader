@@ -59,10 +59,10 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/image_module_border"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="5dp"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.cardview.widget.CardView

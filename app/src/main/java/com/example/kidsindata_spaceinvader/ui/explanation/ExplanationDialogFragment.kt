@@ -80,7 +80,6 @@ class ExplanationDialogFragment : DialogFragment() {
             4 -> {
                 //Destroy the current explanation fragment and show the controls
                 dismiss()
-                ControlsDialogFragment().show(parentFragmentManager, "custom dialog")
             }
             else -> dismiss()
         }

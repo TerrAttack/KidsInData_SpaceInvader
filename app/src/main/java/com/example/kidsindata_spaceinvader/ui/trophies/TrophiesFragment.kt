@@ -109,7 +109,7 @@ class TrophiesFragment : Fragment() {
             .addOnSuccessListener { document ->
                 val docSize = document.size()-1
                 val iterator = (0..docSize).iterator()
-                iterator.forEach {
+                iterator.forEach { _ ->
                     var trophyTitle = document.documents.get(i).getString("trophyTitle")
                     var trophyDescription = document.documents.get(i).getString("trophyDesc")
                     var trophyCompletion = document.documents.get(i).getBoolean("trophyCompletion")
