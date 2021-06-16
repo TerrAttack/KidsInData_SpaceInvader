@@ -12,9 +12,12 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
+import com.bumptech.glide.Glide
 import com.example.kidsindata_spaceinvader.DataJourneyActivity
 import com.example.kidsindata_spaceinvader.SpaceInvaderActivity
 import com.example.kidsindata_spaceinvader.global_var.Global
+import com.example.kidsindata_spaceinvader.ui.explanation.ControlsDialogFragment
+import com.example.kidsindata_spaceinvader.ui.explanation.ExplanationDialogFragment
 import com.example.kidsindata_spaceinvader.ui.login.create_user.UsernameFragment
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
@@ -60,6 +63,11 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initViews() {
+
+        binding.ivInfoIcon.setOnClickListener{
+            ExplanationDialogFragment().show(parentFragmentManager, "custom dialog")
+        }
+
         binding.buttonGame.setOnClickListener {
             goToGame()
         }
