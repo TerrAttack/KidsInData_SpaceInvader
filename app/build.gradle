@@ -77,15 +77,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
-
-    // Room
-    def room_version = "2.2.5"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-runtime:$room_version"
-
-    // Kotlin Extensions and Coroutines support for Room - also needed in this tutorial
-    implementation "androidx.room:room-ktx:$room_version"
-
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'

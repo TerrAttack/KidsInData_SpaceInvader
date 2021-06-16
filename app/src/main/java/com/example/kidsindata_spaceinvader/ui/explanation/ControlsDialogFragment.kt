@@ -26,6 +26,11 @@ class ControlsDialogFragment : DialogFragment() {
         setClickListeners()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun setClickListeners() {
         binding.ivCloseControls.setOnClickListener { dismiss() }
         binding.btnCloseControls.setOnClickListener {dismiss() }

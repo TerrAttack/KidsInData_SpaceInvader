@@ -238,4 +238,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
+    <ImageView
+        android:id="@+id/ivInfoIcon"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/baseline_info_24"
+        app:layout_constraintBottom_toTopOf="@+id/home_score_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userAvatar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
