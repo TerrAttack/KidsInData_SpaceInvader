@@ -1,6 +1,7 @@
 package com.example.kidsindata_spaceinvader.ui.trophies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,7 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
-
+        dataJourneyViewModel.getDataJourneyProgress()
 
         binding.homeImage.setOnClickListener {
             findNavController().navigate(R.id.navigation_home)
@@ -65,33 +66,55 @@ class TrophiesFragment : Fragment() {
 
     private fun checkAchievements(){
         viewModel.trophiesPlayerRank.observe(viewLifecycleOwner, {
-            trophies[0].trophyCompletion = it in 1..100
-            trophies[1].trophyCompletion = it in 1..10
+            if (it in 1..100){
+                trophies[0].trophyCompletion = true
+            }
+            if (it in 1..10){
+                trophies[1].trophyCompletion = true
+            }
         })
     }
 
     private fun checkTotalGames(){
         viewModel.trophiesGameSummary.observe(viewLifecycleOwner, {
-            trophies[2].trophyCompletion = it.noOfGames > 5
-            trophies[3].trophyCompletion = it.noOfGames > 10
+            if (it.noOfGames > 5){
+                trophies[3].trophyCompletion = true
+            }
+            if (it.noOfGames > 10){
+                trophies[4].trophyCompletion = true
+            }
         })
     }
 
     private fun checkTopScore(){
         viewModel.trophiesTopScore.observe(viewLifecycleOwner, {
-            trophies[4].trophyCompletion = it > 10000
-            trophies[5].trophyCompletion = it > 20000
+            if (it > 10000){
+                trophies[5].trophyCompletion = true
+            }
+            if (it > 20000){
+                trophies[6].trophyCompletion = true
+            }
         })
     }
 
     private fun checkDatajourneyCompletion(){
-        dataJourneyViewModel.dataJourneyProgress.observe(viewLifecycleOwner,{
-            trophies[6].trophyCompletion = it.completedPercentage >= 20.0
-            trophies[7].trophyCompletion = it.completedPercentage >= 40.0
-            trophies[8].trophyCompletion = it.completedPercentage >= 60.0
-            trophies[9].trophyCompletion = it.completedPercentage >= 80.0
-            trophies[10].trophyCompletion = it.completedPercentage >= 100.0
-        })
+        dataJourneyViewModel.dataJourneyProgress.observe(viewLifecycleOwner){
+            if (it.completedPercentage >= 20.0){
+                trophies[7].trophyCompletion = true
+            }
+            if (it.completedPercentage >= 40.0){
+                trophies[8].trophyCompletion = true
+            }
+            if (it.completedPercentage >= 60.0){
+                trophies[9].trophyCompletion = true
+            }
+            if (it.completedPercentage >= 80.0){
+                trophies[10].trophyCompletion = true
+            }
+            if (it.completedPercentage >= 100.0){
+                trophies[2].trophyCompletion = true
+            }
+        }
     }
 
 
@@ -104,9 +127,9 @@ class TrophiesFragment : Fragment() {
                 val docSize = document.size()-1
                 val iterator = (0..docSize).iterator()
                 iterator.forEach {
-                    var trophyTitle = document.documents.get(i).getString("trophyTitle")
-                    var trophyDescription = document.documents.get(i).getString("trophyDesc")
-                    var trophyCompletion = document.documents.get(i).getBoolean("trophyCompletion")
+                    var trophyTitle = document.documents[i].getString("trophyTitle")
+                    var trophyDescription = document.documents[i].getString("trophyDesc")
+                    var trophyCompletion = false
                     trophies.add(Trophy(
                         i,
                         trophyTitle,
@@ -115,11 +138,12 @@ class TrophiesFragment : Fragment() {
                     ))
                     i++
                 }
+                checkDatajourneyCompletion()
                 checkAchievements()
                 checkTotalGames()
                 checkTopScore()
-                checkDatajourneyCompletion()
                 trophyAdapter.notifyDataSetChanged()
+
             }
     }
 }
