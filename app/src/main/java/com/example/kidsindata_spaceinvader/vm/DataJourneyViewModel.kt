@@ -25,6 +25,9 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
 
     val dataJourneyModuleCompleted = dataJourneyRepository.dataJourneyCompletedModule
 
+    val dataJourneyAllScores = dataJourneyRepository.dataJourneyAllScores
+
+
     private val _errorText: MutableLiveData<String> = MutableLiveData()
 
     private var _spinner: MutableLiveData<Boolean> = MutableLiveData()
@@ -56,6 +59,23 @@ class DataJourneyViewModel(application: Application) : AndroidViewModel(applicat
                 //our own module property points to this one
                 _spinner.value = true
                 dataJourneyRepository.getModules()
+            } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
+                _connection.value = false
+                _errorText.value = error.message
+                Log.e("Modules error", error.cause.toString())
+            } finally {
+                _spinner.value = false
+            }
+        }
+    }
+
+    fun getAllScores() {
+        viewModelScope.launch {
+            try {
+                //the dataJourneyRepository sets it's own livedata property
+                //our own module property points to this one
+                _spinner.value = true
+                dataJourneyRepository.getAllScores()
             } catch (error: DataJourneyRepository.DataJourneyRefreshError) {
                 _connection.value = false
                 _errorText.value = error.message

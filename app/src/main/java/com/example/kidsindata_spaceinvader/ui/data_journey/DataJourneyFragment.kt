@@ -146,8 +146,7 @@ class DataJourneyFragment : Fragment() {
                 when (moduleId) {
                     1 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
                     2 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_workingWithDataFragment)
-                    3 -> Toast.makeText(context, moduleId.toString(), Toast.LENGTH_SHORT)
-                        .show()
+                    3 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_tableFragment)
                     4 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_barChartModule)
                     5 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_lineChartFragment)
                     else -> Snackbar.make(
@@ -186,12 +185,11 @@ class DataJourneyFragment : Fragment() {
 
     private fun moduleItemClicked(module: Module) {
         when (module.moduleId) {
-            1 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
-            2 -> findNavController().navigate(R.id.action_dataJourneyFragment_to_workingWithDataFragment)
-            3 -> Toast.makeText(context, module.moduleId.toString(), Toast.LENGTH_SHORT)
-                .show()
-            4 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_barChartModule)
-            5 ->  findNavController().navigate(R.id.action_dataJourneyFragment_to_lineChartFragment)
+            1 ->    findNavController().navigate(R.id.action_dataJourneyFragment_to_moduleFragment)
+            2 ->    findNavController().navigate(R.id.action_dataJourneyFragment_to_workingWithDataFragment)
+            3 ->    findNavController().navigate(R.id.action_dataJourneyFragment_to_tableFragment)
+            4 ->    findNavController().navigate(R.id.action_dataJourneyFragment_to_barChartModule)
+            5 ->    findNavController().navigate(R.id.action_dataJourneyFragment_to_lineChartFragment)
             else -> Snackbar.make(binding.nextModuleCard, "Coming soon...", Snackbar.LENGTH_SHORT)
                 .show()
         }

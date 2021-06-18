@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.api.KidsInDataApi
 import com.example.kidsindata_spaceinvader.api.KidsInDataApiService
+import com.example.kidsindata_spaceinvader.model.AllScores
 import com.example.kidsindata_spaceinvader.model.DataJourneyProgress
 import com.example.kidsindata_spaceinvader.model.Module
 
@@ -23,6 +24,8 @@ class DataJourneyRepository {
 
     private val _dataJourneyCompletedModule: MutableLiveData<Int> = MutableLiveData()
 
+    private val _dataJourneyAllScores: MutableLiveData<List<AllScores>> = MutableLiveData()
+
 
     /**
      * Expose non MutableLiveData via getter
@@ -40,6 +43,9 @@ class DataJourneyRepository {
     val dataJourneyCompletedModule: LiveData<Int>
         get() = _dataJourneyCompletedModule
 
+    val dataJourneyAllScores: LiveData<List<AllScores>>
+        get() = _dataJourneyAllScores
+
 
     /**
      * suspend function that calls a suspend function from the moduleApi call
@@ -52,6 +58,19 @@ class DataJourneyRepository {
             }
 
             _dataJourneyModules.value = result
+        } catch (error: Throwable) {
+            throw DataJourneyRefreshError("Unable to refresh modules", error)
+        }
+    }
+
+    suspend fun getAllScores() {
+        try {
+            //timeout the request after 5 seconds
+            val result = withTimeout(5_000) {
+                kidsInDataApiService.getAllScores(BuildConfig.ApiKey)
+            }
+            
+            _dataJourneyAllScores.value = result
         } catch (error: Throwable) {
             throw DataJourneyRefreshError("Unable to refresh modules", error)
         }
