@@ -8,11 +8,20 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.example.kidsindata_spaceinvader.vm.DashboardViewModel
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
 import com.example.numberskotlin.databinding.FragmentBarChartModuleBinding
 import com.example.numberskotlin.databinding.FragmentWhatIsDataModuleBinding
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import com.google.firebase.firestore.FirebaseFirestore
 
 class BarChartFragment : Fragment() {
@@ -22,6 +31,8 @@ class BarChartFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var page: Int = 0
+
+    private val dashboardViewModel: DashboardViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +44,9 @@ class BarChartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dashboardViewModel.getScoringTrend()
+        setBarChart()
         setClickListeners()
         setPage(page)
     }
@@ -54,10 +68,53 @@ class BarChartFragment : Fragment() {
 
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted(4)
-            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
+            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
                 findNavController().navigate(R.id.action_barChartModule_to_dataJourneyFragment)
-            })
+            }
         }
+    }
+
+    private fun setBarChart() {
+        dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
+            val entries: ArrayList<BarEntry> = arrayListOf()
+
+            for (i in it.indices) {
+                entries.add(BarEntry(it[i].game.toFloat(), it[i].playerScore.toFloat()))
+            }
+
+            var dataSet = BarDataSet(entries, "Test")
+            dataSet.valueTextColor = R.color.redKidsInData;
+            dataSet.valueTextSize = 10f
+            dataSet.setColors(
+                intArrayOf(
+                    R.color.titleKidsInData,
+                ), context
+            )
+
+
+            val barData = BarData(dataSet)
+            binding.barChartModule.data = barData
+
+            var legened: Legend = binding.barChartModule.legend
+
+            legened.isEnabled = false
+
+            binding.barChartModule.axisRight.isEnabled = false;
+
+            binding.barChartModule.description.text = ""
+
+            binding.barChartModule.getAxis(YAxis.AxisDependency.LEFT)
+
+            val xAxis: XAxis = binding.barChartModule.xAxis
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.textSize = 10f
+            xAxis.textColor = R.color.titleKidsInData
+            xAxis.setCenterAxisLabels(true)
+            xAxis.setDrawAxisLine(true)
+            xAxis.axisMaximum = 5f
+
+            binding.barChartModule.invalidate() // refresh
+        })
     }
 
     @SuppressLint("SetTextI18n")

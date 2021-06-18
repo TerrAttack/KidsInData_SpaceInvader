@@ -20,8 +20,6 @@ class PlayFragment : Fragment() {
     private var _binding: FragmentPlayBinding? = null
     private val binding get() = _binding!!
 
-    private val userViewModel: UserViewModel by activityViewModels()
-
     var descriptionData0 = arrayOf("Select user", "Play")
     var descriptionData1 = arrayOf("Avatar", "Name", "Play")
 
@@ -58,32 +56,32 @@ class PlayFragment : Fragment() {
     private fun initViews() {
         binding.usernamePlay.text = Global.username
         when (Global.avatarId) {
-            1 -> {
+            0 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_1)
             }
-            2 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_2)
-            }
-            3 -> {
+            1 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_3)
             }
-            4 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_4)
-            }
-            5 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_5)
-            }
-            6 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_6)
-            }
-            7 -> {
+            2 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_7)
             }
-            8 -> {
+            3-> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_9)
+            }
+            4 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_6)
+            }
+            5 -> {
                 binding.userAvatar.setImageResource(R.drawable.avatar_8)
             }
-            9 -> {
-                binding.userAvatar.setImageResource(R.drawable.avatar_9)
+            6 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_5)
+            }
+            7 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_4)
+            }
+            8 -> {
+                binding.userAvatar.setImageResource(R.drawable.avatar_2)
 
             }
         }

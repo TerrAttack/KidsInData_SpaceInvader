@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -62,6 +63,11 @@ class TrophiesFragment : Fragment() {
 
         trophyAdapter.notifyDataSetChanged()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun checkAchievements(){
@@ -130,6 +136,7 @@ class TrophiesFragment : Fragment() {
                     var trophyTitle = document.documents[i].getString("trophyTitle")
                     var trophyDescription = document.documents[i].getString("trophyDesc")
                     var trophyCompletion = false
+
                     trophies.add(Trophy(
                         i,
                         trophyTitle,

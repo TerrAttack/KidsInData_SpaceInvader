@@ -22,7 +22,7 @@ class AvatarFragment : Fragment() {
 
     var descriptionData = arrayOf("Avatar", "Name", "Play")
 
-    private var avatarId = 0
+    private var avatarId = 9
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,47 +51,47 @@ class AvatarFragment : Fragment() {
 
     private fun setAvatarListener() {
         binding.avatar1.setOnClickListener {
-            avatarId = 1
+            avatarId = 0
             setAvatar()
         }
 
         binding.avatar2.setOnClickListener {
-            avatarId = 2
-            setAvatar()
-        }
-
-        binding.avatar3.setOnClickListener {
-            avatarId = 3
-            setAvatar()
-        }
-
-        binding.avatar4.setOnClickListener {
-            avatarId = 4
-            setAvatar()
-        }
-
-        binding.avatar5.setOnClickListener {
-            avatarId = 5
-            setAvatar()
-        }
-
-        binding.avatar6.setOnClickListener {
-            avatarId = 6
-            setAvatar()
-        }
-
-        binding.avatar7.setOnClickListener {
-            avatarId = 7
-            setAvatar()
-        }
-
-        binding.avatar8.setOnClickListener {
             avatarId = 8
             setAvatar()
         }
 
+        binding.avatar3.setOnClickListener {
+            avatarId = 1
+            setAvatar()
+        }
+
+        binding.avatar4.setOnClickListener {
+            avatarId = 7
+            setAvatar()
+        }
+
+        binding.avatar5.setOnClickListener {
+            avatarId = 6
+            setAvatar()
+        }
+
+        binding.avatar6.setOnClickListener {
+            avatarId = 4
+            setAvatar()
+        }
+
+        binding.avatar7.setOnClickListener {
+            avatarId = 2
+            setAvatar()
+        }
+
+        binding.avatar8.setOnClickListener {
+            avatarId = 5
+            setAvatar()
+        }
+
         binding.avatar9.setOnClickListener {
-            avatarId = 9
+            avatarId = 3
             setAvatar()
         }
     }
@@ -109,37 +109,35 @@ class AvatarFragment : Fragment() {
         binding.nextAvatarBtn.isEnabled = true
         when (avatarId) {
             0 -> {
-                binding.nextAvatarBtn.isEnabled = false
-            }
-            1 -> {
                 binding.avatar1.setBackgroundResource(R.drawable.circle_border_selected)
             }
-            2 -> {
-                binding.avatar2.setBackgroundResource(R.drawable.spiderman_selected_border)
-            }
-            3 -> {
+            1 -> {
                 binding.avatar3.setBackgroundResource(R.drawable.circle_border_selected)
             }
+            2 -> {
+                binding.avatar7.setBackgroundResource(R.drawable.spiderman_selected_border)
+            }
+            3 -> {
+                binding.avatar9.setBackgroundResource(R.drawable.circle_border_selected)
+            }
             4 -> {
-                binding.avatar4.setBackgroundResource(R.drawable.circle_border_selected)
-            }
-            5 -> {
-                binding.avatar5.setBackgroundResource(R.drawable.circle_border_selected)
-            }
-            6 -> {
                 binding.avatar6.setBackgroundResource(R.drawable.circle_border_selected)
             }
-            7 -> {
-                binding.avatar7.setBackgroundResource(R.drawable.circle_border_selected)
-            }
-            8 -> {
+            5 -> {
                 binding.avatar8.setBackgroundResource(R.drawable.circle_border_selected)
             }
-            9 -> {
-                binding.avatar9.setBackgroundResource(R.drawable.circle_border_selected)
-
+            6 -> {
+                binding.avatar5.setBackgroundResource(R.drawable.circle_border_selected)
             }
-
+            7 -> {
+                binding.avatar4.setBackgroundResource(R.drawable.circle_border_selected)
+            }
+            8 -> {
+                binding.avatar2.setBackgroundResource(R.drawable.circle_border_selected)
+            }
+            9 -> {
+                binding.nextAvatarBtn.isEnabled = false
+            }
         }
     }
 }
