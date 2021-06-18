@@ -38,6 +38,9 @@
             app:exitAnim="@anim/slide_to_left"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
+        <action
+            android:id="@+id/action_dataJourneyFragment_to_tableFragment"
+            app:destination="@id/tableFragment" />
     </fragment>
     <fragment
         android:id="@+id/moduleFragment"
@@ -84,7 +87,19 @@
         android:label="fragment_line_chart_module"
         tools:layout="@layout/fragment_line_chart_module" >
         <action
-            android:id="@+id/action_lineChartFragment_to_dataJourneyFragment"
+            android:id="@+id/action_tableFragment_to_dataJourneyFragment"
+            app:destination="@id/dataJourneyFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/tableFragment"
+        android:name="com.example.kidsindata_spaceinvader.ui.data_journey.modules.TableFragment"
+        android:label="fragment_table_module">
+        <action
+            android:id="@+id/action_tableFragment_to_dataJourneyFragment"
             app:destination="@id/dataJourneyFragment"
             app:enterAnim="@anim/slide_from_right"
             app:exitAnim="@anim/slide_to_left"
