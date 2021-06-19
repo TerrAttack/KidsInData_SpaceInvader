@@ -1,2 +1,5 @@
 include ':app'
 rootProject.name = "KidsInData_SpaceInvader"
+
+include ':unityLibrary'
+project(':unityLibrary').projectDir=new File('/Users/zepswijghuisen/Desktop/KidsInData_SpaceInvader/unityLibrary')

@@ -44,6 +44,7 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
+       dataJourneyViewModel.getDataJourneyProgress()
 
 
         binding.homeImage.setOnClickListener {

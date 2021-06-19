@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.kidsindata_spaceinvader.global_var.Global
 import com.example.kidsindata_spaceinvader.ui.explanation.ExplanationDialogFragment
 import com.example.kidsindata_spaceinvader.vm.HomeViewModel
 import com.example.kidsindata_spaceinvader.vm.TrophiesViewModel
@@ -49,11 +50,19 @@ class MainActivity : AppCompatActivity() {
 
         checkFirstRun()
 
+        val sharedPreferences =
+            applicationContext.getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
+        var username: String? = sharedPreferences?.getString("USERNAME_FILLED", "")
+        var avatarId: Int? = sharedPreferences?.getInt("AVATAR_ID", 0)
+        Global.username = username!!
+        Global.avatarId = avatarId!!
+
         homeViewModel.getGameSummary()
         trophiesViewModel.getRank()
         trophiesViewModel.getTopScore()
         trophiesViewModel.getGameSummary()
     }
+
 
     private fun checkFirstRun() {
         var isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
