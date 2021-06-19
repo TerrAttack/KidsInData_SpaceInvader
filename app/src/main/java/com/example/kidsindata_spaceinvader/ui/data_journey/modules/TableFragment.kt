@@ -11,6 +11,7 @@ import android.widget.TableRow
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
@@ -60,9 +61,9 @@ class TableFragment : Fragment() {
 
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted( 3)
-            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
+            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
                 findNavController().navigate(R.id.action_tableFragment_to_dataJourneyFragment)
-            })
+            }
         }
     }
 
@@ -79,7 +80,7 @@ class TableFragment : Fragment() {
                 binding.tableH3.text = document.getString("tableHead_col3")
                 binding.tableH4.text = document.getString("tableHead_col4")
 
-                viewModel.dataJourneyAllScores.observe(viewLifecycleOwner, {
+                viewModel.dataJourneyAllScores.observe(viewLifecycleOwner) {
 
                     binding.r1c1.text = it[0].gameId.toString()
                     binding.r1c2.text = it[0].playerNameUserName
@@ -106,10 +107,11 @@ class TableFragment : Fragment() {
                     binding.r5c3.text = it[4].playerScore.toString()
                     binding.r5c4.text = it[4].gameDuration.toString()
 
-                })
+                }
 
                 when (page) {
                     0 -> {
+                        binding.moduleBox.visibility = View.VISIBLE
                         binding.moduleBox.startAnimation(fadeIn)
                         binding.tvmoduleTitle.text = document.getString("p1_title")
                         binding.moduleTvBox1.text = document.getString("p1_b1")

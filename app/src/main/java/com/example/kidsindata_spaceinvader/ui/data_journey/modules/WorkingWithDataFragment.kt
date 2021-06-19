@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.kidsindata_spaceinvader.vm.DataJourneyViewModel
 import com.example.numberskotlin.R
@@ -60,9 +61,9 @@ class WorkingWithDataFragment : Fragment() {
 
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted(2)
-            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner, {
+            viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
                 findNavController().navigate(R.id.action_workingWithDataFragment_to_dataJourneyFragment)
-            })
+            }
         }
     }
 

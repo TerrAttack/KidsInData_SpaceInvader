@@ -23,7 +23,7 @@
 
     <!-- Dashboard -->
     <string name="top_score_dashboard">Top score:</string>
-    <string name="ranking_dashboard">Ranking:</string>
+    <string name="ranking_dashboard">Global ranking:</string>
     <string name="rankings_dashboard">Rankings:</string>
     <string name="games_played_dashboard">Games played:</string>
     <string name="play_time_dashboard">Play time:</string>

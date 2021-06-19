@@ -21,8 +21,6 @@ import java.util.EnumSet.of
 
 class UnityActivity : AppCompatActivity() {
 
-//    private val sendScoreViewModel: SendScoreViewModel by viewModels()
-
     companion object {
         lateinit var sendScoreViewModel: SendScoreViewModel
 
