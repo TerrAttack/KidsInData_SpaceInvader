@@ -14,6 +14,12 @@ interface KidsInDataApiService {
         @Query("playerusername") username: String
     ): List<Module>
 
+    // The GET method needed to retrieve all scores from a user
+    @GET("/api/spaceinvaders/allscores")
+    suspend fun getAllScores(
+        @Query("apikey") apiKey: String
+    ): List<AllScores>
+
     // The GET method needed to retrieve the next module from a user
     @GET("/api/spaceinvaders/nextlearningmodule")
     suspend fun getNextModule(
