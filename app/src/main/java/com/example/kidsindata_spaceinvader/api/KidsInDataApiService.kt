@@ -103,6 +103,18 @@ interface KidsInDataApiService {
         @Query("apikey") apiKey: String,
     ): List<User>
 
+    /**
+     * Send score
+     *
+     */
+
+    @POST("/api/spaceinvaders/playerlatestscore")
+    suspend fun postSendScore(
+        @Query("apikey") apiKey: String,
+        @Query("playerUserName") playerUsername: String,
+        @Query("playerScore") playerScore: Int,
+        @Query("gameDuration") gameDuration: Int,
+    ): Int
 
 
 }

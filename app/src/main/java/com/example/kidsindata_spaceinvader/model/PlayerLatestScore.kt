@@ -2,7 +2,7 @@ package com.example.kidsindata_spaceinvader.model
 
 import com.google.gson.annotations.SerializedName
 
-class PlayerLatestScore (
+data class PlayerLatestScore (
         @SerializedName("gameId") var gameId: Int,
 
         @SerializedName("playerName") var playerName: String,

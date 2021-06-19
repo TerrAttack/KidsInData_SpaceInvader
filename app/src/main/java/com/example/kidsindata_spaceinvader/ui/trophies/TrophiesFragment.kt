@@ -45,7 +45,8 @@ class TrophiesFragment : Fragment() {
         viewModel.getRank()
         viewModel.getTopScore()
         viewModel.getGameSummary()
-        dataJourneyViewModel.getDataJourneyProgress()
+    
+       dataJourneyViewModel.getDataJourneyProgress()
 
         binding.homeImage.setOnClickListener {
             findNavController().navigate(R.id.navigation_home)

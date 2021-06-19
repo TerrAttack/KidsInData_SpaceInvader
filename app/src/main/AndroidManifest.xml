@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.numberskotlin">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +19,8 @@
         android:theme="@style/Theme.KidsInData_SpaceInvader"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name="com.example.kidsindata_spaceinvader.SpaceInvaderActivity"></activity>
+        <activity android:name="com.example.kidsindata_spaceinvader.UnityActivity" />
+        <activity android:name="com.example.kidsindata_spaceinvader.SpaceInvaderActivity" />
         <activity android:name="com.example.kidsindata_spaceinvader.LoginActivity" />
         <activity android:name="com.example.kidsindata_spaceinvader.SplashScreenActivity">
             <intent-filter>
@@ -24,8 +32,5 @@
         <activity android:name="com.example.kidsindata_spaceinvader.DataJourneyActivity" />
         <activity android:name="com.example.kidsindata_spaceinvader.MainActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
