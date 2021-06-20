@@ -14,4 +14,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-/unityLibrary/
+
+/unityLibrary/build/il2cpp_arm64-v8a_Release/
+/unityLibrary/build/il2cpp_armeabi-v7a_Release/

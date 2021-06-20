@@ -146,6 +146,8 @@ class WhatIsDataFragment : Fragment() {
                         binding.moduleTvBox1.text = document.getString("p7_b1")
                         binding.moduleWhiteBox1.text = document.getString("p7_b2")
                         binding.moduleTvBox2.text = document.getString("p7_b3")
+                        binding.moduleTvBox3.visibility = View.GONE
+                        binding.moduleWhiteBox2.visibility = View.GONE
                     }
                     7 -> {
                         binding.moduleBox.startAnimation(fadeIn)

@@ -67,8 +67,8 @@
         <action
             android:id="@+id/action_workingWithDataFragment_to_dataJourneyFragment"
             app:destination="@id/dataJourneyFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
     </fragment>
@@ -80,8 +80,8 @@
         <action
             android:id="@+id/action_barChartModule_to_dataJourneyFragment"
             app:destination="@id/dataJourneyFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
     </fragment>
@@ -91,10 +91,10 @@
         android:label="fragment_line_chart_module"
         tools:layout="@layout/fragment_line_chart_module" >
         <action
-            android:id="@+id/action_tableFragment_to_dataJourneyFragment"
+            android:id="@+id/action_lineChartFragment_to_dataJourneyFragment"
             app:destination="@id/dataJourneyFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right" />
     </fragment>
@@ -106,8 +106,8 @@
         <action
             android:id="@+id/action_tableFragment_to_dataJourneyFragment2"
             app:destination="@id/dataJourneyFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
+            app:enterAnim="@anim/slide_from_left"
+            app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_left"
             app:popExitAnim="@anim/slide_to_right"/>
     </fragment>

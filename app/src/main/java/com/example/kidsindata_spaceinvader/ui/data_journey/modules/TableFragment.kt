@@ -62,7 +62,7 @@ class TableFragment : Fragment() {
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted( 3)
             viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
-                findNavController().navigate(R.id.action_tableFragment_to_dataJourneyFragment)
+                findNavController().navigate(R.id.action_tableFragment_to_dataJourneyFragment2)
             }
         }
     }

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.kidsindata_spaceinvader.global_var.Global
+import com.example.kidsindata_spaceinvader.ui.space_invader_game.UnityFragment
 import com.example.kidsindata_spaceinvader.vm.SendScoreViewModel
 import com.example.numberskotlin.R
 import java.util.EnumSet.of
@@ -24,10 +25,18 @@ class UnityActivity : AppCompatActivity() {
     companion object {
         lateinit var sendScoreViewModel: SendScoreViewModel
 
+        private var scoreSend: Int = 0
+
         @JvmStatic
-        fun spaceInvaderScore(intData: String) {
-            print("Int message received from Unity: $intData")
-            sendScoreViewModel.postSendScore(intData.toInt(), 10)
+        fun spaceInvaderScore(score: String) {
+            print("Int message received from Unity: $score")
+            scoreSend = score.toInt()
+        }
+
+        @JvmStatic
+        fun spaceInvaderGameDuration(gameDuration: String) {
+            print("Int message received from Unity: $gameDuration")
+            sendScoreViewModel.postSendScore(scoreSend, gameDuration.toInt())
         }
     }
 
@@ -41,9 +50,7 @@ class UnityActivity : AppCompatActivity() {
         var btn: ImageView = findViewById<ImageView>(R.id.stGame)
 
         btn.setOnClickListener {
-            val intent = Intent(applicationContext, SpaceInvaderActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+            UnityFragment.quitUnityActivity()
         }
     }
 }

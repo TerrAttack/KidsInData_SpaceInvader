@@ -99,6 +99,8 @@ class DashboardFragment : Fragment() {
     }
 
     private fun setLineChart() {
+
+
         dashboardViewModel.playerScoringTrend.observe(viewLifecycleOwner, Observer {
             val entries: ArrayList<Entry> = arrayListOf()
 
@@ -117,6 +119,7 @@ class DashboardFragment : Fragment() {
             dataSet.valueTextColor = R.color.titleKidsInData
             dataSet.lineWidth = 1f
             dataSet.valueTextColor = R.color.redKidsInData
+
 
             var legened: Legend = binding.lineChart.legend
 

@@ -70,7 +70,7 @@ class LineChartFragment : Fragment() {
         binding.moduleDoneBtn.setOnClickListener {
             viewModel.postModuleCompleted(5)
             viewModel.dataJourneyModuleCompleted.observe(viewLifecycleOwner) {
-                findNavController().navigate(R.id.action_barChartModule_to_dataJourneyFragment)
+                findNavController().navigate(R.id.action_lineChartFragment_to_dataJourneyFragment)
             }
         }
     }

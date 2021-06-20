@@ -1,6 +1,8 @@
 package com.example.kidsindata_spaceinvader.ui.space_invader_game
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ImageView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
+import com.example.kidsindata_spaceinvader.SpaceInvaderActivity
 import com.example.numberskotlin.R
 import com.unity3d.player.UnityPlayer
 
@@ -18,6 +23,16 @@ class UnityFragment : Fragment() {
     var frameLayoutForUnity: FrameLayout? = null
 
     fun UnityFragment() {}
+
+    companion object {
+        lateinit var mUnityPlayers: UnityPlayer
+
+        fun quitUnityActivity() {
+            Log.v("Unity", "Unity Activity Exited!")
+            this.mUnityPlayers.quit()
+            UnityPlayer.currentActivity.finish()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +51,9 @@ class UnityFragment : Fragment() {
         return view
     }
 
-
-    fun quitUnityActivity() {
-        Log.v("Unity", "Unity Activity Exited!")
-        this.mUnityPlayer?.quit()
-        UnityPlayer.currentActivity.finish()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mUnityPlayers = UnityPlayer(activity)
     }
 
     override fun onDestroy() {
