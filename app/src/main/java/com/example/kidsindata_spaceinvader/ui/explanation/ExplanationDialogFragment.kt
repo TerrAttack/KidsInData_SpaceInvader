@@ -75,7 +75,7 @@ class ExplanationDialogFragment : DialogFragment() {
             }
             3 -> {
                 binding.tvContent.text = text[3]
-                binding.btnNext.setText(R.string.controls)
+                binding.btnNext.setText(R.string.controls_close)
             }
             4 -> {
                 //Destroy the current explanation fragment and show the controls
